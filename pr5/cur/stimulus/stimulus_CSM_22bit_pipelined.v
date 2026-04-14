@@ -13,7 +13,7 @@ module stimulus_CSM_22bit_pipelined;
 	integer i, k, err_pipelined;
 
     CSM_RCA_22bit_pipelined MULT0(.mul(mul_out_pipelined), .a(a), .b(b), .clk(clk), .rstn(rstn));
-
+	// pipeline만 보는 코드
 	always #5 clk <= ~clk;
 
 	initial	begin
