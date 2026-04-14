@@ -146,16 +146,6 @@ always@(*) begin
 end
 endmodule
 
-module DFF_1bit (
-    output reg q,
-    input      d,
-    input      clk, rstn
-);
-    always@(posedge clk) begin
-        if(!rstn) q <= 1'b0;
-        else      q <= d;
-    end
-endmodule
 
 module DFF_4bit (
     output reg [4-1:0] q,
