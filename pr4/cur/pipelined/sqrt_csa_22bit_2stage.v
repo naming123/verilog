@@ -148,3 +148,61 @@ module DFF_23bit (
 		else       q <= d;
 	end
 endmodule
+//================ DFF =================
+module DFF_1bit (output reg q, input d, input clk, rstn);
+always @(posedge clk) begin
+    if (!rstn) q <= 0;
+    else       q <= d;
+end
+endmodule
+
+module DFF_2bit (output reg [1:0] q, input [1:0] d, input clk, rstn);
+always @(posedge clk) begin
+    if (!rstn) q <= 0;
+    else       q <= d;
+end
+endmodule
+
+module DFF_3bit (output reg [2:0] q, input [2:0] d, input clk, rstn);
+always @(posedge clk) begin
+    if (!rstn) q <= 0;
+    else       q <= d;
+end
+endmodule
+
+module DFF_4bit (output reg [3:0] q, input [3:0] d, input clk, rstn);
+always @(posedge clk) begin
+    if (!rstn) q <= 0;
+    else       q <= d;
+end
+endmodule
+
+//================ Full Adders =================
+module FA_1bit (output sum, output c_out, input a, b, c_in);
+assign {c_out, sum} = a + b + c_in;
+endmodule
+
+module FA_2bit (output [1:0] sum, output c_out, input [1:0] a, b, input c_in);
+assign {c_out, sum} = a + b + c_in;
+endmodule
+
+module FA_3bit (output [2:0] sum, output c_out, input [2:0] a, b, input c_in);
+assign {c_out, sum} = a + b + c_in;
+endmodule
+
+module FA_4bit (output [3:0] sum, output c_out, input [3:0] a, b, input c_in);
+assign {c_out, sum} = a + b + c_in;
+endmodule
+
+//================ MUX =================
+module mux2to1_6bit (output [5:0] out, input [5:0] i0, i1, input s);
+assign out = s ? i1 : i0;
+endmodule
+
+module mux2to1_7bit (output [6:0] out, input [6:0] i0, i1, input s);
+assign out = s ? i1 : i0;
+endmodule
+
+module mux2to1_8bit (output [7:0] out, input [7:0] i0, i1, input s);
+assign out = s ? i1 : i0;
+endmodule
