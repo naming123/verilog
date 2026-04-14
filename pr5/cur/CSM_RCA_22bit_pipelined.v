@@ -1,4 +1,4 @@
-module multiplier_rca_DFF (
+module CSM_RCA_22bit (
 	output [44-1:0] mul,
 	input [22-1:0] a, b,
 	input clk, rstn
@@ -67,6 +67,9 @@ module multiplier_rca (
 	Carry_Save_Adder_22bit CSA17 (.sum(pp_sum[17]), .c_out(c_out[17]), .mul_out(mul[18]), .a({1'b0, pp_sum[16]}), .b(x[18]), .c_in(c_out[16]));
 	Carry_Save_Adder_22bit CSA18 (.sum(pp_sum[18]), .c_out(c_out[18]), .mul_out(mul[19]), .a({1'b0, pp_sum[17]}), .b(x[19]), .c_in(c_out[17]));
 	Carry_Save_Adder_22bit CSA19 (.sum(pp_sum[19]), .c_out(c_out[19]), .mul_out(mul[20]), .a({1'b0, pp_sum[18]}), .b(x[20]), .c_in(c_out[18]));
+
+
+	//critical path
 	Carry_Save_Adder_22bit CSA20 (.sum(pp_sum[20]), .c_out(c_out[20]), .mul_out(mul[21]), .a({1'b0, pp_sum[19]}), .b(x[21]), .c_in(c_out[19]));
 
 	// #3: Vector Merging Adder
@@ -105,7 +108,7 @@ module Carry_Save_Adder_22bit (
 	FA_1bit FA_CSA21 (.sum(sum[20]),  .c_out(c_out[21]), .a(a[21]), .b(b[21]), .c_in(c_in[21]));
 	
 endmodule
-
+// 22bit * 1bit
 module Partial_Product (
 	output [22-1:0] x,
 	input [22-1:0] a,

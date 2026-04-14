@@ -1,4 +1,4 @@
-module multiplier_srcsa_DFF (
+module CSM_SRCSA_22bit (
 	output [44-1:0] mul,
 	input [22-1:0] a, b,
 	input clk, rstn
