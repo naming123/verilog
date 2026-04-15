@@ -1,0 +1,74 @@
+C:/Users/osm13/Desktop/26-1/VLSI/osm/cur/baseline/ripple_carry_adder_22bit.v {1 {vlog -work work C:/Users/osm13/Desktop/26-1/VLSI/osm/cur/baseline/ripple_carry_adder_22bit.v
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+-- Compiling module ripple_carry_adder_22bit
+-- Compiling module fulladd22_gate
+-- Compiling module fulladd_gate
+-- Compiling module DFF_input
+-- Compiling module DFF_output
+
+Top level modules:
+	ripple_carry_adder_22bit
+
+} {} {}} C:/Users/osm13/Desktop/26-1/VLSI/osm/cur/stimulus/base_stimulus/stimulus_sqrt_csa_22bit.v {1 {vlog -work work C:/Users/osm13/Desktop/26-1/VLSI/osm/cur/stimulus/base_stimulus/stimulus_sqrt_csa_22bit.v
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+-- Compiling module stimulus_sqrt_csa_22bit
+
+Top level modules:
+	stimulus_sqrt_csa_22bit
+
+} {} {}} C:/Users/osm13/Desktop/26-1/VLSI/osm/cur/stimulus/base_stimulus/stimulus_csa_20b.v {1 {vlog -work work {C:\Users\osm13\Desktop\26-1\VLSI\osm\cur\stimulus\base_stimulus\stimulus_csa_20b.v}
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+-- Compiling module stimulus_csa_20bit
+
+Top level modules:
+	stimulus_csa_20bit
+
+} {} {}} C:/Users/osm13/Desktop/26-1/VLSI/osm/cur/baseline/sqrt_csa_22bit.v {1 {vlog -work work C:/Users/osm13/Desktop/26-1/VLSI/osm/cur/baseline/sqrt_csa_22bit.v
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+-- Compiling module sqrt_carry_select_adder_22b
+-- Compiling module SRCSA_22bit
+-- Compiling module DFF_input
+-- Compiling module DFF_output
+-- Compiling module FA_4bit
+-- Compiling module FA_5bit
+-- Compiling module FA_6bit
+-- Compiling module FA_7bit
+-- Compiling module fulladd_gate
+-- Compiling module mux2to1_6bit
+-- Compiling module mux2to1_7bit
+-- Compiling module mux2to1_8bit
+-- Compiling module mux2to1
+
+Top level modules:
+	sqrt_carry_select_adder_22b
+
+} {} {}} C:/Users/osm13/Desktop/26-1/VLSI/osm/cur/stimulus/base_stimulus/stimulus_rca_22b.v {1 {vlog -work work C:/Users/osm13/Desktop/26-1/VLSI/osm/cur/stimulus/base_stimulus/stimulus_rca_22b.v
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+-- Compiling module stimulus_rca_22bit
+
+Top level modules:
+	stimulus_rca_22bit
+
+} {} {}} C:/Users/osm13/Desktop/26-1/VLSI/osm/cur/baseline/carry_select_adder_20bit.v {1 {vlog -work work C:/Users/osm13/Desktop/26-1/VLSI/osm/cur/baseline/carry_select_adder_20bit.v
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+-- Compiling module carry_select_adder_20bit
+-- Compiling module DFF_20bit
+-- Compiling module DFF_21bit
+-- Compiling module full_adder
+-- Compiling module full_adder_4b
+-- Compiling module mux_2to1_1b
+-- Compiling module mux_2to1_4b
+-- Compiling module DFF_1bit
+-- Compiling module DFF_4bit
+
+Top level modules:
+	carry_select_adder_20bit
+
+} {} {}} C:/Users/osm13/Desktop/26-1/VLSI/osm/cur/stimulus/naive_carry_select_adder.v {1 {vlog -work work C:/Users/osm13/Desktop/26-1/VLSI/osm/cur/stimulus/naive_carry_select_adder.v
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+-- Compiling module naive_carry_select_adder
+
+Top level modules:
+	naive_carry_select_adder
+
+} {} {}}
