@@ -39,7 +39,7 @@ module stimulus_CSM_22bit_pipelined;
 	end
 
     initial	begin
-		$readmemh("C:/Users/oaz/Desktop/osm/verilog/pr5/cur/mult_output.txt", mat_mult_output);
+		$readmemh("mult_output.txt", mat_mult_output);
         err_pipelined = 0;
 		k = 0;
 		#(40);

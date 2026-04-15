@@ -1,4 +1,4 @@
-module CSM_RCA_22bit_pipelined (
+module CSM_RCA_22bit (
 	output [44-1:0] mul,
 	input [22-1:0] a, b,
 	input clk, rstn
