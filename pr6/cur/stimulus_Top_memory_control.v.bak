@@ -12,7 +12,7 @@ module stimulus_Top_memory_control;
 		rstn <= 0;
 		#10
 		rstn <= 1;
-		#82010 $stop;
+		#41145 $stop;
 	end
 	
 	always #5 clk <= ~clk;
@@ -24,17 +24,29 @@ module stimulus_Top_memory_control;
 	
 	initial $readmemh("C:/Users/osm13/Desktop/26-1/VLSI/osm/pr6/cur/input.txt", TOP_MEM_TEST.memory.array);
 	initial $readmemh("C:/Users/osm13/Desktop/26-1/VLSI/osm/pr6/cur/output.txt", mat_output);
-	
-	initial	begin
-    #(41010);
-		for(i = 0; i < 1024; i = i + 1)
-		begin
-			mat_out <= mat_output[i];
-			#(10);
-			if(out != mat_out) err = err + 1;
-			#(20);
-		end
-	end
+	initial begin
+    #(45);
+    for(i = 0; i < 1024; i = i + 1)
+    begin
+mat_out = mat_output[i]; 
+        #(10); 
+
+        // 1. ???? ??(out)? ???? ?? ??(mat_out)? ?? ??
+        $display("i=%0d | A=%h | B=%h | Out(HW)=%h | Mat_out(Ref)=%h | Match=%b", 
+                 i, 
+                 TOP_MEM_TEST.Mul_a, 
+                 TOP_MEM_TEST.Mul_b, 
+                 out, 
+                 mat_out, 
+                 (out == mat_out)); 
+
+        // 2. ?? ??? (??? ??? ??)
+        if(out != mat_out) err = err + 1;
+        
+        #(30);
+    end
+    $display("Total errors: %0d / 1024", err);
+  end
 	
 	
 endmodule
