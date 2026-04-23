@@ -2,29 +2,28 @@ module top_memory_ctrl (
     output [44-1:0] out,
     input clk, rstn
 );
-    wire [7-1:0] RA;
+    wire [7-1:0] RA;      // 7bit? ??
     wire [3-1:0] CA;
     wire [44-1:0] memory_in, memory_out;
     wire NWRT, NCE;
 
-    rflp1024x44mx3 memory(.DO(memory_out), .DIN(memory_in), .RA(RA), .CA(CA), .NWRT(NWRT), .NCE(NCE), .CLK(clk));
+    rflp1024x44mx3 memory0(.DO(memory_out), .DIN(memory_in), .RA(RA), .CA(CA), .NWRT(NWRT), .NCE(NCE), .CLK(clk));
 
-
-    reg [12-1:0] cnt;
+    reg [12-1:0] cnt;     // 12bit? ??
     reg [22-1:0] Mul_a, Mul_b;
-    wire [44-1:0] Mul_out; // reg??, wire??
+    reg [44-1:0] Mul_out;
     reg [44-1:0] memory_in_tmp;
     reg start;
 
-    assign RA = cnt[11:5];
-    assign CA = cnt[4:2];
+    assign RA = cnt[11:5];   // 7bit
+    assign CA = cnt[4:2];    // 3bit
     assign memory_in = memory_in_tmp;
 
+    // Define NWRT, NCE
     assign NWRT = ~(cnt[0] | cnt[1]);
     assign NCE  = cnt[0] ^ cnt[1];
-	// assign NWRT = cnt[1] ~^ cnt[0];   // 11일 때만 write (NWRT=0)
-	// assign NCE  = ~(cnt[1] ^ cnt[0]); // 00, 11일 때 enable
 
+    // Read, write memory
     always @ (posedge clk) begin
         if (!rstn) begin
             start <= 1'b0;
@@ -47,7 +46,10 @@ module top_memory_ctrl (
         end
     end
 
+    // Multiply
     assign Mul_out = Mul_a * Mul_b;
+
+    // Assign out
     assign out = memory_out;
 
 endmodule
