@@ -29,8 +29,10 @@ module stimulus_Top_memory_control;
         #(20540);
         for(i = 0; i < 1024; i = i + 1)
         begin
-            mat_out = mat_output[i + 512];  // ? ??? ??
+            mat_out = mat_output[i + 512];
             #(10);
+            $display("i=%0d | A=%h | B=%h | Out(HW)=%h | Mat_out(Ref)=%h | Match=%b",
+                      i, out[43:22], out[21:0], out, mat_out, (out == mat_out));
             if(out != mat_out) err = err + 1;
             #(30);
         end

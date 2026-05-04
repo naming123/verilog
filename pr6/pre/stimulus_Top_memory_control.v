@@ -17,6 +17,7 @@ module stimulus_Top_memory_control;
 	
 	always #5 clk <= ~clk;
 	
+	
 	top_memory_ctrl TOP_MEM_TEST(out, clk, rstn);
 
 	integer i = 0;
