@@ -12,9 +12,9 @@ module sti_matmul;
 
 	top_controller Utop_controller(.done(done), .start(start), .clk(clk), .rstn(rstn));
 
-	initial	$readmemh("vec_a.txt", Utop_controller.MEM_A.array);
-	initial	$readmemh("vec_b.txt", Utop_controller.MEM_B.array);
-	initial $readmemh("vec_c.txt", mat_output);
+	initial	$readmemh("C:/Users/oaz/Desktop/osm/verilog/proj1/ref/vec_a.txt", Utop_controller.MEM_A.array);
+	initial	$readmemh("C:/Users/oaz/Desktop/osm/verilog/proj1/ref/vec_b.txt", Utop_controller.MEM_B.array);
+	initial $readmemh("C:/Users/oaz/Desktop/osm/verilog/proj1/ref/vec_c.txt", mat_output);
 
     always #5 clk <= ~clk;
 	
