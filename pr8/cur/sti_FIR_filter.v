@@ -1,0 +1,78 @@
+`timescale 1ns/10ps
+module sti_FIR_filter;
+
+	reg clk, reset;
+
+	reg [23:0] sig_mat [0:255];
+	reg [23:0] out_mat;
+	reg [23:0] TRANS_out;
+wire signed [13:0] c0 = 14'h983;
+wire signed [13:0] c1 = 14'h32b4;
+wire signed [13:0] c2 = 14'h107d;
+wire signed [13:0] c3 = 14'h327f;
+wire signed [13:0] c4 = 14'h19c7;
+
+	top_FIR_filter FIR(clk, reset, c0, c1, c2, c3, c4);
+
+	integer err_trans = 0;
+	integer i = 0;
+
+	// FIR pipeline latency
+	parameter LATENCY = 11;
+
+	initial
+	begin
+		clk = 1;
+		reset = 0;
+
+		#10
+		reset = 1;
+	end
+
+	always #5 clk = ~clk;
+
+	// input memory load
+initial 
+	$readmemh(
+"C:\\Users\\osm13\\Desktop\\26-1\\VLSI\\osm\\pr8\\ref\\input_vector_hex.txt",
+	FIR.TRANS_INPUT_MEM.array
+	);
+
+initial
+begin
+	$readmemh(
+"C:\\Users\\osm13\\Desktop\\26-1\\VLSI\\osm\\pr8\\ref\\output_vector_hex_round_after_sum.txt",
+	sig_mat
+	);
+
+		// wait for reset + pipeline fill
+		#200;
+
+		for (i=0; i<245; i=i+1)
+		begin
+			out_mat   = sig_mat[i];
+			TRANS_out = FIR.TRANS_OUTPUT_MEM.array[i+LATENCY];
+
+			if (TRANS_out != out_mat)
+			begin
+				err_trans = err_trans + 1;
+
+				$display(
+					"ERROR @%0d : EXPECT=%h  OUTPUT=%h",
+					i,
+					out_mat,
+					TRANS_out
+				);
+			end
+
+			#10;
+		end
+
+		$display("================================");
+		$display("TRANSPOSE ERROR COUNT = %0d", err_trans);
+		$display("================================");
+
+		$stop;
+	end
+
+endmodule
