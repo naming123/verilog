@@ -32,6 +32,7 @@ module sti_folded_FIR;
 	always #40 clk20 = ~clk20;
 	
 	initial $readmemh("C:/Users/osm13/Desktop/26-1/VLSI/osm/pr9/cur/input_vector_hex.txt", FIR.INPUT_MEM.array); //check the path of memory location (module instance)
+
 	integer i=0;	
 	integer err=0;
 	initial
