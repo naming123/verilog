@@ -80,21 +80,3 @@ module top_controller (
     end
 endmodule
 
-module MAC (
-    output wire [22-1:0] MAC_out,
-    input [8-1:0] A, B,
-    input sel, clk
-);
-    wire [16-1:0] mul_out;
-    wire [22-1:0] sum_out, mux_out;
-    reg [22-1:0] sum_out_d;
-
-    assign mul_out = A * B;
-    assign sum_out = mux_out + mul_out;
-    assign mux_out = sel ? 22'b0 : sum_out_d;
-    assign MAC_out = sum_out_d;
-
-    always @ (posedge clk) begin
-        sum_out_d <= sum_out;
-    end
-endmodule

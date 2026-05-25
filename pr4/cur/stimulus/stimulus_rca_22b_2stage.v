@@ -1,5 +1,5 @@
 `timescale 1 ns / 1 ps
-module stimulus_rca_22bit_2stage;
+module stimulus_rca_22b_2stage;
 
 wire [22:0] sum_rca;
 reg  [21:0] a, b;
@@ -10,7 +10,7 @@ reg  [22:0] mat_sum_cmp;
 reg  [21:0] mat_a   [0:99];
 reg  [21:0] mat_b   [0:99];
 
-ripple_carry_adder_22bit_2stage rca(.sum(sum_rca), .a(a), .b(b), .c_in(1'b0), .clk(clk), .rstn(rstn));
+ripple_carry_adder_22b_2stage rca(.sum(sum_rca), .a(a), .b(b), .c_in(1'b0), .clk(clk), .rstn(rstn));
 
 integer i, k;
 integer err;

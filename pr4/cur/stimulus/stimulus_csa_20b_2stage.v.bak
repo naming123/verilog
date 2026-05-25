@@ -1,5 +1,5 @@
 `timescale 1 ns / 1 ps
-module stimulus_csa_20bit_2stage;
+module stimulus_csa_20b_2stage;
 
 wire [20:0] sum_csa;
 reg  [19:0] a, b;
@@ -10,7 +10,7 @@ reg  [20:0] mat_sum_cmp;
 reg  [19:0] mat_a   [0:99];
 reg  [19:0] mat_b   [0:99];
 
-carry_select_adder_20bit_2stage rca(.sum(sum_csa), .a(a), .b(b), .c_in(1'b0), .clk(clk), .rstn(rstn));
+carry_select_adder_20b_2stage rca(.sum(sum_csa), .a(a), .b(b), .c_in(1'b0), .clk(clk), .rstn(rstn));
 
 integer i, k;
 integer err;
@@ -23,8 +23,8 @@ always #5 clk <= ~clk;
 	end
 
 	initial begin
-		$readmemh("a_input_20b.txt", mat_a);
-		$readmemh("b_input_20b.txt", mat_b);
+		$readmemh("C:/intelFPGA/20.1/VLSI/work/a_input_20b.txt", mat_a);
+		$readmemh("C:/intelFPGA/20.1/VLSI/work/b_input_20b.txt", mat_b);
 
 		i = 0;
 		#(20);

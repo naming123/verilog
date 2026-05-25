@@ -23,8 +23,8 @@ always #5 clk <= ~clk;
 	end
 
 	initial begin
-		$readmemh("C:/intelFPGA/20.1/VLSI/work/a_input_22b.txt", mat_a);
-		$readmemh("C:/intelFPGA/20.1/VLSI/work/b_input_22b.txt", mat_b);
+		$readmemh("a_input_22b.txt", mat_a);
+		$readmemh("b_input_22b.txt", mat_b);
 
 		i = 0;
 		#(20);
@@ -36,7 +36,7 @@ always #5 clk <= ~clk;
 	end
 
 	initial begin
-		$readmemh("C:/intelFPGA/20.1/VLSI/work/sum_output_23b.txt", mat_sum);
+		$readmemh("sum_output_23b.txt", mat_sum);
 
 		k = 0;
 		err = 0;
