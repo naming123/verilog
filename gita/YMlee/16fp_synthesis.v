@@ -24,7 +24,6 @@ module fp16_mul_synthesis (
     end
 
     // 2. 실제 연산 모듈 인스턴스화
-    // (합성 시 `PIPELINE` 매크로를 정의하여 타이밍 성능을 제어할 수 있습니다)
     fp16_mul U_FP16_MUL (
     `ifdef PIPLINE
         .clk(clk),
