@@ -1,144 +1,196 @@
 module top_FIR_filter (
-	input clk, reset, 
-	input [14-1:0] c0, c1, c2, c3, c4, c5
+    input clk, reset,
+    input signed [13:0] c0, c1, c2, c3, c4
 );
 
-	wire [8-1:0] addr_in, addr_out;
-	wire [16-1:0] x_in_direct, x_in_trans;
-	wire [26-1:0] y_out_direct, y_out_trans;
-	
-	rflp256x16mx2 DIRECT_INPUT_MEM (.NWRT(1'b1), .DIN(), .RA(addr_in[7:2]), .CA(addr_in[1:0]), .NCE(1'b0), .CLK(clk), .DO(x_in_direct));
-	rflp256x16mx2 TRANS_INPUT_MEM (.NWRT(1'b1), .DIN(), .RA(addr_in[7:2]), .CA(addr_in[1:0]), .NCE(1'b0), .CLK(clk), .DO(x_in_trans));
+    wire [7:0] addr_in, addr_out;
+    wire signed [13:0] x_in_direct, x_in_trans;
+    wire signed [23:0] y_out_direct, y_out_trans;
 
-	rflp256x26mx2 DIRECT_OUTPUT_MEM (.NWRT(1'b0), .DIN(y_out_direct), .RA(addr_out[7:2]), .CA(addr_out[1:0]), .NCE(1'b0), .CLK(clk), .DO());
-	rflp256x26mx2 TRANS_OUTPUT_MEM (.NWRT(1'b0), .DIN(y_out_trans), .RA(addr_out[7:2]), .CA(addr_out[1:0]), .NCE(1'b0), .CLK(clk), .DO());
+    reg [7:0] cnt;
 
-	direct_FIR_filter DIRECT_FIR_FILTER (.direct_out(y_out_direct), .c0(c0), .c1(c1), .c2(c2), .c3(c3), .c4(c4), .c5(c5), .in(x_in_direct), .clk(clk), .reset(reset));
-	trans_FIR_filter TRANS_FIR_FILTER (.trans_out(y_out_trans), .c0(c0), .c1(c1), .c2(c2), .c3(c3), .c4(c4), .c5(c5), .in(x_in_trans), .clk(clk), .reset(reset));
+    assign addr_in  = cnt;
+    assign addr_out = cnt - 8'd7;   // 5tap transposed 기준 pipeline delay 보정
 
-	// Counter for address control
-	reg [8-1:0] cnt;
+    rflp256x14mx4 DIRECT_INPUT_MEM (
+        .NWRT(1'b1),
+        .DIN(14'b0),
+        .RA(addr_in[7:2]),
+        .CA(addr_in[1:0]),
+        .NCE(1'b0),
+        .CLK(clk),
+        .DO(x_in_direct)
+    );
 
-	assign addr_in = cnt;
-	assign addr_out = cnt - 4'd8;
+    rflp256x14mx4 TRANS_INPUT_MEM (
+        .NWRT(1'b1),
+        .DIN(14'b0),
+        .RA(addr_in[7:2]),
+        .CA(addr_in[1:0]),
+        .NCE(1'b0),
+        .CLK(clk),
+        .DO(x_in_trans)
+    );
 
-	always @ (posedge clk) begin
-		if (!reset) begin
-			cnt <= 8'b0;
-		end
-		else begin
-			cnt <= cnt + 1;
-		end
-	end
+    rflp256x24mx4 DIRECT_OUTPUT_MEM (
+        .NWRT(reset ? 1'b0 : 1'b1),
+        .DIN(y_out_direct),
+        .RA(addr_out[7:2]),
+        .CA(addr_out[1:0]),
+        .NCE(1'b0),
+        .CLK(clk),
+        .DO()
+    );
+
+    rflp256x24mx4 TRANS_OUTPUT_MEM (
+        .NWRT(reset ? 1'b0 : 1'b1),
+        .DIN(y_out_trans),
+        .RA(addr_out[7:2]),
+        .CA(addr_out[1:0]),
+        .NCE(1'b0),
+        .CLK(clk),
+        .DO()
+    );
+
+    direct_FIR_filter DIRECT_FIR_FILTER (
+        .direct_out(y_out_direct),
+        .c0(c0), .c1(c1), .c2(c2), .c3(c3), .c4(c4),
+        .in(x_in_direct),
+        .clk(clk),
+        .reset(reset)
+    );
+
+    trans_FIR_filter TRANS_FIR_FILTER (
+        .trans_out(y_out_trans),
+        .c0(c0), .c1(c1), .c2(c2), .c3(c3), .c4(c4),
+        .in(x_in_trans),
+        .clk(clk),
+        .reset(reset)
+    );
+
+    always @(posedge clk) begin
+        if (!reset)
+            cnt <= 8'd0;
+        else
+            cnt <= cnt + 8'd1;
+    end
 
 endmodule
+
 
 module direct_FIR_filter (
-	output reg signed [26-1:0] direct_out,
-	input signed [14-1:0] c0, c1, c2, c3, c4, c5,
-	input signed [16-1:0] in, 
-	input clk, reset
+    output reg signed [23:0] direct_out,
+    input signed [13:0] c0, c1, c2, c3, c4,
+    input signed [13:0] in,
+    input clk, reset
 );
 
-	wire signed [24-1:0] mul_out0, mul_out1, mul_out2, mul_out3, mul_out4, mul_out5;
-	wire signed [16-1:0] x0, x1, x2, x3, x4, x5;
-	wire [26-1:0] sum_out;
+    reg signed [13:0] x0, x1, x2, x3, x4;
 
-	reg signed [16-1:0] x0_tmp, x1_tmp, x2_tmp, x3_tmp, x4_tmp, x5_tmp;
+    wire signed [21:0] mul0, mul1, mul2, mul3, mul4;
+    wire signed [23:0] sum_out;
 
-	assign sum_out = mul_out0 + mul_out1 + mul_out2 + mul_out3 + mul_out4 + mul_out5;
-	assign x0 = x0_tmp;
-	assign x1 = x1_tmp;
-	assign x2 = x2_tmp;
-	assign x3 = x3_tmp;
-	assign x4 = x4_tmp;
-	assign x5 = x5_tmp;
+    multiplier_roundoff mul_0 (.mul_out_roundoff(mul0), .in(x0), .c(c0));
+    multiplier_roundoff mul_1 (.mul_out_roundoff(mul1), .in(x1), .c(c1));
+    multiplier_roundoff mul_2 (.mul_out_roundoff(mul2), .in(x2), .c(c2));
+    multiplier_roundoff mul_3 (.mul_out_roundoff(mul3), .in(x3), .c(c3));
+    multiplier_roundoff mul_4 (.mul_out_roundoff(mul4), .in(x4), .c(c4));
 
-	multiplier_roundoff mul0 (.mul_out_roundoff(mul_out0), .in(x0), .c(c0));
-	multiplier_roundoff mul1 (.mul_out_roundoff(mul_out1), .in(x1), .c(c1));
-	multiplier_roundoff mul2 (.mul_out_roundoff(mul_out2), .in(x2), .c(c2));
-	multiplier_roundoff mul3 (.mul_out_roundoff(mul_out3), .in(x3), .c(c3));
-	multiplier_roundoff mul4 (.mul_out_roundoff(mul_out4), .in(x4), .c(c4));
-	multiplier_roundoff mul5 (.mul_out_roundoff(mul_out5), .in(x5), .c(c5));
+    assign sum_out =
+        {{2{mul0[21]}}, mul0} +
+        {{2{mul1[21]}}, mul1} +
+        {{2{mul2[21]}}, mul2} +
+        {{2{mul3[21]}}, mul3} +
+        {{2{mul4[21]}}, mul4};
 
-	always @ (posedge clk) begin
-		if (!reset) begin
-			x0_tmp <= 14'b0;
-			x1_tmp <= 14'b0;
-			x2_tmp <= 14'b0;
-			x3_tmp <= 14'b0;
-			x4_tmp <= 14'b0;
-			x5_tmp <= 14'b0;
-		end
-		else begin
-			x0_tmp <= in;
-			x1_tmp <= x0;
-			x2_tmp <= x1;
-			x3_tmp <= x2;
-			x4_tmp <= x3;
-			x5_tmp <= x4;
-			direct_out <= sum_out;
-		end
-	end
+    always @(posedge clk) begin
+        if (!reset) begin
+            x0 <= 14'd0;
+            x1 <= 14'd0;
+            x2 <= 14'd0;
+            x3 <= 14'd0;
+            x4 <= 14'd0;
+            direct_out <= 24'd0;
+        end
+        else begin
+            x0 <= in;
+            x1 <= x0;
+            x2 <= x1;
+            x3 <= x2;
+            x4 <= x3;
+            direct_out <= sum_out;
+        end
+    end
 
 endmodule
+
 
 module trans_FIR_filter (
-	output reg signed [26-1:0] trans_out,
-	input signed [14-1:0] c0, c1, c2, c3, c4, c5,
-	input signed [16-1:0] in, 
-	input clk, reset
+    output reg signed [23:0] trans_out,
+    input signed [13:0] c0, c1, c2, c3, c4,
+    input signed [13:0] in,
+    input clk, reset
 );
-	
-	wire signed [24-1:0] mul_out0, mul_out1, mul_out2, mul_out3, mul_out4, mul_out5;
-	wire signed [26-1:0] sum_out0, sum_out1, sum_out2, sum_out3, sum_out4;
 
-	reg signed [26-1:0] y1, y2, y3, y4, y5;
-	reg signed [16-1:0] x0;
+    reg signed [13:0] x0;
+    reg signed [23:0] y1, y2, y3, y4;
 
-	assign sum_out4 = mul_out4 + y5;
-	assign sum_out3 = mul_out3 + y4;
-	assign sum_out2 = mul_out2 + y3;
-	assign sum_out1 = mul_out1 + y2;
-	assign sum_out0 = mul_out0 + y1;
+    wire signed [21:0] mul0, mul1, mul2, mul3, mul4;
 
-	multiplier_roundoff mul0 (.mul_out_roundoff(mul_out0), .in(x0), .c(c0));
-	multiplier_roundoff mul1 (.mul_out_roundoff(mul_out1), .in(x0), .c(c1));
-	multiplier_roundoff mul2 (.mul_out_roundoff(mul_out2), .in(x0), .c(c2));
-	multiplier_roundoff mul3 (.mul_out_roundoff(mul_out3), .in(x0), .c(c3));
-	multiplier_roundoff mul4 (.mul_out_roundoff(mul_out4), .in(x0), .c(c4));
-	multiplier_roundoff mul5 (.mul_out_roundoff(mul_out5), .in(x0), .c(c5));
+    wire signed [23:0] mul0_ext, mul1_ext, mul2_ext, mul3_ext, mul4_ext;
+    wire signed [23:0] sum0, sum1, sum2, sum3;
 
-	always @ (posedge clk) begin
-		if (!reset) begin
-			x0 <= 26'b0;
-			y1 <= 26'b0;
-			y1 <= 26'b0;
-			y2 <= 26'b0;
-			y3 <= 26'b0;
-			y5 <= 26'b0;
-		end
-		else begin
-			x0 <= in;
-			y5 <= mul_out5;
-			y4 <= sum_out4;
-			y3 <= sum_out3;
-			y2 <= sum_out2;
-			y1 <= sum_out1;
-			trans_out <= sum_out0;
-		end
-	end
+    multiplier_roundoff mul_0 (.mul_out_roundoff(mul0), .in(x0), .c(c0));
+    multiplier_roundoff mul_1 (.mul_out_roundoff(mul1), .in(x0), .c(c1));
+    multiplier_roundoff mul_2 (.mul_out_roundoff(mul2), .in(x0), .c(c2));
+    multiplier_roundoff mul_3 (.mul_out_roundoff(mul3), .in(x0), .c(c3));
+    multiplier_roundoff mul_4 (.mul_out_roundoff(mul4), .in(x0), .c(c4));
+
+    assign mul0_ext = {{2{mul0[21]}}, mul0};
+    assign mul1_ext = {{2{mul1[21]}}, mul1};
+    assign mul2_ext = {{2{mul2[21]}}, mul2};
+    assign mul3_ext = {{2{mul3[21]}}, mul3};
+    assign mul4_ext = {{2{mul4[21]}}, mul4};
+
+    assign sum3 = mul3_ext + y4;
+    assign sum2 = mul2_ext + y3;
+    assign sum1 = mul1_ext + y2;
+    assign sum0 = mul0_ext + y1;
+
+    always @(posedge clk) begin
+        if (!reset) begin
+            x0 <= 14'd0;
+            y1 <= 24'd0;
+            y2 <= 24'd0;
+            y3 <= 24'd0;
+            y4 <= 24'd0;
+            trans_out <= 24'd0;
+        end
+        else begin
+            x0 <= in;
+
+            y4 <= mul4_ext;
+            y3 <= sum3;
+            y2 <= sum2;
+            y1 <= sum1;
+
+            trans_out <= sum0;
+        end
+    end
 
 endmodule
 
-module multiplier_roundoff (
-	output signed [24-1:0] mul_out_roundoff,
-	input signed [16-1:0] in,
-	input signed [14-1:0] c
-);
-	wire [30-1:0] mul_out;
 
-	assign mul_out = in * c;
-	assign mul_out_roundoff = mul_out[29:5] + mul_out[4];
+module multiplier_roundoff (
+    output signed [22:0] mul_out_roundoff,
+    input signed [13:0] in,
+    input signed [13:0] c
+);
+
+    wire signed [27:0] mul_out;
+
+    assign mul_out = in * c;
+
+    assign mul_out_roundoff = mul_out[27:5] + mul_out[4];
 
 endmodule

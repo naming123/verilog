@@ -6,11 +6,11 @@ module sti_FIR_filter;
 	reg [23:0] sig_mat [0:255];
 	reg [23:0] out_mat;
 	reg [23:0] TRANS_out;
-wire signed [13:0] c0 = 14'h983;
-wire signed [13:0] c1 = 14'h32b4;
-wire signed [13:0] c2 = 14'h107d;
-wire signed [13:0] c3 = 14'h327f;
-wire signed [13:0] c4 = 14'h19c7;
+	wire signed [13:0] c0 = 14'h983;
+	wire signed [13:0] c1 = 14'h32b4;
+	wire signed [13:0] c2 = 14'h107d;
+	wire signed [13:0] c3 = 14'h327f;
+	wire signed [13:0] c4 = 14'h19c7;
 
 	top_FIR_filter FIR(clk, reset, c0, c1, c2, c3, c4);
 

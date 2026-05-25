@@ -30,13 +30,13 @@ module sti_FIR_filter;
 	
 	always #5 clk = ~clk;
 	
-	initial $readmemh("input_vector_hex.txt", FIR.DIRECT_INPUT_MEM.array); //check the path of memory rocation (module instance)
-	initial $readmemh("input_vector_hex.txt", FIR.TRANS_INPUT_MEM.array);  //check the path of memory rocation (module instance)
+	initial $readmemh("C:/Users/osm13/Desktop/26-1/VLSI/osm/pr7/ref/input_vector_hex.txt", FIR.DIRECT_INPUT_MEM.array); //check the path of memory rocation (module instance)
+	initial $readmemh("C:/Users/osm13/Desktop/26-1/VLSI/osm/pr7/ref/input_vector_hex.txt", FIR.TRANS_INPUT_MEM.array);  //check the path of memory rocation (module instance)
 
 	integer i=0;	
 	initial
 	begin		
-		$readmemh("output_vector_hex.txt", sig_mat);
+		$readmemh("C:/Users/osm13/Desktop/26-1/VLSI/osm/pr7/ref/output_vector_hex.txt", sig_mat);
 		begin
 			#(110);
 			for (i=0; i<252; i=i+1)

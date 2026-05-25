@@ -31,13 +31,12 @@ module sti_folded_FIR;
 	always #5 clk160 = ~clk160;
 	always #40 clk20 = ~clk20;
 	
-	initial $readmemh("C:/Users/oaz/Desktop/osm/verilog/pr9/cur/input_vector_hex.txt", FIR.INPUT_MEM.array); //check the path of memory location (module instance)
-
+	initial $readmemh("C:/Users/osm13/Desktop/26-1/VLSI/osm/pr9/cur/input_vector_hex.txt", FIR.INPUT_MEM.array); //check the path of memory location (module instance)
 	integer i=0;	
 	integer err=0;
 	initial
 	begin		
-		$readmemh("C:/Users/oaz/Desktop/osm/verilog/pr9/cur/output_vector_hex.txt", sig_mat);
+		$readmemh("C:/Users/osm13/Desktop/26-1/VLSI/osm/pr9/cur/output_vector_hex.txt", sig_mat);
 		wait(reset == 1'b1)
 		begin
 			#(1040);//change the timing if needed
