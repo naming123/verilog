@@ -28,14 +28,14 @@ module top_FIR_filter_synthesis (
         .reset(reset)
     );
 
-    // 3. Transposed Form FIR Filter 인스턴스화
-    trans_FIR_filter TRANS_FIR_FILTER (
-        .trans_out(y_filtered_trans),
-        .c0(c0), .c1(c1), .c2(c2), .c3(c3), .c4(c4),
-        .in(x_in_reg),
-        .clk(clk),
-        .reset(reset)
-    );
+    // // 3. Transposed Form FIR Filter 인스턴스화
+    // trans_FIR_filter TRANS_FIR_FILTER (
+    //     .trans_out(y_filtered_trans),
+    //     .c0(c0), .c1(c1), .c2(c2), .c3(c3), .c4(c4),
+    //     .in(x_in_reg),
+    //     .clk(clk),
+    //     .reset(reset)
+    // );
 
     // 4. Output D-FlipFlop (출력 타이밍 안정화)
     always @(posedge clk) begin
