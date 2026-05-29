@@ -10,8 +10,8 @@ module top_FIR_filter (
     reg [7:0] cnt;
 
     assign addr_in  = cnt;
-    assign addr_out = cnt - 8'd7;   // 5tap transposed 기준 pipeline delay 보정
-
+    assign addr_out = cnt - 8'd7;  
+    
     rflp256x14mx4 DIRECT_INPUT_MEM (
         .NWRT(1'b1),
         .DIN(14'b0),
