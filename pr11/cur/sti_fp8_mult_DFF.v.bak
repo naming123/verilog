@@ -26,9 +26,9 @@ begin
         rstn = 1'b0;
     #0  rstn = 1'b1;
 
-	    $readmemh("C:/Users/smoh/Desktop/26-1/Verilog/pr11/ref/a_input_mult.txt",    mat_a);
-    	$readmemh("C:/Users/smoh/Desktop/26-1/Verilog/pr11/ref/b_input_mult.txt",    mat_b);
-    	$readmemh("C:/Users/smoh/Desktop/26-1/Verilog/pr11/ref/mult_output.txt", mat_result);
+	$readmemh("C:/Users/smoh/Desktop/26-1/Verilog/pr11/ref/a_input_mult.txt",    mat_a);
+    $readmemh("C:/Users/smoh/Desktop/26-1/Verilog/pr11/ref/b_input_mult.txt",    mat_b);
+    $readmemh("C:/Users/smoh/Desktop/26-1/Verilog/pr11/ref/mult_output.txt", mat_result);
 
 	i = 0;
 	err = 0;

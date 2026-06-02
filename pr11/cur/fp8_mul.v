@@ -4,29 +4,29 @@
 // =================================================================
 
 // ---------- Synchronous top wrapper (registered I/O) ----------
-module FP8_sync (
+module fp8_mult_DFF (
     input  [7:0] a,
     input  [7:0] b,
-    output [7:0] c,
-    input  clk, rst_n
+    output [7:0] result,
+    input  clk, rstn
 );
     wire [7:0] a_q, b_q, c_core;
-    DFF_8bit DFF_a_in (.q(a_q),   .d(a),      .clk(clk), .rst_n(rst_n));
-    DFF_8bit DFF_b_in (.q(b_q),   .d(b),      .clk(clk), .rst_n(rst_n));
-    fp8_mul  core      (.a(a_q),  .b(b_q),    .c(c_core));
-    DFF_8bit DFF_c_out (.q(c),    .d(c_core), .clk(clk), .rst_n(rst_n));
+    DFF_8bit DFF_a_in (.q(a_q),   .d(a),      .clk(clk), .rstn(rstn));
+    DFF_8bit DFF_b_in (.q(b_q),   .d(b),      .clk(clk), .rstn(rstn));
+    fp8_mul  core      (.a(a_q),  .b(b_q),    .result(c_core));
+    DFF_8bit DFF_c_out (.q(result),    .d(c_core), .clk(clk), .rstn(rstn));
 endmodule
 
 // ---------- Combinational multiplier core ----------
 module fp8_mul (
     input  [7:0] a,
     input  [7:0] b,
-    output [7:0] c
+    output [7:0] result
 );
     wire        c_sign;
     wire [4:0]  mi1, mi2;
     wire [9:0]  mo;
-    wire [3:0]  exp_sum;
+    wire [3:0]  exp_result;
     wire        ec;
     wire signed [4:0] biased;
     wire [6:0]  normalized_out;
@@ -35,21 +35,21 @@ module fp8_mul (
     assign mi1 = {1'b1, a[3:0]};   // hidden bit + mantissa
     assign mi2 = {1'b1, b[3:0]};
 
-    mul5x5   u1 (.a(mi1), .b(mi2), .c(mo));
+    mul5x5   u1 (.a(mi1), .b(mi2), .result(mo));
 
     // E_O = E_A + E_B - bias(3). 4-bit add keeps the carry (max 6+6=12).
-    cla_4bit u2 (.a({1'b0,a[6:4]}), .b({1'b0,b[6:4]}), .ci(1'b0), .s(exp_sum), .co(ec));
-    assign biased = $signed({1'b0, exp_sum}) - 5'sd3;
+    cla_4bit u2 (.a({1'b0,a[6:4]}), .b({1'b0,b[6:4]}), .ci(1'b0), .s(exp_result), .co(ec));
+    assign biased = $signed({1'b0, exp_result}) - 5'sd3;
 
     mul_normalizer_fp8 u4 (.exponent(biased), .mantissa_prod(mo), .result(normalized_out));
-    assign c = {c_sign, normalized_out};
+    assign result = {c_sign, normalized_out};
 endmodule
 
 // ---------- 5x5 unsigned multiplier (PDF hierarchy: 4x4 core + edge rows) ----------
 //  a*b = a[3:0]*b[3:0] + (a4*b[3:0])<<4 + (b4*a[3:0])<<4 + (a4&b4)<<8
-module mul5x5 (input [4:0] a, input [4:0] b, output [9:0] c);
+module mul5x5 (input [4:0] a, input [4:0] b, output [9:0] result);
     wire [7:0] ll;
-    mul4x4 u_m4x4 (.a(a[3:0]), .b(b[3:0]), .c(ll));
+    mul4x4 u_m4x4 (.a(a[3:0]), .b(b[3:0]), .result(ll));
     wire [3:0] a4row = a[4] ? b[3:0] : 4'b0;
     wire [3:0] b4row = b[4] ? a[3:0] : 4'b0;
     wire       a4b4  = a[4] & b[4];
@@ -58,30 +58,30 @@ module mul5x5 (input [4:0] a, input [4:0] b, output [9:0] c);
     wire [9:0] pp_a4 = {1'b0, a4row, 4'b0};
     wire [9:0] pp_b4 = {1'b0, b4row, 4'b0};
     wire [9:0] pp_hi = {a4b4, 8'b0};
-    assign c = pp_ll + pp_a4 + pp_b4 + pp_hi;
+    assign result = pp_ll + pp_a4 + pp_b4 + pp_hi;
 endmodule
 
 // ---------- 4x4 from four 2x2 partial products ----------
-module mul4x4 (input [3:0] a, input [3:0] b, output [7:0] c);
+module mul4x4 (input [3:0] a, input [3:0] b, output [7:0] result);
     wire [3:0] q0,q1,q2,q3;
     mul2x2 u1 (a[1:0], b[1:0], q0);
     mul2x2 u2 (a[3:2], b[1:0], q1);
     mul2x2 u3 (a[1:0], b[3:2], q2);
     mul2x2 u4 (a[3:2], b[3:2], q3);
-    assign c = {4'b0,q0} + {2'b0,q1,2'b0} + {2'b0,q2,2'b0} + {q3,4'b0};
+    assign result = {4'b0,q0} + {2'b0,q1,2'b0} + {2'b0,q2,2'b0} + {q3,4'b0};
 endmodule
 
 // ---------- correct 2x2 multiplier ----------
-module mul2x2 (input [1:0] a, input [1:0] b, output [3:0] c);
+module mul2x2 (input [1:0] a, input [1:0] b, output [3:0] result);
     wire p00 = a[0]&b[0];
     wire p10 = a[1]&b[0];
     wire p01 = a[0]&b[1];
     wire p11 = a[1]&b[1];
     wire car = p10 & p01;          // carry into bit2
-    assign c[0] = p00;
-    assign c[1] = p10 ^ p01;
-    assign c[2] = p11 ^ car;
-    assign c[3] = p11 & car;
+    assign result[0] = p00;
+    assign result[1] = p10 ^ p01;
+    assign result[2] = p11 ^ car;
+    assign result[3] = p11 & car;
 endmodule
 
 // ---------- 4-bit CLA ----------
@@ -129,10 +129,10 @@ endmodule
 module DFF_8bit (
     output reg [7:0] q,
     input      [7:0] d,
-    input            clk, rst_n
+    input            clk, rstn
 );
-    always @(posedge clk or negedge rst_n) begin
-        if (!rst_n) q <= 8'b0;
+    always @(posedge clk or negedge rstn) begin
+        if (!rstn) q <= 8'b0;
         else        q <= d;
     end
 endmodule

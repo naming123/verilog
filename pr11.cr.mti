@@ -1,0 +1,33 @@
+C:/Users/smoh/Desktop/26-1/Verilog/pr11/cur/fp8_mul_claude.v {1 {vlog -work work -stats=none {C:\Users\smoh\Desktop\26-1\Verilog\pr11\cur\fp8_mul_claude.v}
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module fp8_mult_DFF
+-- Compiling module fp8_mul
+-- Compiling module mul5x5
+-- Compiling module mul4x4
+-- Compiling module mul2x2
+-- Compiling module cla_4bit
+-- Compiling module mul_normalizer_fp8
+-- Compiling module DFF_8bit
+
+Top level modules:
+	fp8_mult_DFF
+
+} {} {}} C:/Users/smoh/Desktop/26-1/Verilog/pr11/cur/fp8_adder.v {1 {vlog -work work -stats=none C:/Users/smoh/Desktop/26-1/Verilog/pr11/cur/fp8_adder.v
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module fp8_adder_DFF
+-- Compiling module fp8_add
+-- Compiling module add_normalizer_fp8
+-- Compiling module cla_nbit
+-- Compiling module DFF_8bit
+
+Top level modules:
+	fp8_adder_DFF
+
+} {} {}} C:/Users/smoh/Desktop/26-1/Verilog/pr11/cur/sti_fp8_adder_DFF.v {1 {vlog -work work -stats=none {C:\Users\smoh\Desktop\26-1\Verilog\pr11\cur\sti_fp8_adder_DFF.v}
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module sti_fp8_adder_DFF
+
+Top level modules:
+	sti_fp8_adder_DFF
+
+} {} {}}

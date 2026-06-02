@@ -1,0 +1,28 @@
+vsim -gui work.sti_fp8_mult_DFF
+# vsim -gui work.sti_fp8_mult_DFF 
+# Start time: 21:23:08 on Jun 02,2026
+# Loading work.sti_fp8_mult_DFF
+# Loading work.fp8_mult_DFF
+# Loading work.DFF_8bit
+# Loading work.fp8_mul
+# Loading work.mul5x5
+# Loading work.mul4x4
+# Loading work.mul2x2
+# Loading work.cla_4bit
+# Loading work.mul_normalizer_fp8
+add wave -position end  sim:/sti_fp8_mult_DFF/rstn
+add wave -position end  sim:/sti_fp8_mult_DFF/result
+add wave -position end  sim:/sti_fp8_mult_DFF/a
+add wave -position end  sim:/sti_fp8_mult_DFF/b
+add wave -position end  sim:/sti_fp8_mult_DFF/clk
+add wave -position end  sim:/sti_fp8_mult_DFF/rstn
+add wave -position end  sim:/sti_fp8_mult_DFF/mat_result
+add wave -position end  sim:/sti_fp8_mult_DFF/mat_result_cmp
+add wave -position end  sim:/sti_fp8_mult_DFF/mat_a
+add wave -position end  sim:/sti_fp8_mult_DFF/mat_b
+add wave -position end  sim:/sti_fp8_mult_DFF/i
+add wave -position end  sim:/sti_fp8_mult_DFF/err
+run -all
+# ** Note: $stop    : C:/Users/smoh/Desktop/26-1/Verilog/pr11/cur/sti_fp8_mult_DFF.v(47)
+#    Time: 1040 ns  Iteration: 0  Instance: /sti_fp8_mult_DFF
+# Break in Module sti_fp8_mult_DFF at C:/Users/smoh/Desktop/26-1/Verilog/pr11/cur/sti_fp8_mult_DFF.v line 47
