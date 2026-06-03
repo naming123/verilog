@@ -8,7 +8,7 @@ module Top_FIR_filter_synthesis (
     // 입출력 DFF 인터페이스
     reg signed [14-1:0] in_dff;
     reg signed [24-1:0] out_dff;
-
+    wire signed [24-1:0] folded_out_wire;
     always @(posedge clk20 or posedge reset) begin
         if (reset) begin
             in_dff <= 14'b0;
@@ -20,7 +20,7 @@ module Top_FIR_filter_synthesis (
     end
 
     // 필터 연산 모듈 인스턴스 (메모리 대신 DFF 입력 연결)
-    wire signed [24-1:0] folded_out_wire;
+
     folded_FIR_filter FOLDED_FIR_FILTER (
         .folded_out(folded_out_wire),
         .in(in_dff),
