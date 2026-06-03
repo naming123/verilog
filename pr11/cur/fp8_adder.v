@@ -4,31 +4,30 @@
 // =================================================================
 
 // ---------- Synchronous top wrapper (registered I/O) ----------
-module FP8_adder_sync (
+module fp8_adder_DFF (
     input  [7:0] a,
     input  [7:0] b,
-    output [7:0] c,
-    input  clk, rst_n
+    output [7:0] sum,
+    input  clk, rstn
 );
     wire [7:0] a_q, b_q, c_core;
-    DFF_8bit DFF_a_in (.q(a_q),   .d(a),      .clk(clk), .rst_n(rst_n));
-    DFF_8bit DFF_b_in (.q(b_q),   .d(b),      .clk(clk), .rst_n(rst_n));
-    fp8_add  core      (.a(a_q),  .b(b_q),    .c(c_core));
-    DFF_8bit DFF_c_out (.q(c),    .d(c_core), .clk(clk), .rst_n(rst_n));
+    DFF_8bit DFF_a_in (.q(a_q),   .d(a),      .clk(clk), .rstn(rstn));
+    DFF_8bit DFF_b_in (.q(b_q),   .d(b),      .clk(clk), .rstn(rstn));
+    fp8_add  core      (.a(a_q),  .b(b_q),    .sum(c_core));
+    DFF_8bit DFF_c_out (.q(sum),    .d(c_core), .clk(clk), .rstn(rstn));
 endmodule
 
 // ---------- Combinational adder core ----------
-module fp8_add (input [7:0] a, input [7:0] b, output [7:0] c);
+module fp8_add (input [7:0] a, input [7:0] b, output wire [7:0] sum);
     wire        a_sign, b_sign, c_sign, if_sub;
     reg  [6:0]  bigger, smaller;
     reg         a_larger_b;
-
+    
     assign a_sign = a[7];
     assign b_sign = b[7];
-    assign if_sub = (a_sign ^ b_sign);            // opposite signs -> subtract
+    assign if_sub = (a_sign ^ b_sign);
     assign c_sign = a_larger_b ? a_sign : b_sign;
 
-    // magnitude compare on lower 7 bits {E[2:0], M[3:0]}
     always @(*) begin
         if (a[6:0] > b[6:0]) begin
             bigger = a[6:0]; smaller = b[6:0]; a_larger_b = 1'b1;
@@ -37,20 +36,27 @@ module fp8_add (input [7:0] a, input [7:0] b, output [7:0] c);
         end
     end
 
-    // exponent difference -> right-shift amount for the smaller operand
     wire [2:0] shift_bits;
-    cla_nbit #(.n(3)) ush (.a(bigger[6:4]), .b(~smaller[6:4] + 1'b1), .ci(1'b0),
-                           .s(shift_bits), .co());
+    cla_nbit #(.n(3)) ush (
+        .a(bigger[6:4]),
+        .b(~smaller[6:4] + 1'b1),
+        .ci(1'b0),
+        .s(shift_bits),
+        .co()
+    );
 
-    // wide fixed-point datapath: [hidden | M3..M0 | 6 guard/sticky bits], value = w / 2^6
     wire [10:0] big_w = {1'b1, bigger[3:0],  6'b0};
     wire [10:0] sm_w0 = {1'b1, smaller[3:0], 6'b0};
-    wire [10:0] sm_w  = sm_w0 >> shift_bits;                  // aligned smaller
+    wire [10:0] sm_w  = sm_w0 >> shift_bits;
 
     wire [11:0] mag_w = if_sub ? (big_w - sm_w) : (big_w + sm_w);
 
-    add_normalizer_fp8 u_norm (.sign(c_sign), .exponent(bigger[6:4]),
-                               .mag(mag_w), .result(c));
+    add_normalizer_fp8 u_norm (
+        .sign(c_sign),
+        .exponent(bigger[6:4]),
+        .mag(mag_w),
+        .result(sum)
+    );
 endmodule
 
 // ---------- normalize (carry / leading-zero) + round-half-up + pack ----------
@@ -112,9 +118,9 @@ endmodule
 
 // ---------- 8-bit register (async active-low reset) ----------
 module DFF_8bit (
-    output reg [7:0] q, input [7:0] d, input clk, rst_n
+    output reg [7:0] q, input [7:0] d, input clk, rstn
 );
-    always @(posedge clk or negedge rst_n)
-        if (!rst_n) q <= 8'b0;
+    always @(posedge clk or negedge rstn)
+        if (!rstn) q <= 8'b0;
         else        q <= d;
 endmodule

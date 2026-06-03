@@ -26,9 +26,9 @@ begin
         rstn = 1'b0;
     #0  rstn = 1'b1;
 
-	$readmemh("a_input_adder.txt",    mat_a);
-    $readmemh("b_input_adder.txt",    mat_b);
-    $readmemh("sum_output.txt", mat_sum);
+	$readmemh("C:/Users/smoh/Desktop/26-1/Verilog/pr11/cur/a_input_adder.txt",    mat_a);
+    $readmemh("C:/Users/smoh/Desktop/26-1/Verilog/pr11/cur/b_input_adder.txt",    mat_b);
+    $readmemh("C:/Users/smoh/Desktop/26-1/Verilog/pr11/cur/sum_output.txt", mat_sum);
 
 	i = 0;
 	err = 0;

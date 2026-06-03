@@ -1,39 +1,19 @@
-`timescale 1ns/10ps
+module complex_multiplier (
+    output [31:0] O,
+    input  [31:0] C,
+    input  [31:0] T
+);
+    wire signed [15:0] Cr, Ci, Tr, Ti;
+    wire signed [32:0] Or_full, Oi_full;
 
-module sti_complex_multiplier;
+    assign Cr = C[31:16];
+    assign Ci = C[15:0];
+    assign Tr = T[31:16];
+    assign Ti = T[15:0];
 
-	wire [32-1:0]	out;
+    assign Or_full = Cr * Tr - Ci * Ti;
+    assign Oi_full = Cr * Ti + Ci * Tr;
 
-	reg [32-1:0] sig_C [0:1023];
-	reg [32-1:0] sig_O [0:1023];
-	reg [32-1:0] sig_T [0:1023];
-	
-	reg [32-1:0] C;
-	reg [32-1:0] O_ans;
-	reg [32-1:0] T;
-
-	complex_multiplier CM0(.O(out), .C(C), .T(T));
-	
-	initial
-	begin
-		$readmemh("CrCi.txt", sig_C);
-		$readmemh("TrTi.txt", sig_T);
-		$readmemh("OrOi.txt", sig_O);
-	end
-	
-	integer i=0;
-	integer err = 0;	
-	initial
-	begin		
-		for (i=0; i<1024; i=i+1)
-		begin
-			C = sig_C[i];
-			T = sig_T[i];
-			O_ans = sig_O[i];
-			#(10);
-			if(out != O_ans) err = err + 1;
-		end
-	end
-
+    assign O = {Or_full[29:14], Oi_full[29:14]};
 
 endmodule

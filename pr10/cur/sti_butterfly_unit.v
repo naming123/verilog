@@ -18,10 +18,10 @@ module sti_butterfly_unit;
 	
 	initial
 	begin
-		$readmemh("ArAi.txt", sig_A);
-		$readmemh("BrBi.txt", sig_B);
-		$readmemh("C1rC1i.txt", sig_C1);
-		$readmemh("C2rC2i.txt", sig_C2);
+		$readmemh("C:/Users/smoh/Desktop/26-1/Verilog/pr10/ref/ArAi.txt", sig_A);
+		$readmemh("C:/Users/smoh/Desktop/26-1/Verilog/pr10/ref/BrBi.txt", sig_B);
+		$readmemh("C:/Users/smoh/Desktop/26-1/Verilog/pr10/ref/C1rC1i.txt", sig_C1);
+		$readmemh("C:/Users/smoh/Desktop/26-1/Verilog/pr10/ref/C2rC2i.txt", sig_C2);
 	end
 	
 	integer i=0;

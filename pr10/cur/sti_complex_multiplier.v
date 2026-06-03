@@ -16,9 +16,9 @@ module sti_complex_multiplier;
 	
 	initial
 	begin
-		$readmemh("CrCi.txt", sig_C);
-		$readmemh("TrTi.txt", sig_T);
-		$readmemh("OrOi.txt", sig_O);
+		$readmemh("C:/Users/smoh/Desktop/26-1/Verilog/pr10/ref/CrCi.txt", sig_C);
+		$readmemh("C:/Users/smoh/Desktop/26-1/Verilog/pr10/ref/TrTi.txt", sig_T);
+		$readmemh("C:/Users/smoh/Desktop/26-1/Verilog/pr10/ref/OrOi.txt", sig_O);
 	end
 	
 	integer i=0;

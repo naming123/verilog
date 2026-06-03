@@ -27,7 +27,7 @@ module sti_FFT;
 
 	initial
 	begin		
-		$readmemh("input_FFT.txt", mat_in);
+		$readmemh("C:/Users/smoh/Desktop/26-1/Verilog/pr10/ref/input_FFT.txt", mat_in);
 		begin
 			#(20);
 			for (i=0; i<512; i=i+1)
@@ -42,7 +42,7 @@ module sti_FFT;
 	integer err = 0;	
 	initial
 	begin		
-		$readmemh("output_FFT.txt", mat_out);
+		$readmemh("C:/Users/smoh/Desktop/26-1/Verilog/pr10/ref/output_FFT.txt", mat_out);
 		begin
 			#(120); //change if needed
 			for (j=0; j<512; j=j+1)
