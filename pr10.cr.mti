@@ -12,13 +12,6 @@ Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 
 Top level modules:
 	complex_multiplier
 
-} {} {}} C:/Users/smoh/Desktop/26-1/Verilog/pr10/cur/sti_butterfly_unit.v {1 {vlog -work work -stats=none C:/Users/smoh/Desktop/26-1/Verilog/pr10/cur/sti_butterfly_unit.v
-Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
--- Compiling module sti_butterfly_unit
-
-Top level modules:
-	sti_butterfly_unit
-
 } {} {}} C:/Users/smoh/Desktop/26-1/Verilog/pr10/cur/sti_FFT.v {1 {vlog -work work -stats=none C:/Users/smoh/Desktop/26-1/Verilog/pr10/cur/sti_FFT.v
 Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
 -- Compiling module sti_FFT
@@ -26,18 +19,18 @@ Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 
 Top level modules:
 	sti_FFT
 
+} {} {}} C:/Users/smoh/Desktop/26-1/Verilog/pr10/cur/sti_butterfly_unit.v {1 {vlog -work work -stats=none C:/Users/smoh/Desktop/26-1/Verilog/pr10/cur/sti_butterfly_unit.v
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module sti_butterfly_unit
+
+Top level modules:
+	sti_butterfly_unit
+
 } {} {}} C:/Users/smoh/Desktop/26-1/Verilog/pr10/cur/butterfly_unit.v {1 {vlog -work work -stats=none C:/Users/smoh/Desktop/26-1/Verilog/pr10/cur/butterfly_unit.v
 Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
 -- Compiling module butterfly_unit
 
 Top level modules:
 	butterfly_unit
-
-} {} {}} C:/Users/smoh/Desktop/26-1/Verilog/pr10/cur/FFT.v {1 {vlog -work work -stats=none C:/Users/smoh/Desktop/26-1/Verilog/pr10/cur/FFT.v
-Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
--- Compiling module top_FFT
-
-Top level modules:
-	top_FFT
 
 } {} {}}

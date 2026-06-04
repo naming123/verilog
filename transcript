@@ -1,28 +1,148 @@
-vsim -gui work.sti_fp8_mult_DFF
-# vsim -gui work.sti_fp8_mult_DFF 
-# Start time: 21:23:08 on Jun 02,2026
-# Loading work.sti_fp8_mult_DFF
-# Loading work.fp8_mult_DFF
-# Loading work.DFF_8bit
-# Loading work.fp8_mul
-# Loading work.mul5x5
-# Loading work.mul4x4
-# Loading work.mul2x2
-# Loading work.cla_4bit
-# Loading work.mul_normalizer_fp8
-add wave -position end  sim:/sti_fp8_mult_DFF/rstn
-add wave -position end  sim:/sti_fp8_mult_DFF/result
-add wave -position end  sim:/sti_fp8_mult_DFF/a
-add wave -position end  sim:/sti_fp8_mult_DFF/b
-add wave -position end  sim:/sti_fp8_mult_DFF/clk
-add wave -position end  sim:/sti_fp8_mult_DFF/rstn
-add wave -position end  sim:/sti_fp8_mult_DFF/mat_result
-add wave -position end  sim:/sti_fp8_mult_DFF/mat_result_cmp
-add wave -position end  sim:/sti_fp8_mult_DFF/mat_a
-add wave -position end  sim:/sti_fp8_mult_DFF/mat_b
-add wave -position end  sim:/sti_fp8_mult_DFF/i
-add wave -position end  sim:/sti_fp8_mult_DFF/err
+# Compile of butterfly_unit.v was successful.
+# Compile of complex_multiplier.v was successful.
+# Compile of FFT.v was successful.
+# Compile of sti_butterfly_unit.v was successful.
+# Compile of sti_complex_multiplier.v was successful.
+# Compile of sti_FFT.v was successful.
+# 6 compiles, 0 failed with no errors.
+vsim -gui work.sti_FFT
+# vsim -gui work.sti_FFT 
+# Start time: 16:38:10 on Jun 03,2026
+# Loading work.sti_FFT
+# Loading work.top_FFT
+# Loading work.butterfly_unit
+# Loading work.complex_multiplier
+add wave -position end  sim:/sti_FFT/clk
+add wave -position end  sim:/sti_FFT/rstn
+add wave -position end  sim:/sti_FFT/mat_in
+add wave -position end  sim:/sti_FFT/mat_out
+add wave -position end  sim:/sti_FFT/out_mat
+add wave -position end  sim:/sti_FFT/in
+add wave -position end  sim:/sti_FFT/out
+add wave -position end  sim:/sti_FFT/i
+add wave -position end  sim:/sti_FFT/j
+add wave -position end  sim:/sti_FFT/err
 run -all
-# ** Note: $stop    : C:/Users/smoh/Desktop/26-1/Verilog/pr11/cur/sti_fp8_mult_DFF.v(47)
-#    Time: 1040 ns  Iteration: 0  Instance: /sti_fp8_mult_DFF
-# Break in Module sti_fp8_mult_DFF at C:/Users/smoh/Desktop/26-1/Verilog/pr11/cur/sti_fp8_mult_DFF.v line 47
+# ** Note: $stop    : C:/Users/smoh/Desktop/26-1/Verilog/pr10/cur/sti_FFT.v(21)
+#    Time: 5260 ns  Iteration: 0  Instance: /sti_FFT
+# Break in Module sti_FFT at C:/Users/smoh/Desktop/26-1/Verilog/pr10/cur/sti_FFT.v line 21
+# Compile of butterfly_unit.v was successful.
+# Compile of complex_multiplier.v was successful.
+# Compile of FFT.v was successful.
+# Compile of sti_butterfly_unit.v was successful.
+# Compile of sti_complex_multiplier.v was successful.
+# Compile of sti_FFT.v was successful.
+# 6 compiles, 0 failed with no errors.
+restart -f
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.sti_FFT
+# Loading work.top_FFT
+# Loading work.butterfly_unit
+# Loading work.complex_multiplier
+run -all
+# ** Note: $stop    : C:/Users/smoh/Desktop/26-1/Verilog/pr10/cur/sti_FFT.v(21)
+#    Time: 5260 ns  Iteration: 0  Instance: /sti_FFT
+# Break in Module sti_FFT at C:/Users/smoh/Desktop/26-1/Verilog/pr10/cur/sti_FFT.v line 21
+restart -f
+run -all
+# ** Note: $stop    : C:/Users/smoh/Desktop/26-1/Verilog/pr10/cur/sti_FFT.v(21)
+#    Time: 5260 ns  Iteration: 0  Instance: /sti_FFT
+# Break in Module sti_FFT at C:/Users/smoh/Desktop/26-1/Verilog/pr10/cur/sti_FFT.v line 21
+# Compile of butterfly_unit.v was successful.
+# Compile of complex_multiplier.v was successful.
+# Compile of FFT.v was successful.
+# Compile of sti_butterfly_unit.v was successful.
+# Compile of sti_complex_multiplier.v was successful.
+# Compile of sti_FFT.v was successful.
+# 6 compiles, 0 failed with no errors.
+restart -f
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.sti_FFT
+# Loading work.top_FFT
+# Loading work.butterfly_unit
+# Loading work.complex_multiplier
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+restart -f
+run -all
+# ** Note: $stop    : C:/Users/smoh/Desktop/26-1/Verilog/pr10/cur/sti_FFT.v(21)
+#    Time: 5260 ns  Iteration: 0  Instance: /sti_FFT
+# Break in Module sti_FFT at C:/Users/smoh/Desktop/26-1/Verilog/pr10/cur/sti_FFT.v line 21
+# Compile of butterfly_unit.v was successful.
+# Compile of complex_multiplier.v was successful.
+# Compile of FFT.v was successful.
+# Compile of sti_butterfly_unit.v was successful.
+# Compile of sti_complex_multiplier.v was successful.
+# Compile of sti_FFT.v was successful.
+# 6 compiles, 0 failed with no errors.
+restart -f
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.sti_FFT
+# Loading work.top_FFT
+# Loading work.butterfly_unit
+# Loading work.complex_multiplier
+run -all
+# ** Note: $stop    : C:/Users/smoh/Desktop/26-1/Verilog/pr10/cur/sti_FFT.v(21)
+#    Time: 5260 ns  Iteration: 0  Instance: /sti_FFT
+# Break in Module sti_FFT at C:/Users/smoh/Desktop/26-1/Verilog/pr10/cur/sti_FFT.v line 21
+# Compile of butterfly_unit.v was successful.
+# Compile of complex_multiplier.v was successful.
+# Compile of FFT.v was successful.
+# Compile of sti_butterfly_unit.v was successful.
+# Compile of sti_complex_multiplier.v was successful.
+# Compile of sti_FFT.v was successful.
+# 6 compiles, 0 failed with no errors.
+restart -f
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.sti_FFT
+# Loading work.top_FFT
+# Loading work.butterfly_unit
+# Loading work.complex_multiplier
+vsim -gui work.sti_FFT
+# End time: 17:03:38 on Jun 03,2026, Elapsed time: 0:25:28
+# Errors: 0, Warnings: 1
+# vsim -gui work.sti_FFT 
+# Start time: 17:03:38 on Jun 03,2026
+# Loading work.sti_FFT
+# Loading work.top_FFT
+# Loading work.butterfly_unit
+# Loading work.complex_multiplier
+add wave -position end  sim:/sti_FFT/clk
+add wave -position end  sim:/sti_FFT/rstn
+add wave -position end  sim:/sti_FFT/mat_in
+add wave -position end  sim:/sti_FFT/mat_out
+add wave -position end  sim:/sti_FFT/out_mat
+add wave -position end  sim:/sti_FFT/in
+add wave -position end  sim:/sti_FFT/out
+add wave -position end  sim:/sti_FFT/i
+add wave -position end  sim:/sti_FFT/j
+add wave -position end  sim:/sti_FFT/err
+run -all
+# ** Note: $stop    : C:/Users/smoh/Desktop/26-1/Verilog/pr10/cur/sti_FFT.v(21)
+#    Time: 5260 ns  Iteration: 0  Instance: /sti_FFT
+# Break in Module sti_FFT at C:/Users/smoh/Desktop/26-1/Verilog/pr10/cur/sti_FFT.v line 21
+# Compile of butterfly_unit.v was successful.
+# Compile of complex_multiplier.v was successful.
+# Compile of FFT.v was successful.
+# Compile of sti_butterfly_unit.v was successful.
+# Compile of sti_complex_multiplier.v was successful.
+# Compile of sti_FFT.v was successful.
+# 6 compiles, 0 failed with no errors.
+restart -f
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.sti_FFT
+# Loading work.top_FFT
+# Loading work.butterfly_unit
+# Loading work.complex_multiplier
+run -all
+# ** Note: $stop    : C:/Users/smoh/Desktop/26-1/Verilog/pr10/cur/sti_FFT.v(21)
+#    Time: 5260 ns  Iteration: 0  Instance: /sti_FFT
+# Break in Module sti_FFT at C:/Users/smoh/Desktop/26-1/Verilog/pr10/cur/sti_FFT.v line 21
