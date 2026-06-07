@@ -1,1136 +1,715 @@
 m255
-K3
-z0
-!s11f MIXED_VERSIONS
+K4
+z2
+!s11f vlog 2020.1 2020.02, Feb 28 2020
 13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
 cModel Technology
-dC:\altera\13.1
-vadd_normalizer_fp8
-Z0 !s110 1780395056
+Z0 dC:/Users/smoh/Desktop/26-1/Verilog
+vcarry_select_adder_20b_2stage
+!s110 1780573171
 !i10b 1
-!s100 9=0TQljdFJ^<hin6;3;W?0
+!s100 F8LH52OULk?gi:7z7<_AJ2
 Z1 !s11b Dg1SIo80bB@j0V0VzS_@n1
-IZ68j=][V]Z2??fk6WDEon1
+Igm^l@];zk^XkhBXhTX8eW2
 Z2 VDg1SIo80bB@j0V0VzS_@n1
-Z3 dC:/Users/smoh/Desktop/26-1/Verilog
-Z4 w1780394578
-Z5 8C:/Users/smoh/Desktop/26-1/Verilog/pr11/cur/fp8_adder.v
-Z6 FC:/Users/smoh/Desktop/26-1/Verilog/pr11/cur/fp8_adder.v
-!i122 35
-L0 64 41
-Z7 OV;L;2020.1;71
-r1
-!s85 0
-31
-Z8 !s108 1780395056.000000
-Z9 !s107 C:/Users/smoh/Desktop/26-1/Verilog/pr11/cur/fp8_adder.v|
-Z10 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/smoh/Desktop/26-1/Verilog/pr11/cur/fp8_adder.v|
-!i113 1
-Z11 o-work work
-Z12 tCvgOpt 0
-vbutterfly_unit
-Z13 !s110 1780474271
-!i10b 1
-!s100 2`3okAQW_IUS_i6:?jNBK0
-R1
-IW1[E<i2lohFjTLTK0[?Bc2
-R2
-R3
-w1780399534
-8C:/Users/smoh/Desktop/26-1/Verilog/pr10/cur/butterfly_unit.v
-FC:/Users/smoh/Desktop/26-1/Verilog/pr10/cur/butterfly_unit.v
-!i122 157
-L0 1 21
-R7
-r1
-!s85 0
-31
-Z14 !s108 1780474271.000000
-!s107 C:/Users/smoh/Desktop/26-1/Verilog/pr10/cur/butterfly_unit.v|
-!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/smoh/Desktop/26-1/Verilog/pr10/cur/butterfly_unit.v|
-!i113 1
-R11
-R12
-vcarry_select_adder_20b
-!s100 QAYQebG<5>Xe`eOFVgIV41
-ILoL>QYOF6<OSjm3J?]E4l0
-VJ4;o>c]jg9ae7X]B:m_AJ2
-Z15 dC:\Users\osm13\Desktop\26-1\VLSI\osm
-w1775907491
-8C:/Users/osm13/Desktop/26-1/VLSI/osm/cur/baseline/carry_select_adder_20b.v
-FC:/Users/osm13/Desktop/26-1/VLSI/osm/cur/baseline/carry_select_adder_20b.v
-L0 1
-Z16 OV;L;10.1d;51
-r1
-31
-!s108 1776076930.661000
-!s107 C:/Users/osm13/Desktop/26-1/VLSI/osm/cur/baseline/carry_select_adder_20b.v|
-!s90 -reportprogress|300|-work|work|C:/Users/osm13/Desktop/26-1/VLSI/osm/cur/baseline/carry_select_adder_20b.v|
-Z17 o-work work -O0
-!i10b 1
-!s85 0
-!s101 -O0
-vcarry_select_adder_20bit
-!s100 5cAJ<S:0<Tdm=;nL9h^g_2
-I;lGE3YX@VLiS3lQmkA@Cf1
-V[OaeL541cgRMAi8MZ@33F3
-R15
-Z18 w1776077045
-Z19 8C:/Users/osm13/Desktop/26-1/VLSI/osm/cur/baseline/carry_select_adder_20bit.v
-Z20 FC:/Users/osm13/Desktop/26-1/VLSI/osm/cur/baseline/carry_select_adder_20bit.v
-L0 1
-R16
-r1
-31
-Z21 !s108 1776082958.281000
-Z22 !s107 C:/Users/osm13/Desktop/26-1/VLSI/osm/cur/baseline/carry_select_adder_20bit.v|
-Z23 !s90 -reportprogress|300|-work|work|C:/Users/osm13/Desktop/26-1/VLSI/osm/cur/baseline/carry_select_adder_20bit.v|
-R17
-!i10b 1
-!s85 0
-!s101 -O0
-vcla_4bit
-Z24 !s110 1780402802
-!i10b 1
-!s100 zJ7OC^3LGl_jI;6?5YaNe0
-R1
-IZ5m9DC@<W=0C2A4dP74nk0
-R2
-R3
-Z25 w1780402791
-Z26 8C:\Users\smoh\Desktop\26-1\Verilog\pr11\cur\fp8_mul_claude.v
-Z27 FC:\Users\smoh\Desktop\26-1\Verilog\pr11\cur\fp8_mul_claude.v
-!i122 105
-L0 88 10
-R7
-r1
-!s85 0
-31
-Z28 !s108 1780402802.000000
-Z29 !s107 C:\Users\smoh\Desktop\26-1\Verilog\pr11\cur\fp8_mul_claude.v|
-Z30 !s90 -reportprogress|300|-work|work|-stats=none|C:\Users\smoh\Desktop\26-1\Verilog\pr11\cur\fp8_mul_claude.v|
-!i113 1
-R11
-R12
-vcla_nbit
 R0
-!i10b 1
-!s100 :l<_5lAn[>Qa=hgK8X3P72
-R1
-IT]]1^=MDzIimWS?UUf`hz2
-R2
-R3
-R4
-R5
-R6
-!i122 35
-L0 107 11
-R7
-r1
-!s85 0
-31
-R8
-R9
-R10
-!i113 1
-R11
-R12
-vcomplex_multiplier
-R13
-!i10b 1
-!s100 CQHd]W3XeHC@FUgPWe[2?1
-R1
-I6VFC<;Mk6:b<DD0_dGPU50
-R2
-R3
-w1780400971
-8C:/Users/smoh/Desktop/26-1/Verilog/pr10/cur/complex_multiplier.v
-FC:/Users/smoh/Desktop/26-1/Verilog/pr10/cur/complex_multiplier.v
-!i122 158
-L0 1 19
-R7
-r1
-!s85 0
-31
-R14
-!s107 C:/Users/smoh/Desktop/26-1/Verilog/pr10/cur/complex_multiplier.v|
-!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/smoh/Desktop/26-1/Verilog/pr10/cur/complex_multiplier.v|
-!i113 1
-R11
-R12
-vDFF_1bit
-!s100 KT_eK7BZ]zi2L<j[5SgTW2
-IiFQ0kB<IPecd:hG[TH5@o2
-Vf:E=M>@_i_RiBmAzcGMMj0
-R15
-R18
-R19
-R20
-L0 122
-R16
-r1
-31
-R21
-R22
-R23
-R17
-n@d@f@f_1bit
-!i10b 1
-!s85 0
-!s101 -O0
-vDFF_20bit
-!s100 ;A6j=`K2IWk`Wb[9N8]753
-IHQ8jH^SOYnL`kLTjLkJ@^1
-VkUz6>AY1lQ[P;ggg2Kd7O1
-R15
-R18
-R19
-R20
-L0 53
-R16
-r1
-31
-R21
-R22
-R23
-R17
-n@d@f@f_20bit
-!i10b 1
-!s85 0
-!s101 -O0
-vDFF_21bit
-!s100 ?m4HG<FbOeo?1e7K0<WHa0
-IYh?8R:4D7EGiYUODNNb4U1
-V22`bo>So9`7aA:TzzAk4E3
-R15
-R18
-R19
-R20
-L0 64
-R16
-r1
-31
-R21
-R22
-R23
-R17
-n@d@f@f_21bit
-!i10b 1
-!s85 0
-!s101 -O0
-vDFF_4bit
-!s100 `YZ;m@735aJm4?YV[IkOD0
-I[^Ue]3GO]g17Ei7F<06RT2
-VUP<S3doUOESjIIY32MabY3
-R15
-R18
-R19
-R20
-L0 133
-R16
-r1
-31
-R21
-R22
-R23
-R17
-n@d@f@f_4bit
-!i10b 1
-!s85 0
-!s101 -O0
-vDFF_8bit
-R24
-!i10b 1
-!s100 7YaL`YoRKl74Y[L2fS5Gn3
-R1
-IKY0hLQLFUDe=Tmzf@<71K3
-R2
-R3
-R25
-R26
-R27
-!i122 105
-L0 129 10
-R7
-r1
-!s85 0
-31
-R28
-R29
-R30
-!i113 1
-R11
-R12
-n@d@f@f_8bit
-vDFF_input
-!i10b 1
-!s100 Hz=bbPHcz0lJMTJke;0N33
-I_37J3e?MhVTn]]W`z276?2
-VR:i6:lAea9zZ8Wf<j15bh3
-R15
-Z31 w1776077004
-Z32 8C:/Users/osm13/Desktop/26-1/VLSI/osm/cur/baseline/ripple_carry_adder_22bit.v
-Z33 FC:/Users/osm13/Desktop/26-1/VLSI/osm/cur/baseline/ripple_carry_adder_22bit.v
-L0 67
-R16
-r1
-!s85 0
-31
-Z34 !s108 1776082958.386000
-Z35 !s107 C:/Users/osm13/Desktop/26-1/VLSI/osm/cur/baseline/ripple_carry_adder_22bit.v|
-Z36 !s90 -reportprogress|300|-work|work|C:/Users/osm13/Desktop/26-1/VLSI/osm/cur/baseline/ripple_carry_adder_22bit.v|
-!s101 -O0
-R17
-n@d@f@f_input
-vDFF_output
-!i10b 1
-!s100 LZo6;FF;0VCSBPOV:ooPA3
-ITTY@<JJ<fN4GPjeeo[egQ0
-VL`RIk9^GhTYKHFE07>9WA2
-R15
-R31
-R32
-R33
-L0 89
-R16
-r1
-!s85 0
-31
-R34
-R35
-R36
-!s101 -O0
-R17
-n@d@f@f_output
-vFA_4bit
-!s100 YFh3gBV@Om=_gMj@VZ:RR2
-I5mYgSEd3?D@CUm^W?RoHJ3
-Vinjc]iiV]Wb3?8NCAfBb>0
-R15
-Z37 w1776075577
-Z38 8C:/Users/osm13/Desktop/26-1/VLSI/osm/cur/baseline/sqrt_csa_22bit.v
-Z39 FC:/Users/osm13/Desktop/26-1/VLSI/osm/cur/baseline/sqrt_csa_22bit.v
-L0 88
-R16
-r1
-31
-Z40 !s108 1776082957.947000
-Z41 !s107 C:/Users/osm13/Desktop/26-1/VLSI/osm/cur/baseline/sqrt_csa_22bit.v|
-Z42 !s90 -reportprogress|300|-work|work|C:/Users/osm13/Desktop/26-1/VLSI/osm/cur/baseline/sqrt_csa_22bit.v|
-R17
-n@f@a_4bit
-!i10b 1
-!s85 0
-!s101 -O0
-vFA_5bit
-!s100 FZo^9Kn][;iL:6X=G=;OX2
-IR:UcRY2c66W7^:IU1d?2M3
-Vn3<;X=PooZd50lkaj7Jbn2
-R15
-R37
-R38
-R39
-L0 101
-R16
-r1
-31
-R40
-R41
-R42
-R17
-n@f@a_5bit
-!i10b 1
-!s85 0
-!s101 -O0
-vFA_6bit
-!s100 b6bM4HNdDzIXlRE=cYN;D3
-IJ?7XBHH=gHS5Q09A6^Y_P2
-V>YKjT?QCPP]]ghWQz2d@i3
-R15
-R37
-R38
-R39
-L0 115
-R16
-r1
-31
-R40
-R41
-R42
-R17
-n@f@a_6bit
-!i10b 1
-!s85 0
-!s101 -O0
-vFA_7bit
-!s100 jcfG74PdHYTg<AU7A]ZM[0
-IVbFeiI<i0Ri0MSYC:o``i1
-V=7dk@O<=b[Un^26nRM8iI2
-R15
-R37
-R38
-R39
-L0 130
-R16
-r1
-31
-R40
-R41
-R42
-R17
-n@f@a_7bit
-!i10b 1
-!s85 0
-!s101 -O0
-vfp8_add
-R0
-!i10b 1
-!s100 :PbI6H75?DjMn[1I4K`8n0
-R1
-I_;?JFJ<RHXY;T2lo:f4Kg1
-R2
-R3
-R4
-R5
-R6
-!i122 35
-L0 21 40
-R7
-r1
-!s85 0
-31
-R8
-R9
-R10
-!i113 1
-R11
-R12
-vfp8_adder_DFF
-R0
-!i10b 1
-!s100 ZD?>]3V<ozEn4A>Xce?lf1
-R1
-Ioe2AYA>]Z:m;1V[_`A<6B0
-R2
-R3
-R4
-R5
-R6
-!i122 35
-Z43 L0 7 12
-R7
-r1
-!s85 0
-31
-R8
-R9
-R10
-!i113 1
-R11
-R12
-nfp8_adder_@d@f@f
-vFP8_adder_sync
-!s110 1780390932
-!i10b 1
-!s100 Q2PIKVZ`Cl^=aD2A0VZVm2
-R1
-Ig_2HRa;gBKECRhJECQdV70
-R2
-R3
-w1780386147
-R5
-R6
-!i122 0
-R43
-R7
-r1
-!s85 0
-31
-!s108 1780390932.000000
-R9
-R10
-!i113 1
-R11
-R12
-n@f@p8_adder_sync
-vfp8_mul
-R24
-!i10b 1
-!s100 jeNMTeZJ[M<H`PE8OZ0MW2
-R1
-I8Ci1gXDO8g?;:EQofIe?n3
-R2
-R3
-R25
-R26
-R27
-!i122 105
-L0 21 26
-R7
-r1
-!s85 0
-31
-R28
-R29
-R30
-!i113 1
-R11
-R12
-vfp8_mult_DFF
-R24
-!i10b 1
-!s100 gmJIPzoTAd0I_e<zd8S941
-R1
-ISg;@Pe^@hKJCi`l8ld0G41
-R2
-R3
-R25
-R26
-R27
-!i122 105
-R43
-R7
-r1
-!s85 0
-31
-R28
-R29
-R30
-!i113 1
-R11
-R12
-nfp8_mult_@d@f@f
-vfull_adder
-!s100 MKikGcTzbRn@O@F2_O<hJ2
-IkQmn2<U;m@9O@:JSaVFI>2
-VaZjkh0Sz=[F:?OlVzLbUa1
-R15
-R18
-R19
-R20
-L0 75
-R16
-r1
-31
-R21
-R22
-R23
-R17
-!i10b 1
-!s85 0
-!s101 -O0
-vfull_adder_4b
-!s100 zG`mJkjCD0[79[G`oTUW>3
-Ic7gLQOZn5I75^>?_JY^CN1
-VHBh<OgzJahF6=7db@MkNg3
-R15
-R18
-R19
-R20
-L0 87
-R16
-r1
-31
-R21
-R22
-R23
-R17
-!i10b 1
-!s85 0
-!s101 -O0
-vfulladd22_gate
-!i10b 1
-!s100 lSgz91J=I9EPHHd?9JfYF3
-IZnhQOO?UmUFNT9_6RjJFa3
-V0hLR48n]0c9`>e7?hmPn=3
-R15
-R31
-R32
-R33
-L0 17
-R16
-r1
-!s85 0
-31
-R34
-R35
-R36
-!s101 -O0
-R17
-vfulladd_gate
-!i10b 1
-!s100 AlbHP8mj?JSWl95_FB;K23
-Im2VWXl]M;UPK>;757DgJ22
-Vl_TAEhg9cEIKE6I`d;G8n3
-R15
-R31
-R32
-R33
-L0 50
-R16
-r1
-!s85 0
-31
-R34
-R35
-R36
-!s101 -O0
-R17
-vmul2x2
-R24
-!i10b 1
-!s100 C?hLYL4X?G3SdjhoJHRZQ2
-R1
-IKd]>HD1HI<1fj7]OnMa0Y2
-R2
-R3
-R25
-R26
-R27
-!i122 105
-L0 75 11
-R7
-r1
-!s85 0
-31
-R28
-R29
-R30
-!i113 1
-R11
-R12
-vmul4x4
-R24
-!i10b 1
-!s100 j1=ogkeG^2>_=NkHzT0V00
-R1
-IDKIOF0HR3E8GF;d]]JZbJ1
-R2
-R3
-R25
-R26
-R27
-!i122 105
-L0 65 8
-R7
-r1
-!s85 0
-31
-R28
-R29
-R30
-!i113 1
-R11
-R12
-vmul5x5
-R24
-!i10b 1
-!s100 SL__Ek1C0XjZ7j7AJYD]F1
-R1
-IWDEiSfmmhK_0`WKOSXXSI1
-R2
-R3
-R25
-R26
-R27
-!i122 105
-L0 50 13
-R7
-r1
-!s85 0
-31
-R28
-R29
-R30
-!i113 1
-R11
-R12
-vmul_normalizer_fp8
-R24
-!i10b 1
-!s100 kGlTP@k@X1Ln:Yi;0PV3@3
-R1
-IlcZdCiEiiPI=CYBBkNZko0
-R2
-R3
-R25
-R26
-R27
-!i122 105
-L0 100 27
-R7
-r1
-!s85 0
-31
-R28
-R29
-R30
-!i113 1
-R11
-R12
-vmux2to1
-!s100 oC[K;F><kTDUMl7m`MF@E0
-I1m4H;Wgc66j?Mi5[X>:<01
-VJcJGCSU5=H001RHSmGUN?1
-R15
-R37
-R38
-R39
-L0 200
-R16
-r1
-31
-R40
-R41
-R42
-R17
-!i10b 1
-!s85 0
-!s101 -O0
-vmux2to1_6bit
-!s100 S1`Hf43>OBH<=>lhF:Gm51
-IX0gkLAmgk9:]ec0VO37ZL3
-VUHZA3@GUMDJ5zWUJ0;[:[0
-R15
-R37
-R38
-R39
-L0 158
-R16
-r1
-31
-R40
-R41
-R42
-R17
-!i10b 1
-!s85 0
-!s101 -O0
-vmux2to1_7bit
-!s100 cgoQ2=<I46i<i=4g6OaLV2
-I5HR897:LgE>GgWKXTBKNO0
-V63F420MGPA3`PKVQo^`YR0
-R15
-R37
-R38
-R39
-L0 171
-R16
-r1
-31
-R40
-R41
-R42
-R17
-!i10b 1
-!s85 0
-!s101 -O0
-vmux2to1_8bit
-!s100 K<EPE`_aK]Da^IbFY4gN53
-I:4g<`25maD^?Cn5KHbO@:1
-VV0g<ORz8n2PnWCofmPRIc2
-R15
-R37
-R38
-R39
-L0 185
-R16
-r1
-31
-R40
-R41
-R42
-R17
-!i10b 1
-!s85 0
-!s101 -O0
-vmux_2to1_1b
-!s100 QR;Z:k0@^c`3fIUgJ5[^;0
-InP8h2VT5TOTgPXR:j[G492
-VhbchW6`J@1]F`CNlVUAjb1
-R15
-R18
-R19
-R20
-L0 100
-R16
-r1
-31
-R21
-R22
-R23
-R17
-!i10b 1
-!s85 0
-!s101 -O0
-vmux_2to1_4b
-!s100 Ff_HAK]@MIM7QH3VRnMSN0
-IoY2k5]a1:m8@gNdhEbKRk3
-V<`kk6kenT17L8j4meOSG03
-R15
-R18
-R19
-R20
-L0 111
-R16
-r1
-31
-R21
-R22
-R23
-R17
-!i10b 1
-!s85 0
-!s101 -O0
-vnaive_carry_select_adder
-!s100 8P5gehWdTN1cj5J@n[IQl0
-IIfB__>A>4FHI1L2fIE6kW1
-VolQ8?eaMGzU5HFIUI_UgT2
-R15
-Z44 w1776075826
-8C:/Users/osm13/Desktop/26-1/VLSI/osm/cur/stimulus/naive_carry_select_adder.v
-FC:/Users/osm13/Desktop/26-1/VLSI/osm/cur/stimulus/naive_carry_select_adder.v
-L0 1
-R16
-r1
-31
-!s90 -reportprogress|300|-work|work|C:/Users/osm13/Desktop/26-1/VLSI/osm/cur/stimulus/naive_carry_select_adder.v|
-R17
-!s108 1776082958.091000
-!s107 C:/Users/osm13/Desktop/26-1/VLSI/osm/cur/stimulus/naive_carry_select_adder.v|
-!i10b 1
-!s85 0
-!s101 -O0
-vripple_carry_adder_22b
-!s100 GVn;?WIFXFaELkX:Eh4K@1
-IgI:WZ6zMHQk`I]hdHXUZH2
-V[b34iF5Iof13U_2km6zMU1
-R15
-w1775906999
-8C:/Users/osm13/Desktop/26-1/VLSI/osm/cur/baseline/ripple_carry_adder_22b.v
-FC:/Users/osm13/Desktop/26-1/VLSI/osm/cur/baseline/ripple_carry_adder_22b.v
-L0 1
-R16
-r1
-31
-!s108 1776076930.869000
-!s107 C:/Users/osm13/Desktop/26-1/VLSI/osm/cur/baseline/ripple_carry_adder_22b.v|
-!s90 -reportprogress|300|-work|work|C:/Users/osm13/Desktop/26-1/VLSI/osm/cur/baseline/ripple_carry_adder_22b.v|
-R17
-!i10b 1
-!s85 0
-!s101 -O0
-vripple_carry_adder_22bit
-!i10b 1
-!s100 ]gIIzWWk:ZPXUlgA^MNoK2
-Ie`faQBgf3X@H?6`8Vf?YM1
-V@^fLWm:3anoaS[hIGcea@0
-R15
-R31
-R32
-R33
-L0 1
-R16
-r1
-!s85 0
-31
-R34
-R35
-R36
-!s101 -O0
-R17
-vsqrt_carry_select_adder_22b
-!s100 <VkA7Ii24A`I74aKSk@QT0
-I?zKnUE60bY;M0KbA2b4gG3
-VLUIP4kXmdBBKC:>@Z??oY3
-R15
-R37
-R38
-R39
-L0 1
-R16
-r1
-31
-R40
-R41
-R42
-R17
-!i10b 1
-!s85 0
-!s101 -O0
-vSRCSA_22bit
-!s100 DNA9oGd17aSk9X7^26LL91
-I0bnTXP[4a`f]G`cZP@TXF0
-V@1Gl1OaNYUcG3H4`NZbB;1
-R15
-R37
-R38
-R39
-L0 16
-R16
-r1
-31
-R40
-R41
-R42
-R17
-n@s@r@c@s@a_22bit
-!i10b 1
-!s85 0
-!s101 -O0
-vsti_butterfly_unit
-R13
-!i10b 1
-!s100 T`5XoZk5eQ;PRZ2>LIl7<3
-R1
-IYz_69l]Ao;[n[7j<hgnh>3
-R2
-R3
-w1780400579
-8C:/Users/smoh/Desktop/26-1/Verilog/pr10/cur/sti_butterfly_unit.v
-FC:/Users/smoh/Desktop/26-1/Verilog/pr10/cur/sti_butterfly_unit.v
-!i122 160
-L0 3 41
-R7
-r1
-!s85 0
-31
-R14
-!s107 C:/Users/smoh/Desktop/26-1/Verilog/pr10/cur/sti_butterfly_unit.v|
-!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/smoh/Desktop/26-1/Verilog/pr10/cur/sti_butterfly_unit.v|
-!i113 1
-R11
-R12
-vsti_complex_multiplier
-R13
-!i10b 1
-!s100 P>LARcI5@?i_ZaK8P`MSJ0
-R1
-IoAPcZXD0zfWcl4L6m6N[D2
-R2
-R3
-w1780400593
-8C:/Users/smoh/Desktop/26-1/Verilog/pr10/cur/sti_complex_multiplier.v
-FC:/Users/smoh/Desktop/26-1/Verilog/pr10/cur/sti_complex_multiplier.v
-!i122 161
-L0 3 37
-R7
-r1
-!s85 0
-31
-R14
-!s107 C:/Users/smoh/Desktop/26-1/Verilog/pr10/cur/sti_complex_multiplier.v|
-!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/smoh/Desktop/26-1/Verilog/pr10/cur/sti_complex_multiplier.v|
-!i113 1
-R11
-R12
-vsti_FFT
-R13
-!i10b 1
-!s100 j6WcJ[GPVd_VI9h;;<@Dz0
-R1
-IBK11Gn>oL22jZ?C8nd7ga0
-R2
-R3
-w1780473685
-8C:/Users/smoh/Desktop/26-1/Verilog/pr10/cur/sti_FFT.v
-FC:/Users/smoh/Desktop/26-1/Verilog/pr10/cur/sti_FFT.v
-!i122 162
-L0 2 56
-R7
-r1
-!s85 0
-31
-R14
-!s107 C:/Users/smoh/Desktop/26-1/Verilog/pr10/cur/sti_FFT.v|
-!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/smoh/Desktop/26-1/Verilog/pr10/cur/sti_FFT.v|
-!i113 1
-R11
-R12
-nsti_@f@f@t
-vsti_fp8_adder_DFF
-R0
-!i10b 1
-!s100 G?g6TML>SP`AOgbf=5o[W2
-R1
-IUXADZC@=L5329UM]7Xig;2
-R2
-R3
-w1780395047
-8C:\Users\smoh\Desktop\26-1\Verilog\pr11\cur\sti_fp8_adder_DFF.v
-FC:\Users\smoh\Desktop\26-1\Verilog\pr11\cur\sti_fp8_adder_DFF.v
+w1780573110
+Z3 8C:/Users/smoh/Desktop/26-1/Verilog/pr4/cur/pipelined/carry_select_adder_20b_2stage.v
+Z4 FC:/Users/smoh/Desktop/26-1/Verilog/pr4/cur/pipelined/carry_select_adder_20b_2stage.v
 !i122 36
-Z45 L0 2 49
-R7
+Z5 L0 1 159
+Z6 OV;L;2020.1;71
 r1
 !s85 0
 31
+!s108 1780573171.000000
+Z7 !s107 C:/Users/smoh/Desktop/26-1/Verilog/pr4/cur/pipelined/carry_select_adder_20b_2stage.v|
+Z8 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/smoh/Desktop/26-1/Verilog/pr4/cur/pipelined/carry_select_adder_20b_2stage.v|
+!i113 1
+Z9 o-work work
+Z10 tCvgOpt 0
+vcarry_select_adder_20bit_2stage
+Z11 !s110 1780573234
+!i10b 1
+!s100 i2lKLPOHzN8:l[mWGnJ8;2
+R1
+IU6i5?]z04>5VMi8IVik5g2
+R2
+R0
+Z12 w1780573230
+R3
+R4
+!i122 42
+R5
+R6
+r1
+!s85 0
+31
+Z13 !s108 1780573234.000000
+R7
 R8
-!s107 C:\Users\smoh\Desktop\26-1\Verilog\pr11\cur\sti_fp8_adder_DFF.v|
-!s90 -reportprogress|300|-work|work|-stats=none|C:\Users\smoh\Desktop\26-1\Verilog\pr11\cur\sti_fp8_adder_DFF.v|
 !i113 1
-R11
-R12
-nsti_fp8_adder_@d@f@f
-vsti_fp8_mult_DFF
-R24
+R9
+R10
+vDFF_1bit
+Z14 !s110 1780572388
 !i10b 1
-!s100 99;Z4;a]YNo5oH9CV]XVn2
+!s100 aUk^6m8CEie2]:`<T@3Eo1
 R1
-Ih42GI]=mEiNSELLa9gJZ[0
+IV;gbgdO4`U_WdM72^7nMH1
 R2
-R3
-w1780402601
-8C:/Users/smoh/Desktop/26-1/Verilog/pr11/cur/sti_fp8_mult_DFF.v
-FC:/Users/smoh/Desktop/26-1/Verilog/pr11/cur/sti_fp8_mult_DFF.v
-!i122 106
-R45
-R7
+R0
+Z15 w1776224153
+Z16 8C:/Users/smoh/Desktop/26-1/Verilog/pr4/cur/pipelined/sqrt_csa_22bit_2stage.v
+Z17 FC:/Users/smoh/Desktop/26-1/Verilog/pr4/cur/pipelined/sqrt_csa_22bit_2stage.v
+!i122 20
+L0 152 6
+R6
 r1
 !s85 0
 31
-R28
-!s107 C:/Users/smoh/Desktop/26-1/Verilog/pr11/cur/sti_fp8_mult_DFF.v|
-!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/smoh/Desktop/26-1/Verilog/pr11/cur/sti_fp8_mult_DFF.v|
+Z18 !s108 1780572388.000000
+Z19 !s107 C:/Users/smoh/Desktop/26-1/Verilog/pr4/cur/pipelined/sqrt_csa_22bit_2stage.v|
+Z20 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/smoh/Desktop/26-1/Verilog/pr4/cur/pipelined/sqrt_csa_22bit_2stage.v|
 !i113 1
-R11
-R12
-nsti_fp8_mult_@d@f@f
-vstimulus_csa_20bit
-IDiU?DaRoJaY`XY_ZzPR>Y1
-VVE5Blh_?W[Xj11HMmUlO`2
-R15
-w1776082953
-8C:\Users\osm13\Desktop\26-1\VLSI\osm\cur\stimulus\base_stimulus\stimulus_csa_20b.v
-FC:\Users\osm13\Desktop\26-1\VLSI\osm\cur\stimulus\base_stimulus\stimulus_csa_20b.v
-L0 2
-R16
-r1
-31
-!s90 -reportprogress|300|-work|work|C:\Users\osm13\Desktop\26-1\VLSI\osm\cur\stimulus\base_stimulus\stimulus_csa_20b.v|
-R17
-!s100 K`azL`2dYC_U7@e@F8?H<3
-!s108 1776082958.140000
-!s107 C:\Users\osm13\Desktop\26-1\VLSI\osm\cur\stimulus\base_stimulus\stimulus_csa_20b.v|
+R9
+R10
+n@d@f@f_1bit
+vDFF_20bit
+Z21 !s110 1780572858
 !i10b 1
-!s85 0
-!s101 -O0
-vstimulus_csa_20bit_2stage
-Igz_Pg08:jGn<oe<Pig`1i1
-V@LPl^34P]b>AZBTiSKZ:Q0
-R15
-R44
-8C:/Users/osm13/Desktop/26-1/VLSI/osm/cur/stimulus/stimulus_csa_20bit_2stage.v
-FC:/Users/osm13/Desktop/26-1/VLSI/osm/cur/stimulus/stimulus_csa_20bit_2stage.v
-L0 2
-R16
-r1
-31
-R17
-!s100 <Jc^ad>`h^^7n@96141T;2
-!s108 1776076446.124000
-!s107 C:/Users/osm13/Desktop/26-1/VLSI/osm/cur/stimulus/stimulus_csa_20bit_2stage.v|
-!s90 -reportprogress|300|-work|work|C:/Users/osm13/Desktop/26-1/VLSI/osm/cur/stimulus/stimulus_csa_20bit_2stage.v|
-!i10b 1
-!s85 0
-!s101 -O0
-vstimulus_rca_22bit
-!s100 CHjb4eM]g=QA7Wbez34Zg2
-Ig=8enEe7jf>Z0`ciJh]KQ2
-VNfelPDe:OkIiTKNPklGK>1
-R15
-w1776082858
-8C:/Users/osm13/Desktop/26-1/VLSI/osm/cur/stimulus/base_stimulus/stimulus_rca_22b.v
-FC:/Users/osm13/Desktop/26-1/VLSI/osm/cur/stimulus/base_stimulus/stimulus_rca_22b.v
-L0 2
-R16
-r1
-31
-!s90 -reportprogress|300|-work|work|C:/Users/osm13/Desktop/26-1/VLSI/osm/cur/stimulus/base_stimulus/stimulus_rca_22b.v|
-R17
-!s108 1776082958.183000
-!s107 C:/Users/osm13/Desktop/26-1/VLSI/osm/cur/stimulus/base_stimulus/stimulus_rca_22b.v|
-!i10b 1
-!s85 0
-!s101 -O0
-vstimulus_rca_22bit_2stage
-IGT;ghH<k7?HQe_ekPeg?23
-VQoSeaZ=H?N;f:e9fQWgMW2
-R15
-R44
-8C:/Users/osm13/Desktop/26-1/VLSI/osm/cur/stimulus/stimulus_rca_22bit_2stage.v
-FC:/Users/osm13/Desktop/26-1/VLSI/osm/cur/stimulus/stimulus_rca_22bit_2stage.v
-L0 2
-R16
-r1
-31
-R17
-!s100 96:7fhWNY`c_H4kR43m1l2
-!s108 1776076446.234000
-!s107 C:/Users/osm13/Desktop/26-1/VLSI/osm/cur/stimulus/stimulus_rca_22bit_2stage.v|
-!s90 -reportprogress|300|-work|work|C:/Users/osm13/Desktop/26-1/VLSI/osm/cur/stimulus/stimulus_rca_22bit_2stage.v|
-!i10b 1
-!s85 0
-!s101 -O0
-vstimulus_sqrt_csa_22bit
-!s100 eg?_kQQ?8F[GQaoChKWCM2
-I<MNF;<^bJb>I?DIfz22AI2
-V5zWO8?bHW:kATH9klLbhm2
-R15
-w1776076875
-8C:/Users/osm13/Desktop/26-1/VLSI/osm/cur/stimulus/base_stimulus/stimulus_sqrt_csa_22bit.v
-FC:/Users/osm13/Desktop/26-1/VLSI/osm/cur/stimulus/base_stimulus/stimulus_sqrt_csa_22bit.v
-L0 2
-R16
-r1
-31
-!s90 -reportprogress|300|-work|work|C:/Users/osm13/Desktop/26-1/VLSI/osm/cur/stimulus/base_stimulus/stimulus_sqrt_csa_22bit.v|
-R17
-!s108 1776082958.235000
-!s107 C:/Users/osm13/Desktop/26-1/VLSI/osm/cur/stimulus/base_stimulus/stimulus_sqrt_csa_22bit.v|
-!i10b 1
-!s85 0
-!s101 -O0
-vstimulus_sqrt_csa_22bit_2stage
-I86U>zcf5m@XMFna6XbC;o3
-V`QNmLciM=0n;CzAhW[Vj01
-R15
-R44
-8C:/Users/osm13/Desktop/26-1/VLSI/osm/cur/stimulus/stimulus_sqrt_csa_22bit_2stage.v
-FC:/Users/osm13/Desktop/26-1/VLSI/osm/cur/stimulus/stimulus_sqrt_csa_22bit_2stage.v
-L0 2
-R16
-r1
-31
-R17
-!s100 A=9z1lbkYCOfe90^AKf]?3
-!s108 1776076446.327000
-!s107 C:/Users/osm13/Desktop/26-1/VLSI/osm/cur/stimulus/stimulus_sqrt_csa_22bit_2stage.v|
-!s90 -reportprogress|300|-work|work|C:/Users/osm13/Desktop/26-1/VLSI/osm/cur/stimulus/stimulus_sqrt_csa_22bit_2stage.v|
-!i10b 1
-!s85 0
-!s101 -O0
-vtop_FFT
-R13
-!i10b 1
-!s100 ZmoHOg72]AkLQ5D@EiEbY2
+!s100 XWh3LNXHK>H4;@kIY[fNH2
 R1
-I<Y:_cWXZbc6cf;iXhO<0g0
+I7oD<YodRliNgJ1mCfShI80
 R2
+R0
+R15
 R3
-w1780474256
-8C:\Users\smoh\Desktop\26-1\Verilog\pr10\cur\FFT.v
-FC:\Users\smoh\Desktop\26-1\Verilog\pr10\cur\FFT.v
-!i122 159
-L0 1 132
-R7
+R4
+!i122 24
+L0 78 10
+R6
 r1
 !s85 0
 31
+Z22 !s108 1780572858.000000
+R7
+R8
+!i113 1
+R9
+R10
+n@d@f@f_20bit
+vDFF_21bit
+R21
+!i10b 1
+!s100 g^FQKI3424oYl4KbkQ`8E1
+R1
+II[<6CmR9=fbc41D?8;zKR3
+R2
+R0
+R15
+R3
+R4
+!i122 24
+L0 89 10
+R6
+r1
+!s85 0
+31
+R22
+R7
+R8
+!i113 1
+R9
+R10
+n@d@f@f_21bit
+vDFF_22bit
 R14
-!s107 C:\Users\smoh\Desktop\26-1\Verilog\pr10\cur\FFT.v|
-!s90 -reportprogress|300|-work|work|-stats=none|C:\Users\smoh\Desktop\26-1\Verilog\pr10\cur\FFT.v|
+!i10b 1
+!s100 3Dn9]DRdK`dBC]EbT[mnJ2
+R1
+IGC^7:D[E_]l@YC<ACWHm72
+R2
+R0
+R15
+R16
+R17
+!i122 20
+L0 128 11
+R6
+r1
+!s85 0
+31
+R18
+R19
+R20
 !i113 1
+R9
+R10
+n@d@f@f_22bit
+vDFF_23bit
+R14
+!i10b 1
+!s100 813RIcTzKz7bnSiD3gYRz2
+R1
+IDZ5J0l=nc]dLFOH7^MA>70
+R2
+R0
+R15
+R16
+R17
+!i122 20
+L0 140 11
+R6
+r1
+!s85 0
+31
+R18
+R19
+R20
+!i113 1
+R9
+R10
+n@d@f@f_23bit
+vDFF_2bit
+R14
+!i10b 1
+!s100 XX^JS5b1SWC6PBRMjXg8^1
+R1
+I9oh<DFLEa>k79>D064AZV2
+R2
+R0
+R15
+R16
+R17
+!i122 20
+L0 159 6
+R6
+r1
+!s85 0
+31
+R18
+R19
+R20
+!i113 1
+R9
+R10
+n@d@f@f_2bit
+vDFF_3bit
+R14
+!i10b 1
+!s100 PoOQ5Y7Rg3of>^lEH0moa3
+R1
+IW>8c>QcY;ZgRz]<SoVWi30
+R2
+R0
+R15
+R16
+R17
+!i122 20
+L0 166 6
+R6
+r1
+!s85 0
+31
+R18
+R19
+R20
+!i113 1
+R9
+R10
+n@d@f@f_3bit
+vDFF_4bit
+R21
+!i10b 1
+!s100 cDmFEa1CPEVYk9=Bi>@CL3
+R1
+IVKMNX>_Z7i?`@NeMhSGjN1
+R2
+R0
+R15
+R3
+R4
+!i122 24
+L0 150 10
+R6
+r1
+!s85 0
+31
+R22
+R7
+R8
+!i113 1
+R9
+R10
+n@d@f@f_4bit
+vDFF_input
 R11
+!i10b 1
+!s100 ]NWeU9jb^C8hW<neOIQE]2
+R1
+I4o<gjD`LVOKRZLYGGZ;cj2
+R2
+R0
+Z23 w1780572851
+R16
+R17
+!i122 44
+L0 220 18
+R6
+r1
+!s85 0
+31
+R13
+R19
+R20
+!i113 1
+R9
+R10
+n@d@f@f_input
+vDFF_input_20b
+R11
+!i10b 1
+!s100 YLLg6=AUa?`gaBlIf?ahM3
+R1
+Ig<YbAG?oG6Sf@38b6>X4o1
+R2
+R0
 R12
-ntop_@f@f@t
+R3
+R4
+!i122 42
+L0 184 18
+R6
+r1
+!s85 0
+31
+R13
+R7
+R8
+!i113 1
+R9
+R10
+n@d@f@f_input_20b
+vFA_1bit
+R14
+!i10b 1
+!s100 ]TWJS=F8k?mZX9fKRRL8d1
+R1
+I@ch38m09@jDz9gS3]NE1I0
+R2
+R0
+R15
+R16
+R17
+!i122 20
+L0 181 3
+R6
+r1
+!s85 0
+31
+R18
+R19
+R20
+!i113 1
+R9
+R10
+n@f@a_1bit
+vFA_2bit
+R14
+!i10b 1
+!s100 P57ATUiD6D``dT<YNTL_z0
+R1
+I19<]e_GYN=^SHQWi8`9U32
+R2
+R0
+R15
+R16
+R17
+!i122 20
+L0 185 3
+R6
+r1
+!s85 0
+31
+R18
+R19
+R20
+!i113 1
+R9
+R10
+n@f@a_2bit
+vFA_3bit
+R14
+!i10b 1
+!s100 VQbZXD?fn:S>9BkIJ_>Lj2
+R1
+IT3n@8UdVL_5UaB>S;oZ0@2
+R2
+R0
+R15
+R16
+R17
+!i122 20
+L0 189 3
+R6
+r1
+!s85 0
+31
+R18
+R19
+R20
+!i113 1
+R9
+R10
+n@f@a_3bit
+vFA_4bit
+R14
+!i10b 1
+!s100 anQCf^NSWh@XWJDGbB^H`0
+R1
+Id=mmje@j@a:QGP;_6F]W40
+R2
+R0
+R15
+R16
+R17
+!i122 20
+L0 193 3
+R6
+r1
+!s85 0
+31
+R18
+R19
+R20
+!i113 1
+R9
+R10
+n@f@a_4bit
+vfull_adder
+R21
+!i10b 1
+!s100 QeEKcoB[f@[Q2iOOLB7OC1
+R1
+IL46n>B0bIXKPGcWnGSSTP3
+R2
+R0
+R15
+R3
+R4
+!i122 24
+L0 102 11
+R6
+r1
+!s85 0
+31
+R22
+R7
+R8
+!i113 1
+R9
+R10
+vfull_adder_4b
+R21
+!i10b 1
+!s100 b94hZiJG:CZo4?j;RUPRH3
+R1
+IH_3:KjSjk:6@^Uf@mPM5c1
+R2
+R0
+R15
+R3
+R4
+!i122 24
+L0 114 12
+R6
+r1
+!s85 0
+31
+R22
+R7
+R8
+!i113 1
+R9
+R10
+vfulladd_gate
+R11
+!i10b 1
+!s100 W1SH;Ne_;@C=a1Vgb;?^:3
+R1
+I:G=C@h=j1]f^WX87IiUZj3
+R2
+R0
+R23
+R16
+R17
+!i122 44
+L0 191 11
+R6
+r1
+!s85 0
+31
+R13
+R19
+R20
+!i113 1
+R9
+R10
+vmux2to1
+R11
+!i10b 1
+!s100 gSC1L=cF3`V2?eFoTJndO1
+R1
+IbA0FXF7Lb75^2=bk3;IOJ3
+R2
+R0
+R23
+R16
+R17
+!i122 44
+L0 206 10
+R6
+r1
+!s85 0
+31
+R13
+R19
+R20
+!i113 1
+R9
+R10
+vmux2to1_6bit
+R14
+!i10b 1
+!s100 ]JE5^@eNkN[]6f1P77jeI2
+R1
+IePoV[E;m0_fWNjo>@ZNk90
+R2
+R0
+R15
+R16
+R17
+!i122 20
+L0 198 3
+R6
+r1
+!s85 0
+31
+R18
+R19
+R20
+!i113 1
+R9
+R10
+vmux2to1_7bit
+R14
+!i10b 1
+!s100 COYc:`@Y]:6RiniC82i^K2
+R1
+IWAbjQ<HeP6WOXUXDIb1I<2
+R2
+R0
+R15
+R16
+R17
+!i122 20
+L0 202 3
+R6
+r1
+!s85 0
+31
+R18
+R19
+R20
+!i113 1
+R9
+R10
+vmux2to1_8bit
+R14
+!i10b 1
+!s100 W;E:9dk[l85oZ=J=i@==G0
+R1
+I`Cl5Oe8c:[D[6MNj7QDS`2
+R2
+R0
+R15
+R16
+R17
+!i122 20
+L0 206 3
+R6
+r1
+!s85 0
+31
+R18
+R19
+R20
+!i113 1
+R9
+R10
+vmux_2to1_1b
+R21
+!i10b 1
+!s100 0^AFR0BjE[enXk<eaKHKc2
+R1
+Im9VZZ2A^H7L7Y:f8TAWNZ0
+R2
+R0
+R15
+R3
+R4
+!i122 24
+L0 127 10
+R6
+r1
+!s85 0
+31
+R22
+R7
+R8
+!i113 1
+R9
+R10
+vmux_2to1_4b
+R21
+!i10b 1
+!s100 WHX6U7AfWlDdZa=N2kdX51
+R1
+ICHjoWm;>k21@FaIePTCMZ3
+R2
+R0
+R15
+R3
+R4
+!i122 24
+L0 138 10
+R6
+r1
+!s85 0
+31
+R22
+R7
+R8
+!i113 1
+R9
+R10
+vripple_carry_adder_22bit_2stage
+R11
+!i10b 1
+!s100 EPEf@3feZV=8dU@:ih;4J2
+R1
+Ik5M?dU;:5jX9z068fk_[?2
+R2
+R0
+w1780572073
+8C:/Users/smoh/Desktop/26-1/Verilog/pr4/cur/pipelined/ripple_carry_adder_22b_2stage.v
+FC:/Users/smoh/Desktop/26-1/Verilog/pr4/cur/pipelined/ripple_carry_adder_22b_2stage.v
+!i122 43
+L0 1 98
+R6
+r1
+!s85 0
+31
+R13
+!s107 C:/Users/smoh/Desktop/26-1/Verilog/pr4/cur/pipelined/ripple_carry_adder_22b_2stage.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/smoh/Desktop/26-1/Verilog/pr4/cur/pipelined/ripple_carry_adder_22b_2stage.v|
+!i113 1
+R9
+R10
+vsqrt_csa_22bit_2stage
+R11
+!i10b 1
+!s100 dW=7^kjN[LX<0U`kSeLJ92
+R1
+I2cU^T0;7QVXN4KOh0[;k@0
+R2
+R0
+R23
+R16
+R17
+!i122 44
+L0 1 186
+R6
+r1
+!s85 0
+31
+R13
+R19
+R20
+!i113 1
+R9
+R10
+vstimulus_csa_20bit_2stage
+R11
+!i10b 1
+!s100 b_`OEV3XOkb>QU^j2n^BL3
+R1
+IVlmXM^e7I=EicT<T43jlY1
+R2
+R0
+w1780572648
+8C:/Users/smoh/Desktop/26-1/Verilog/pr4/ref/stimulus_csa_20bit_2stage.v
+FC:/Users/smoh/Desktop/26-1/Verilog/pr4/ref/stimulus_csa_20bit_2stage.v
+!i122 45
+Z24 L0 2 55
+R6
+r1
+!s85 0
+31
+R13
+!s107 C:/Users/smoh/Desktop/26-1/Verilog/pr4/ref/stimulus_csa_20bit_2stage.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/smoh/Desktop/26-1/Verilog/pr4/ref/stimulus_csa_20bit_2stage.v|
+!i113 1
+R9
+R10
+vstimulus_rca_22bit_2stage
+R11
+!i10b 1
+!s100 M7NE4I5;i>FGTd2<m9]<c1
+R1
+I8jHQo2[_J1hz61X_YUJ4m3
+R2
+R0
+w1780572148
+8C:/Users/smoh/Desktop/26-1/Verilog/pr4/ref/stimulus_rca_22bit_2stage.v
+FC:/Users/smoh/Desktop/26-1/Verilog/pr4/ref/stimulus_rca_22bit_2stage.v
+!i122 46
+R24
+R6
+r1
+!s85 0
+31
+R13
+!s107 C:/Users/smoh/Desktop/26-1/Verilog/pr4/ref/stimulus_rca_22bit_2stage.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/smoh/Desktop/26-1/Verilog/pr4/ref/stimulus_rca_22bit_2stage.v|
+!i113 1
+R9
+R10
+vstimulus_sqrt_csa_22bit_2stage
+!s110 1780573235
+!i10b 1
+!s100 Z0nSaiC[n4EFR<4>9bb?92
+R1
+Ii<a]LA;YA:f[[6TP2DB;13
+R2
+R0
+w1780572845
+8C:/Users/smoh/Desktop/26-1/Verilog/pr4/ref/stimulus_sqrt_csa_22bit_2stage.v
+FC:/Users/smoh/Desktop/26-1/Verilog/pr4/ref/stimulus_sqrt_csa_22bit_2stage.v
+!i122 47
+R24
+R6
+r1
+!s85 0
+31
+R13
+!s107 C:/Users/smoh/Desktop/26-1/Verilog/pr4/ref/stimulus_sqrt_csa_22bit_2stage.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/smoh/Desktop/26-1/Verilog/pr4/ref/stimulus_sqrt_csa_22bit_2stage.v|
+!i113 1
+R9
+R10

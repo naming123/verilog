@@ -1,148 +1,148 @@
-# Compile of butterfly_unit.v was successful.
-# Compile of complex_multiplier.v was successful.
-# Compile of FFT.v was successful.
-# Compile of sti_butterfly_unit.v was successful.
-# Compile of sti_complex_multiplier.v was successful.
-# Compile of sti_FFT.v was successful.
+# Compile of carry_select_adder_20b_2stage.v was successful.
+# Compile of ripple_carry_adder_22b_2stage.v was successful.
+# Compile of sqrt_csa_22bit_2stage.v was successful.
+# Compile of stimulus_csa_20bit_2stage.v was successful.
+# Compile of stimulus_rca_22bit_2stage.v was successful.
+# Compile of stimulus_sqrt_csa_22bit_2stage.v was successful.
 # 6 compiles, 0 failed with no errors.
-vsim -gui work.sti_FFT
-# vsim -gui work.sti_FFT 
-# Start time: 16:38:10 on Jun 03,2026
-# Loading work.sti_FFT
-# Loading work.top_FFT
-# Loading work.butterfly_unit
-# Loading work.complex_multiplier
-add wave -position end  sim:/sti_FFT/clk
-add wave -position end  sim:/sti_FFT/rstn
-add wave -position end  sim:/sti_FFT/mat_in
-add wave -position end  sim:/sti_FFT/mat_out
-add wave -position end  sim:/sti_FFT/out_mat
-add wave -position end  sim:/sti_FFT/in
-add wave -position end  sim:/sti_FFT/out
-add wave -position end  sim:/sti_FFT/i
-add wave -position end  sim:/sti_FFT/j
-add wave -position end  sim:/sti_FFT/err
+vsim -gui work.stimulus_rca_22bit_2stage
+# vsim -gui work.stimulus_rca_22bit_2stage 
+# Start time: 20:26:35 on Jun 04,2026
+# Loading work.stimulus_rca_22bit_2stage
+# Loading work.ripple_carry_adder_22bit_2stage
+# Loading work.DFF_input
+# Loading work.fulladd_gate
+add wave -position end  sim:/stimulus_rca_22bit_2stage/sum_rca
+add wave -position end  sim:/stimulus_rca_22bit_2stage/a
+add wave -position end  sim:/stimulus_rca_22bit_2stage/b
+add wave -position end  sim:/stimulus_rca_22bit_2stage/clk
+add wave -position end  sim:/stimulus_rca_22bit_2stage/rstn
+add wave -position end  sim:/stimulus_rca_22bit_2stage/mat_sum
+add wave -position end  sim:/stimulus_rca_22bit_2stage/mat_sum_cmp
+add wave -position end  sim:/stimulus_rca_22bit_2stage/mat_a
+add wave -position end  sim:/stimulus_rca_22bit_2stage/mat_b
+add wave -position end  sim:/stimulus_rca_22bit_2stage/i
+add wave -position end  sim:/stimulus_rca_22bit_2stage/k
+add wave -position end  sim:/stimulus_rca_22bit_2stage/err
 run -all
-# ** Note: $stop    : C:/Users/smoh/Desktop/26-1/Verilog/pr10/cur/sti_FFT.v(21)
-#    Time: 5260 ns  Iteration: 0  Instance: /sti_FFT
-# Break in Module sti_FFT at C:/Users/smoh/Desktop/26-1/Verilog/pr10/cur/sti_FFT.v line 21
-# Compile of butterfly_unit.v was successful.
-# Compile of complex_multiplier.v was successful.
-# Compile of FFT.v was successful.
-# Compile of sti_butterfly_unit.v was successful.
-# Compile of sti_complex_multiplier.v was successful.
-# Compile of sti_FFT.v was successful.
+# ** Note: $stop    : C:/Users/smoh/Desktop/26-1/Verilog/pr4/ref/stimulus_rca_22bit_2stage.v(53)
+#    Time: 1050 ns  Iteration: 0  Instance: /stimulus_rca_22bit_2stage
+# Break in Module stimulus_rca_22bit_2stage at C:/Users/smoh/Desktop/26-1/Verilog/pr4/ref/stimulus_rca_22bit_2stage.v line 53
+# Compile of carry_select_adder_20b_2stage.v was successful.
+# Compile of ripple_carry_adder_22b_2stage.v was successful.
+# Compile of sqrt_csa_22bit_2stage.v was successful.
+# Compile of stimulus_csa_20bit_2stage.v was successful.
+# Compile of stimulus_rca_22bit_2stage.v was successful.
+# Compile of stimulus_sqrt_csa_22bit_2stage.v was successful.
 # 6 compiles, 0 failed with no errors.
-restart -f
-# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
-# Loading work.sti_FFT
-# Loading work.top_FFT
-# Loading work.butterfly_unit
-# Loading work.complex_multiplier
+vsim -gui work.stimulus_sqrt_csa_22bit_2stage
+# End time: 20:34:30 on Jun 04,2026, Elapsed time: 0:07:55
+# Errors: 0, Warnings: 3
+# vsim -gui work.stimulus_sqrt_csa_22bit_2stage 
+# Start time: 20:34:30 on Jun 04,2026
+# Loading work.stimulus_sqrt_csa_22bit_2stage
+# Loading work.sqrt_csa_22bit_2stage
+# Loading work.DFF_input
+# Loading work.fulladd_gate
+# Loading work.mux2to1
+add wave -position end  sim:/stimulus_sqrt_csa_22bit_2stage/sum_sqrt_csa
+add wave -position end  sim:/stimulus_sqrt_csa_22bit_2stage/a
+add wave -position end  sim:/stimulus_sqrt_csa_22bit_2stage/b
+add wave -position end  sim:/stimulus_sqrt_csa_22bit_2stage/clk
+add wave -position end  sim:/stimulus_sqrt_csa_22bit_2stage/rstn
+add wave -position end  sim:/stimulus_sqrt_csa_22bit_2stage/mat_sum
+add wave -position end  sim:/stimulus_sqrt_csa_22bit_2stage/mat_sum_cmp
+add wave -position end  sim:/stimulus_sqrt_csa_22bit_2stage/mat_a
+add wave -position end  sim:/stimulus_sqrt_csa_22bit_2stage/mat_b
+add wave -position end  sim:/stimulus_sqrt_csa_22bit_2stage/i
+add wave -position end  sim:/stimulus_sqrt_csa_22bit_2stage/k
+add wave -position end  sim:/stimulus_sqrt_csa_22bit_2stage/err
 run -all
-# ** Note: $stop    : C:/Users/smoh/Desktop/26-1/Verilog/pr10/cur/sti_FFT.v(21)
-#    Time: 5260 ns  Iteration: 0  Instance: /sti_FFT
-# Break in Module sti_FFT at C:/Users/smoh/Desktop/26-1/Verilog/pr10/cur/sti_FFT.v line 21
-restart -f
-run -all
-# ** Note: $stop    : C:/Users/smoh/Desktop/26-1/Verilog/pr10/cur/sti_FFT.v(21)
-#    Time: 5260 ns  Iteration: 0  Instance: /sti_FFT
-# Break in Module sti_FFT at C:/Users/smoh/Desktop/26-1/Verilog/pr10/cur/sti_FFT.v line 21
-# Compile of butterfly_unit.v was successful.
-# Compile of complex_multiplier.v was successful.
-# Compile of FFT.v was successful.
-# Compile of sti_butterfly_unit.v was successful.
-# Compile of sti_complex_multiplier.v was successful.
-# Compile of sti_FFT.v was successful.
+# ** Note: $stop    : C:/Users/smoh/Desktop/26-1/Verilog/pr4/ref/stimulus_sqrt_csa_22bit_2stage.v(53)
+#    Time: 1050 ns  Iteration: 0  Instance: /stimulus_sqrt_csa_22bit_2stage
+# Break in Module stimulus_sqrt_csa_22bit_2stage at C:/Users/smoh/Desktop/26-1/Verilog/pr4/ref/stimulus_sqrt_csa_22bit_2stage.v line 53
+# Compile of carry_select_adder_20b_2stage.v was successful.
+# Compile of ripple_carry_adder_22b_2stage.v was successful.
+# Compile of sqrt_csa_22bit_2stage.v was successful.
+# Compile of stimulus_csa_20bit_2stage.v was successful.
+# Compile of stimulus_rca_22bit_2stage.v was successful.
+# Compile of stimulus_sqrt_csa_22bit_2stage.v was successful.
 # 6 compiles, 0 failed with no errors.
-restart -f
-# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
-# Loading work.sti_FFT
-# Loading work.top_FFT
-# Loading work.butterfly_unit
-# Loading work.complex_multiplier
-run
-run
-run
-run
-run
-run
-run
-run
-run
-run
-restart -f
-run -all
-# ** Note: $stop    : C:/Users/smoh/Desktop/26-1/Verilog/pr10/cur/sti_FFT.v(21)
-#    Time: 5260 ns  Iteration: 0  Instance: /sti_FFT
-# Break in Module sti_FFT at C:/Users/smoh/Desktop/26-1/Verilog/pr10/cur/sti_FFT.v line 21
-# Compile of butterfly_unit.v was successful.
-# Compile of complex_multiplier.v was successful.
-# Compile of FFT.v was successful.
-# Compile of sti_butterfly_unit.v was successful.
-# Compile of sti_complex_multiplier.v was successful.
-# Compile of sti_FFT.v was successful.
+vsim -gui work.stimulus_csa_20bit_2stage
+# End time: 20:38:54 on Jun 04,2026, Elapsed time: 0:04:24
+# Errors: 0, Warnings: 2
+# vsim -gui work.stimulus_csa_20bit_2stage 
+# Start time: 20:38:55 on Jun 04,2026
+# Loading work.stimulus_csa_20bit_2stage
+# ** Error: (vsim-3033) Instantiation of 'carry_select_adder_20bit_2stage' failed. The design unit was not found.
+#    Time: 0 ps  Iteration: 0  Instance: /stimulus_csa_20bit_2stage File: C:/Users/smoh/Desktop/26-1/Verilog/pr4/ref/stimulus_csa_20bit_2stage.v Line: 13
+#         Searched libraries:
+#             C:/Users/smoh/Desktop/26-1/Verilog/work
+# Error loading design
+# End time: 20:38:55 on Jun 04,2026, Elapsed time: 0:00:00
+# Errors: 1, Warnings: 1
+# Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+# No ports found in stimulus_csa_20bit_2stage
+vsim -gui work.stimulus_csa_20bit_2stage
+# vsim -gui work.stimulus_csa_20bit_2stage 
+# Start time: 20:39:23 on Jun 04,2026
+# Loading work.stimulus_csa_20bit_2stage
+# ** Error: (vsim-3033) Instantiation of 'carry_select_adder_20bit_2stage' failed. The design unit was not found.
+#    Time: 0 ps  Iteration: 0  Instance: /stimulus_csa_20bit_2stage File: C:/Users/smoh/Desktop/26-1/Verilog/pr4/ref/stimulus_csa_20bit_2stage.v Line: 13
+#         Searched libraries:
+#             C:/Users/smoh/Desktop/26-1/Verilog/work
+# Error loading design
+# End time: 20:39:23 on Jun 04,2026, Elapsed time: 0:00:00
+# Errors: 1, Warnings: 1
+# Compile of carry_select_adder_20b_2stage.v was successful.
+# Compile of ripple_carry_adder_22b_2stage.v was successful.
+# Compile of sqrt_csa_22bit_2stage.v was successful.
+# Compile of stimulus_csa_20bit_2stage.v was successful.
+# Compile of stimulus_rca_22bit_2stage.v was successful.
+# Compile of stimulus_sqrt_csa_22bit_2stage.v was successful.
 # 6 compiles, 0 failed with no errors.
-restart -f
-# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
-# Loading work.sti_FFT
-# Loading work.top_FFT
-# Loading work.butterfly_unit
-# Loading work.complex_multiplier
-run -all
-# ** Note: $stop    : C:/Users/smoh/Desktop/26-1/Verilog/pr10/cur/sti_FFT.v(21)
-#    Time: 5260 ns  Iteration: 0  Instance: /sti_FFT
-# Break in Module sti_FFT at C:/Users/smoh/Desktop/26-1/Verilog/pr10/cur/sti_FFT.v line 21
-# Compile of butterfly_unit.v was successful.
-# Compile of complex_multiplier.v was successful.
-# Compile of FFT.v was successful.
-# Compile of sti_butterfly_unit.v was successful.
-# Compile of sti_complex_multiplier.v was successful.
-# Compile of sti_FFT.v was successful.
+vsim -gui work.stimulus_csa_20bit_2stage
+# vsim -gui work.stimulus_csa_20bit_2stage 
+# Start time: 20:39:38 on Jun 04,2026
+# Loading work.stimulus_csa_20bit_2stage
+# ** Error: (vsim-3033) Instantiation of 'carry_select_adder_20bit_2stage' failed. The design unit was not found.
+#    Time: 0 ps  Iteration: 0  Instance: /stimulus_csa_20bit_2stage File: C:/Users/smoh/Desktop/26-1/Verilog/pr4/ref/stimulus_csa_20bit_2stage.v Line: 13
+#         Searched libraries:
+#             C:/Users/smoh/Desktop/26-1/Verilog/work
+# Error loading design
+# End time: 20:39:38 on Jun 04,2026, Elapsed time: 0:00:00
+# Errors: 1, Warnings: 2
+# A time value could not be extracted from the current line
+# Compile of carry_select_adder_20b_2stage.v was successful.
+# Compile of ripple_carry_adder_22b_2stage.v was successful.
+# Compile of sqrt_csa_22bit_2stage.v was successful.
+# Compile of stimulus_csa_20bit_2stage.v was successful.
+# Compile of stimulus_rca_22bit_2stage.v was successful.
+# Compile of stimulus_sqrt_csa_22bit_2stage.v was successful.
 # 6 compiles, 0 failed with no errors.
-restart -f
-# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
-# Loading work.sti_FFT
-# Loading work.top_FFT
-# Loading work.butterfly_unit
-# Loading work.complex_multiplier
-vsim -gui work.sti_FFT
-# End time: 17:03:38 on Jun 03,2026, Elapsed time: 0:25:28
-# Errors: 0, Warnings: 1
-# vsim -gui work.sti_FFT 
-# Start time: 17:03:38 on Jun 03,2026
-# Loading work.sti_FFT
-# Loading work.top_FFT
-# Loading work.butterfly_unit
-# Loading work.complex_multiplier
-add wave -position end  sim:/sti_FFT/clk
-add wave -position end  sim:/sti_FFT/rstn
-add wave -position end  sim:/sti_FFT/mat_in
-add wave -position end  sim:/sti_FFT/mat_out
-add wave -position end  sim:/sti_FFT/out_mat
-add wave -position end  sim:/sti_FFT/in
-add wave -position end  sim:/sti_FFT/out
-add wave -position end  sim:/sti_FFT/i
-add wave -position end  sim:/sti_FFT/j
-add wave -position end  sim:/sti_FFT/err
+vsim -gui work.stimulus_csa_20bit_2stage
+# vsim -gui work.stimulus_csa_20bit_2stage 
+# Start time: 20:40:45 on Jun 04,2026
+# Loading work.stimulus_csa_20bit_2stage
+# Loading work.carry_select_adder_20bit_2stage
+# Loading work.DFF_input_20b
+# Loading work.fulladd_gate
+# Loading work.mux2to1
+add wave -position end  sim:/stimulus_csa_20bit_2stage/sum_csa
+add wave -position end  sim:/stimulus_csa_20bit_2stage/a
+add wave -position end  sim:/stimulus_csa_20bit_2stage/b
+add wave -position end  sim:/stimulus_csa_20bit_2stage/clk
+add wave -position end  sim:/stimulus_csa_20bit_2stage/rstn
+add wave -position end  sim:/stimulus_csa_20bit_2stage/mat_sum
+add wave -position end  sim:/stimulus_csa_20bit_2stage/mat_sum_cmp
+add wave -position end  sim:/stimulus_csa_20bit_2stage/mat_a
+add wave -position end  sim:/stimulus_csa_20bit_2stage/mat_b
+add wave -position end  sim:/stimulus_csa_20bit_2stage/i
+add wave -position end  sim:/stimulus_csa_20bit_2stage/k
+add wave -position end  sim:/stimulus_csa_20bit_2stage/err
 run -all
-# ** Note: $stop    : C:/Users/smoh/Desktop/26-1/Verilog/pr10/cur/sti_FFT.v(21)
-#    Time: 5260 ns  Iteration: 0  Instance: /sti_FFT
-# Break in Module sti_FFT at C:/Users/smoh/Desktop/26-1/Verilog/pr10/cur/sti_FFT.v line 21
-# Compile of butterfly_unit.v was successful.
-# Compile of complex_multiplier.v was successful.
-# Compile of FFT.v was successful.
-# Compile of sti_butterfly_unit.v was successful.
-# Compile of sti_complex_multiplier.v was successful.
-# Compile of sti_FFT.v was successful.
-# 6 compiles, 0 failed with no errors.
-restart -f
-# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
-# Loading work.sti_FFT
-# Loading work.top_FFT
-# Loading work.butterfly_unit
-# Loading work.complex_multiplier
-run -all
-# ** Note: $stop    : C:/Users/smoh/Desktop/26-1/Verilog/pr10/cur/sti_FFT.v(21)
-#    Time: 5260 ns  Iteration: 0  Instance: /sti_FFT
-# Break in Module sti_FFT at C:/Users/smoh/Desktop/26-1/Verilog/pr10/cur/sti_FFT.v line 21
+# ** Note: $stop    : C:/Users/smoh/Desktop/26-1/Verilog/pr4/ref/stimulus_csa_20bit_2stage.v(53)
+#    Time: 1050 ns  Iteration: 0  Instance: /stimulus_csa_20bit_2stage
+# Break in Module stimulus_csa_20bit_2stage at C:/Users/smoh/Desktop/26-1/Verilog/pr4/ref/stimulus_csa_20bit_2stage.v line 53
+# End time: 20:42:04 on Jun 04,2026, Elapsed time: 0:01:19
+# Errors: 0, Warnings: 2

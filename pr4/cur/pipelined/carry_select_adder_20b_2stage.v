@@ -1,159 +1,201 @@
-module carry_select_adder_20b_2stage (
-	output [21-1:0] sum,
-	input [20-1:0] a, b,
-	input c_in, clk, rstn
+module carry_select_adder_20bit_2stage (
+    output [20:0] sum,
+    input  [19:0] a, b,
+    input         c_in, clk, rstn
 );
 
-	wire [20-1:0] a_q, b_q;
-    wire [5-1:0] c0, c1;
-    wire [4-1:0] c;
-    wire [16-1:0] sum_d0, sum_d1;
-    wire [21-1:0] sum_d;
-	wire [8-1:0] sum_d_pipe;
-	wire [12-1:0] sum_d0_pipe, sum_d1_pipe;
-	wire [3-1:0] c0_pipe, c1_pipe;
-	wire c_in_q, c_pipe;
+    // Input DFF outputs
+    wire c_in_q;
+    wire [19:0] a_q, b_q;
 
-    DFF_20bit DFF0(.q(a_q), .d(a), .clk(clk), .rstn(rstn));
-    DFF_20bit DFF1(.q(b_q), .d(b), .clk(clk), .rstn(rstn));
-	DFF_1bit DFF2(.q(c_in_q), .d(c_in), .clk(clk), .rstn(rstn));
+    DFF_input_20b DFF_in (
+        .a_q(a_q), .b_q(b_q), .c_in_q(c_in_q),
+        .a(a), .b(b), .c_in(c_in),
+        .clk(clk), .rstn(rstn)
+    );
 
-    //Stage_0_4bit
-    full_adder_4b STAGE_0_FA0(.sum(sum_d_pipe[3:0]), .c_out(c[0]), .a(a_q[3:0]), .b(b_q[3:0]), .c_in(c_in_q));
+    // =========================================
+    // Stage 1: Block 0 (4-bit RCA, bits [3:0])
+    // =========================================
+    wire [3:0] sum0;
+    wire c0_i0, c0_i1, c0_i2, c0;
 
-	DFF_4bit STAGE_0_DFF0(.q(sum_d[3:0]), .d(sum_d_pipe[3:0]), .clk(clk), .rstn(rstn));
+    fulladd_gate b0f0 (sum0[0], c0_i0, a_q[0], b_q[0], c_in_q);
+    fulladd_gate b0f1 (sum0[1], c0_i1, a_q[1], b_q[1], c0_i0);
+    fulladd_gate b0f2 (sum0[2], c0_i2, a_q[2], b_q[2], c0_i1);
+    fulladd_gate b0f3 (sum0[3], c0,    a_q[3], b_q[3], c0_i2);
 
-    //Stage_1_4bit
-    full_adder_4b STAGE_1_FA0(.sum(sum_d0[3:0]), .c_out(c0[0]), .a(a_q[7:4]), .b(b_q[7:4]), .c_in(1'b0));
-    full_adder_4b STAGE_1_FA1(.sum(sum_d1[3:0]), .c_out(c1[0]), .a(a_q[7:4]), .b(b_q[7:4]), .c_in(1'b1));
+    // =========================================
+    // Stage 1: Block 1 (4-bit carry select, bits [7:4])
+    // =========================================
+    wire [3:0] sum1_0, sum1_1, sum1;
+    wire c1_0_i0, c1_0_i1, c1_0_i2, c1_0;
+    wire c1_1_i0, c1_1_i1, c1_1_i2, c1_1;
+    wire c1;
 
-    mux_2to1_4b STAGE_1_M0(.out(sum_d_pipe[7:4]), .i0(sum_d0[3:0]), .i1(sum_d1[3:0]), .sel(c[0]));
-    mux_2to1_1b STAGE_1_M1(.out(c_pipe), .i0(c0[0]), .i1(c1[0]), .sel(c[0]));
+    fulladd_gate b1f0_0 (sum1_0[0], c1_0_i0, a_q[4], b_q[4], 1'b0);
+    fulladd_gate b1f1_0 (sum1_0[1], c1_0_i1, a_q[5], b_q[5], c1_0_i0);
+    fulladd_gate b1f2_0 (sum1_0[2], c1_0_i2, a_q[6], b_q[6], c1_0_i1);
+    fulladd_gate b1f3_0 (sum1_0[3], c1_0,    a_q[7], b_q[7], c1_0_i2);
 
-	DFF_4bit STAGE_1_DFF0(.q(sum_d[7:4]), .d(sum_d_pipe[7:4]), .clk(clk), .rstn(rstn));
-	DFF_1bit STAGE_1_DFF1(.q(c[1]), .d(c_pipe), .clk(clk), .rstn(rstn));
+    fulladd_gate b1f0_1 (sum1_1[0], c1_1_i0, a_q[4], b_q[4], 1'b1);
+    fulladd_gate b1f1_1 (sum1_1[1], c1_1_i1, a_q[5], b_q[5], c1_1_i0);
+    fulladd_gate b1f2_1 (sum1_1[2], c1_1_i2, a_q[6], b_q[6], c1_1_i1);
+    fulladd_gate b1f3_1 (sum1_1[3], c1_1,    a_q[7], b_q[7], c1_1_i2);
 
-    //Stage_2_4bit
-    full_adder_4b STAGE_2_FA0(.sum(sum_d0[7:4]), .c_out(c0[1]), .a(a_q[11:8]), .b(b_q[11:8]), .c_in(1'b0));
-    full_adder_4b STAGE_2_FA1(.sum(sum_d1[7:4]), .c_out(c1[1]), .a(a_q[11:8]), .b(b_q[11:8]), .c_in(1'b1));
+    mux2to1 b1m0 (sum1[0], sum1_0[0], sum1_1[0], c0);
+    mux2to1 b1m1 (sum1[1], sum1_0[1], sum1_1[1], c0);
+    mux2to1 b1m2 (sum1[2], sum1_0[2], sum1_1[2], c0);
+    mux2to1 b1m3 (sum1[3], sum1_0[3], sum1_1[3], c0);
+    mux2to1 b1mc (c1,      c1_0,      c1_1,      c0);
 
-	DFF_4bit STAGE_2_DFF0(.q(sum_d0_pipe[3:0]), .d(sum_d0[7:4]), .clk(clk), .rstn(rstn));
-	DFF_4bit STAGE_2_DFF1(.q(sum_d1_pipe[3:0]), .d(sum_d1[7:4]), .clk(clk), .rstn(rstn));
-	DFF_1bit STAGE_2_DFF2(.q(c0_pipe[0]), .d(c0[1]), .clk(clk), .rstn(rstn));
-	DFF_1bit STAGE_2_DFF3(.q(c1_pipe[0]), .d(c1[1]), .clk(clk), .rstn(rstn));
+    // =========================================
+    // Stage 1: Block 2 (4-bit carry select, bits [11:8])
+    // =========================================
+    wire [3:0] sum2_0, sum2_1, sum2;
+    wire c2_0_i0, c2_0_i1, c2_0_i2, c2_0;
+    wire c2_1_i0, c2_1_i1, c2_1_i2, c2_1;
+    wire c2;
 
-    mux_2to1_4b STAGE_2_M0(.out(sum_d[11:8]), .i0(sum_d0_pipe[3:0]), .i1(sum_d1_pipe[3:0]), .sel(c[1]));
-    mux_2to1_1b STAGE_2_M1(.out(c[2]), .i0(c0_pipe[0]), .i1(c1_pipe[0]), .sel(c[1]));
+    fulladd_gate b2f0_0 (sum2_0[0], c2_0_i0, a_q[8],  b_q[8],  1'b0);
+    fulladd_gate b2f1_0 (sum2_0[1], c2_0_i1, a_q[9],  b_q[9],  c2_0_i0);
+    fulladd_gate b2f2_0 (sum2_0[2], c2_0_i2, a_q[10], b_q[10], c2_0_i1);
+    fulladd_gate b2f3_0 (sum2_0[3], c2_0,    a_q[11], b_q[11], c2_0_i2);
 
-    //Stage_3_4bit
-    full_adder_4b STAGE_3_FA0(.sum(sum_d0[11:8]), .c_out(c0[2]), .a(a_q[15:12]), .b(b_q[15:12]), .c_in(1'b0));
-    full_adder_4b STAGE_3_FA1(.sum(sum_d1[11:8]), .c_out(c1[2]), .a(a_q[15:12]), .b(b_q[15:12]), .c_in(1'b1));
+    fulladd_gate b2f0_1 (sum2_1[0], c2_1_i0, a_q[8],  b_q[8],  1'b1);
+    fulladd_gate b2f1_1 (sum2_1[1], c2_1_i1, a_q[9],  b_q[9],  c2_1_i0);
+    fulladd_gate b2f2_1 (sum2_1[2], c2_1_i2, a_q[10], b_q[10], c2_1_i1);
+    fulladd_gate b2f3_1 (sum2_1[3], c2_1,    a_q[11], b_q[11], c2_1_i2);
 
-	DFF_4bit STAGE_3_DFF0(.q(sum_d0_pipe[7:4]), .d(sum_d0[11:8]), .clk(clk), .rstn(rstn));
-	DFF_4bit STAGE_3_DFF1(.q(sum_d1_pipe[7:4]), .d(sum_d1[11:8]), .clk(clk), .rstn(rstn));
-	DFF_1bit STAGE_3_DFF2(.q(c0_pipe[1]), .d(c0[2]), .clk(clk), .rstn(rstn));
-	DFF_1bit STAGE_3_DFF3(.q(c1_pipe[1]), .d(c1[2]), .clk(clk), .rstn(rstn));
+    mux2to1 b2m0 (sum2[0], sum2_0[0], sum2_1[0], c1);
+    mux2to1 b2m1 (sum2[1], sum2_0[1], sum2_1[1], c1);
+    mux2to1 b2m2 (sum2[2], sum2_0[2], sum2_1[2], c1);
+    mux2to1 b2m3 (sum2[3], sum2_0[3], sum2_1[3], c1);
+    mux2to1 b2mc (c2,      c2_0,      c2_1,      c1);
 
-    mux_2to1_4b STAGE_3_M0(.out(sum_d[15:12]), .i0(sum_d0_pipe[7:4]), .i1(sum_d1_pipe[7:4]), .sel(c[2]));
-    mux_2to1_1b STAGE_3_M1(.out(c[3]), .i0(c0_pipe[1]), .i1(c1_pipe[1]), .sel(c[2]));
+    // =========================================
+    // Mid Pipeline Registers
+    // =========================================
+    reg [11:0]  sum_low_q;
+    reg         c_mid_q;
+    reg [19:12] a_mid_q, b_mid_q;
 
-    //Stage_4_4bit (마지막: a[19:16], b[19:16])
-    full_adder_4b STAGE_4_FA0(.sum(sum_d0[15:12]), .c_out(c0[3]), .a(a_q[19:16]), .b(b_q[19:16]), .c_in(1'b0));
-    full_adder_4b STAGE_4_FA1(.sum(sum_d1[15:12]), .c_out(c1[3]), .a(a_q[19:16]), .b(b_q[19:16]), .c_in(1'b1));
-
-	DFF_4bit STAGE_4_DFF0(.q(sum_d0_pipe[11:8]), .d(sum_d0[15:12]), .clk(clk), .rstn(rstn));
-	DFF_4bit STAGE_4_DFF1(.q(sum_d1_pipe[11:8]), .d(sum_d1[15:12]), .clk(clk), .rstn(rstn));
-	DFF_1bit STAGE_4_DFF2(.q(c0_pipe[2]), .d(c0[3]), .clk(clk), .rstn(rstn));
-	DFF_1bit STAGE_4_DFF3(.q(c1_pipe[2]), .d(c1[3]), .clk(clk), .rstn(rstn));
-
-    mux_2to1_4b STAGE_4_M0(.out(sum_d[19:16]), .i0(sum_d0_pipe[11:8]), .i1(sum_d1_pipe[11:8]), .sel(c[3]));
-    mux_2to1_1b STAGE_4_M1(.out(sum_d[20]), .i0(c0_pipe[2]), .i1(c1_pipe[2]), .sel(c[3]));
-
-    DFF_21bit DFF3(.q(sum), .d(sum_d), .clk(clk), .rstn(rstn));
-	
-endmodule
-
-// ─── 신규 DFF 모듈 ────────────────────────────────────
-
-module DFF_20bit (
-    output reg [20-1:0] q,
-    input      [20-1:0] d,
-    input               clk, rstn
-);
-    always@(posedge clk) begin
-        if(!rstn) q <= 20'b0;
-        else      q <= d;
+    always @(posedge clk) begin
+        if (!rstn) begin
+            sum_low_q <= 0;
+            c_mid_q   <= 0;
+            a_mid_q   <= 0;
+            b_mid_q   <= 0;
+        end else begin
+            sum_low_q <= {sum2, sum1, sum0};
+            c_mid_q   <= c2;
+            a_mid_q   <= a_q[19:12];
+            b_mid_q   <= b_q[19:12];
+        end
     end
-endmodule
 
-module DFF_21bit (
-    output reg [21-1:0] q,
-    input      [21-1:0] d,
-    input               clk, rstn
-);
-    always@(posedge clk) begin
-        if(!rstn) q <= 21'b0;
-        else      q <= d;
+    // =========================================
+    // Stage 2: Block 3 (4-bit carry select, bits [15:12])
+    // =========================================
+    wire [3:0] sum3_0, sum3_1, sum3;
+    wire c3_0_i0, c3_0_i1, c3_0_i2, c3_0;
+    wire c3_1_i0, c3_1_i1, c3_1_i2, c3_1;
+    wire c3;
+
+    fulladd_gate b3f0_0 (sum3_0[0], c3_0_i0, a_mid_q[12], b_mid_q[12], 1'b0);
+    fulladd_gate b3f1_0 (sum3_0[1], c3_0_i1, a_mid_q[13], b_mid_q[13], c3_0_i0);
+    fulladd_gate b3f2_0 (sum3_0[2], c3_0_i2, a_mid_q[14], b_mid_q[14], c3_0_i1);
+    fulladd_gate b3f3_0 (sum3_0[3], c3_0,    a_mid_q[15], b_mid_q[15], c3_0_i2);
+
+    fulladd_gate b3f0_1 (sum3_1[0], c3_1_i0, a_mid_q[12], b_mid_q[12], 1'b1);
+    fulladd_gate b3f1_1 (sum3_1[1], c3_1_i1, a_mid_q[13], b_mid_q[13], c3_1_i0);
+    fulladd_gate b3f2_1 (sum3_1[2], c3_1_i2, a_mid_q[14], b_mid_q[14], c3_1_i1);
+    fulladd_gate b3f3_1 (sum3_1[3], c3_1,    a_mid_q[15], b_mid_q[15], c3_1_i2);
+
+    mux2to1 b3m0 (sum3[0], sum3_0[0], sum3_1[0], c_mid_q);
+    mux2to1 b3m1 (sum3[1], sum3_0[1], sum3_1[1], c_mid_q);
+    mux2to1 b3m2 (sum3[2], sum3_0[2], sum3_1[2], c_mid_q);
+    mux2to1 b3m3 (sum3[3], sum3_0[3], sum3_1[3], c_mid_q);
+    mux2to1 b3mc (c3,      c3_0,      c3_1,      c_mid_q);
+
+    // =========================================
+    // Stage 2: Block 4 (4-bit carry select, bits [19:16])
+    // =========================================
+    wire [3:0] sum4_0, sum4_1, sum4;
+    wire c4_0_i0, c4_0_i1, c4_0_i2, c4_0;
+    wire c4_1_i0, c4_1_i1, c4_1_i2, c4_1;
+    wire c4;
+
+    fulladd_gate b4f0_0 (sum4_0[0], c4_0_i0, a_mid_q[16], b_mid_q[16], 1'b0);
+    fulladd_gate b4f1_0 (sum4_0[1], c4_0_i1, a_mid_q[17], b_mid_q[17], c4_0_i0);
+    fulladd_gate b4f2_0 (sum4_0[2], c4_0_i2, a_mid_q[18], b_mid_q[18], c4_0_i1);
+    fulladd_gate b4f3_0 (sum4_0[3], c4_0,    a_mid_q[19], b_mid_q[19], c4_0_i2);
+
+    fulladd_gate b4f0_1 (sum4_1[0], c4_1_i0, a_mid_q[16], b_mid_q[16], 1'b1);
+    fulladd_gate b4f1_1 (sum4_1[1], c4_1_i1, a_mid_q[17], b_mid_q[17], c4_1_i0);
+    fulladd_gate b4f2_1 (sum4_1[2], c4_1_i2, a_mid_q[18], b_mid_q[18], c4_1_i1);
+    fulladd_gate b4f3_1 (sum4_1[3], c4_1,    a_mid_q[19], b_mid_q[19], c4_1_i2);
+
+    mux2to1 b4m0 (sum4[0], sum4_0[0], sum4_1[0], c3);
+    mux2to1 b4m1 (sum4[1], sum4_0[1], sum4_1[1], c3);
+    mux2to1 b4m2 (sum4[2], sum4_0[2], sum4_1[2], c3);
+    mux2to1 b4m3 (sum4[3], sum4_0[3], sum4_1[3], c3);
+    mux2to1 b4mc (c4,      c4_0,      c4_1,      c3);
+
+    // =========================================
+    // Output DFF
+    // =========================================
+    reg [20:0] sum_q;
+
+    always @(posedge clk) begin
+        if (!rstn)
+            sum_q <= 0;
+        else
+            sum_q <= {c4, sum4, sum3, sum_low_q};
     end
+
+    assign sum = sum_q;
+
 endmodule
 
-// ─── 기존 모듈 그대로 유지 ────────────────────────────
-
-module full_adder (
+module fulladd_gate (
     output sum, c_out,
     input  a, b, c_in
 );
-wire s1, c1, s2;
-xor(s1, a, b);
-and(c1, a, b);
-xor(  sum, s1, c_in);
-and(   s2, s1, c_in);
-xor(c_out, s2,   c1);
+    wire s1, s2, c1;
+    xor(s1, a, b);
+    and(c1, a, b);
+    and(s2, s1, c_in);
+    xor(sum, s1, c_in);
+    xor(c_out, c1, s2);
 endmodule
 
-module full_adder_4b (
-    output [4-1:0] sum,
-    output c_out,
-    input  [4-1:0] a, b,
-    input  c_in
+module mux2to1 (
+    output out,
+    input  in0, in1, sel
 );
-wire [3-1:0] c;
-full_adder f00(.sum(sum[0]), .c_out(c[0]),  .a(a[0]), .b(b[0]), .c_in(c_in));
-full_adder f01(.sum(sum[1]), .c_out(c[1]),  .a(a[1]), .b(b[1]), .c_in(c[0]));
-full_adder f02(.sum(sum[2]), .c_out(c[2]),  .a(a[2]), .b(b[2]), .c_in(c[1]));
-full_adder f03(.sum(sum[3]), .c_out(c_out), .a(a[3]), .b(b[3]), .c_in(c[2]));
+    wire s0, s1, sel_n;
+    not(sel_n, sel);
+    and(s0, in0, sel_n);
+    and(s1, in1, sel);
+    or(out, s0, s1);
 endmodule
 
-module mux_2to1_1b (
-    output reg out,
-    input      i0, i1,
-    input      sel
+module DFF_input_20b (
+    output reg [19:0] a_q, b_q,
+    output reg c_in_q,
+    input [19:0] a, b,
+    input c_in, clk, rstn
 );
-always@(*) begin
-    if(sel==0) out <= i0;
-    else       out <= i1;
-end
-endmodule
-
-module mux_2to1_4b (
-    output reg [4-1:0] out,
-    input      [4-1:0] i0, i1,
-    input              sel
-);
-always@(*) begin
-    if(sel==0) out <= i0;
-    else       out <= i1;
-end
-endmodule
-
-
-module DFF_4bit (
-    output reg [4-1:0] q,
-    input      [4-1:0] d,
-    input              clk, rstn
-);
-    always@(posedge clk) begin
-        if(!rstn) q <= 4'b0;
-        else      q <= d;
+    always @(posedge clk) begin
+        if (!rstn) begin
+            a_q    <= 0;
+            b_q    <= 0;
+            c_in_q <= 0;
+        end else begin
+            a_q    <= a;
+            b_q    <= b;
+            c_in_q <= c_in;
+        end
     end
 endmodule
