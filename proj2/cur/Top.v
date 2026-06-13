@@ -1,7 +1,7 @@
 `timescale 1ns / 10ps
 //============================================================================
 //  Project #2 : 16x16 2D-DCT for 512x512 JPEG compression
-//
+// 11
 //  Top
 //   +-- MEM_IN  : rflp16384x128mx16  (input  buffer, 16384 x 128b, 16px x 8b)
 //   +-- U_DCT1  : 16-point 1D-DCT (row DCT,    8b unsigned in -> 14b out)
@@ -93,59 +93,101 @@ module Top (
     wire [16*14-1:0] tp_odat = tp1_oen ? tp1_o : tp2_o;
 
     //------------------------------------------------------------------
-    // 4) 2nd 1D-DCT (column DCT)
+    // 4) 2nd 1D-DCT (column DCT) + truncation to 12 bits
     //------------------------------------------------------------------
     wire [16*17-1:0] dct2_w;
-    reg  [16*17-1:0] dct2_r;
-    reg              v_w;
-
     dct16_stage2 U_DCT2 ( .i_x(tp_odat), .o_z(dct2_w) );
 
+    // word counter at DCT2 output : low 4 bits = v index of current word
+    reg [3:0] vcnt;
     always @(posedge clk) begin
-        if (!rstn) v_w <= 1'b0;
-        else       v_w <= tp_oen;
-        dct2_r <= dct2_w;
+        if (!rstn)        vcnt <= 4'd0;
+        else if (tp_oen)  vcnt <= vcnt + 4'd1;
     end
+    wire dc_word = (vcnt == 4'd0);            // v = 0 word of a block
 
-    //------------------------------------------------------------------
-    // 5) Truncation to 12 bits + OUTPUT buffer write
-    //------------------------------------------------------------------
-    reg [13:0] addr_out;
-    always @(posedge clk) begin
-        if (!rstn)     addr_out <= 14'd0;
-        else if (v_w)  addr_out <= addr_out + 14'd1;
-    end
-    wire first_word = (addr_out[3:0] == 4'd0);   // v = 0 word of a block
-
-    wire [191:0] out_word;
+    //  DC (u=0,v=0) : real>>1  = z[14:3]
+    //  AC           : real*2 (keep 1 frac bit) = z>>>1, with saturation
+    wire [16*12-1:0] trunc_w;
     genvar gk;
     generate
         for (gk = 0; gk < 16; gk = gk + 1) begin : TRUNC
-            wire signed [16:0] zz = dct2_r[16*17-1-17*gk -: 17]; // value*4
+            wire signed [16:0] zz = dct2_w[16*17-1-17*gk -: 17]; // value*4
+            wire signed [15:0] zh = zz >>> 1;                    // value*2
             if (gk == 0) begin : DC_PATH
-                // element0 of the v=0 word is the true DC (u=0,v=0)
-                //  DC : drop 2 frac bits, then truncate LSB of integer part
-                //  AC(u>0, v=0) : keep 2 frac bits + saturation
-                assign out_word[191-12*gk -: 12] =
-                    first_word ? zz[14:3] :
-                    (zz > 17'sd2047)  ? 12'h7FF :
-                    (zz < -17'sd2048) ? 12'h800 : zz[11:0];
+                assign trunc_w[191-12*gk -: 12] =
+                    dc_word ? zz[14:3] :
+                    (zh > 16'sd2047)  ? 12'h7FF :
+                    (zh < -16'sd2048) ? 12'h800 : zh[11:0];
             end
             else begin : AC_PATH
-                assign out_word[191-12*gk -: 12] =
-                    (zz > 17'sd2047)  ? 12'h7FF :
-                    (zz < -17'sd2048) ? 12'h800 : zz[11:0];
+                assign trunc_w[191-12*gk -: 12] =
+                    (zh > 16'sd2047)  ? 12'h7FF :
+                    (zh < -16'sd2048) ? 12'h800 : zh[11:0];
             end
         end
     endgenerate
 
-    rflp16384x192mx16 MEM_OUT (              // write-only here
+    //------------------------------------------------------------------
+    // 5) Output transpose (TP3/TP4 role) - lightweight ping-pong,
+    //    combinational read port (saves 1 cycle vs given TPmem; bonus)
+    //------------------------------------------------------------------
+    reg [11:0] bankA [0:15][0:15];            // [row u][col v]
+    reg [11:0] bankB [0:15][0:15];
+    reg [4:0]  wcnt;                          // write row counter
+    integer wi;
+    always @(posedge clk) begin
+        if (!rstn) wcnt <= 5'd0;
+        else if (tp_oen) begin
+            wcnt <= wcnt + 5'd1;
+            for (wi = 0; wi < 16; wi = wi + 1) begin
+                // incoming word = (v fixed = wcnt[3:0], u = wi)
+                // store transposed: bank[u][v]
+                if (~wcnt[4]) bankA[wi][wcnt[3:0]] <= trunc_w[191-12*wi -: 12];
+                else          bankB[wi][wcnt[3:0]] <= trunc_w[191-12*wi -: 12];
+            end
+        end
+    end
+
+    // read enable = write enable delayed by 16 cycles (drain included)
+    reg [15:0] oen_dly;
+    always @(posedge clk) begin
+        if (!rstn) oen_dly <= 16'd0;
+        else       oen_dly <= {oen_dly[14:0], tp_oen};
+    end
+    wire rd_en = oen_dly[15];
+
+    reg [4:0] rcnt;                           // read row counter (u)
+    always @(posedge clk) begin
+        if (!rstn)      rcnt <= 5'd0;
+        else if (rd_en) rcnt <= rcnt + 5'd1;
+    end
+
+    // combinational read : word = row u of the opposite bank
+    wire [191:0] out_word;
+    generate
+        for (gk = 0; gk < 16; gk = gk + 1) begin : RDMUX
+            assign out_word[191-12*gk -: 12] =
+                (~rcnt[4]) ? bankA[rcnt[3:0]][gk] : bankB[rcnt[3:0]][gk];
+        end
+    endgenerate
+
+    //------------------------------------------------------------------
+    // 6) OUTPUT buffer write
+    //------------------------------------------------------------------
+    reg [13:0] addr_out;
+    always @(posedge clk) begin
+        if (!rstn)      addr_out <= 14'd0;
+        else if (rd_en) addr_out <= addr_out + 14'd1;
+    end
+
+    rflp16384x192mx16 MEM_OUT (
         .DO   (),
         .DIN  (out_word),
         .RA   (addr_out[13:4]),
         .CA   (addr_out[3:0]),
-        .NWRT (~v_w),
-        .NCE  (~v_w),
+        .NWRT (~rd_en),
+        .NCE  (~rd_en),
         .CLK  (clk)
     );
 

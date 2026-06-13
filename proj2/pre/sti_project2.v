@@ -15,13 +15,13 @@ always #5 clk <= ~clk;
 
 top_memory_test_v7 TEST(clk,reset); // define input & output ports of your top module by youself 
 
-initial	$readmemh("image_in_5.txt", TEST.MEM_IN.SRAM_syn.SRAM32768x64.Mem); //input image, check the path of memory location (module instance)
+initial	$readmemh("./aa/image_in_5.txt", TEST.MEM_IN.SRAM_syn.SRAM32768x64.Mem); //input image, check the path of memory location (module instance)
 
 integer f;
 integer i;
 initial
 begin
-	f = $fopen("DCT_image_5.txt","w"); //output image, this is the output file that finished 2D-DCT operations.
+	f = $fopen("./aa/DCT_image_5.txt","w"); //output image, this is the output file that finished 2D-DCT operations.
 
 	#327920; //change if you need
 

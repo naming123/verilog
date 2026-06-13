@@ -9,870 +9,190 @@ z2
 !i10f 100
 cModel Technology
 Z0 dC:/Users/smoh/Desktop/26-1/Verilog
-vcarry_select_adder_20b_2stage
-!s110 1780573171
+vdct16_stage1
+Z1 !s110 1781256719
 !i10b 1
-!s100 F8LH52OULk?gi:7z7<_AJ2
-Z1 !s11b Dg1SIo80bB@j0V0VzS_@n1
-Igm^l@];zk^XkhBXhTX8eW2
-Z2 VDg1SIo80bB@j0V0VzS_@n1
+!s100 _<jAEd:>[Y^];HEfJDBmd0
+Z2 !s11b Dg1SIo80bB@j0V0VzS_@n1
+IZY2KcYo7896bA<NNZcW[m0
+Z3 VDg1SIo80bB@j0V0VzS_@n1
 R0
-w1780573110
-Z3 8C:/Users/smoh/Desktop/26-1/Verilog/pr4/cur/pipelined/carry_select_adder_20b_2stage.v
-Z4 FC:/Users/smoh/Desktop/26-1/Verilog/pr4/cur/pipelined/carry_select_adder_20b_2stage.v
-!i122 36
-Z5 L0 1 159
-Z6 OV;L;2020.1;71
+Z4 w1781235353
+Z5 8C:/Users/smoh/Desktop/26-1/Verilog/proj2/cur/Top.v
+Z6 FC:/Users/smoh/Desktop/26-1/Verilog/proj2/cur/Top.v
+!i122 228
+L0 204 53
+Z7 OV;L;2020.1;71
 r1
 !s85 0
 31
-!s108 1780573171.000000
-Z7 !s107 C:/Users/smoh/Desktop/26-1/Verilog/pr4/cur/pipelined/carry_select_adder_20b_2stage.v|
-Z8 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/smoh/Desktop/26-1/Verilog/pr4/cur/pipelined/carry_select_adder_20b_2stage.v|
+Z8 !s108 1781256719.000000
+Z9 !s107 C:/Users/smoh/Desktop/26-1/Verilog/proj2/cur/Top.v|
+Z10 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/smoh/Desktop/26-1/Verilog/proj2/cur/Top.v|
 !i113 1
-Z9 o-work work
-Z10 tCvgOpt 0
-vcarry_select_adder_20bit_2stage
-Z11 !s110 1780573234
-!i10b 1
-!s100 i2lKLPOHzN8:l[mWGnJ8;2
+Z11 o-work work
+Z12 tCvgOpt 0
+vdct16_stage2
 R1
-IU6i5?]z04>5VMi8IVik5g2
+!i10b 1
+!s100 FHbHS[Om[@OYX_11dJ85I0
 R2
-R0
-Z12 w1780573230
+I45^UGm:K_8gV;WVdn9mN:3
 R3
+R0
 R4
-!i122 42
 R5
 R6
-r1
-!s85 0
-31
-Z13 !s108 1780573234.000000
+!i122 228
+L0 264 50
 R7
+r1
+!s85 0
+31
 R8
-!i113 1
 R9
 R10
-vdct16_stage1
-Z14 !s110 1781181665
-!i10b 1
-!s100 heUF[_GK]NJS8Ra@BXPlE2
-R1
-IhT=:;COofc>Y?dMAifJJ>2
-R2
-R0
-Z15 w1781181277
-Z16 8C:/Users/smoh/Desktop/26-1/Verilog/proj2/cur/Top.v
-Z17 FC:/Users/smoh/Desktop/26-1/Verilog/proj2/cur/Top.v
-!i122 51
-L0 162 53
-R6
-r1
-!s85 0
-31
-Z18 !s108 1781181665.000000
-Z19 !s107 C:/Users/smoh/Desktop/26-1/Verilog/proj2/cur/Top.v|
-Z20 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/smoh/Desktop/26-1/Verilog/proj2/cur/Top.v|
 !i113 1
-R9
-R10
-vdct16_stage2
-R14
-!i10b 1
-!s100 [URgiE>?Tb1BFGFCh`REK0
-R1
-IALb>V[3aXRRj?o_VIHa603
-R2
-R0
-R15
-R16
-R17
-!i122 51
-L0 222 50
-R6
-r1
-!s85 0
-31
-R18
-R19
-R20
-!i113 1
-R9
-R10
-vDFF_1bit
-Z21 !s110 1780572388
-!i10b 1
-!s100 aUk^6m8CEie2]:`<T@3Eo1
-R1
-IV;gbgdO4`U_WdM72^7nMH1
-R2
-R0
-Z22 w1776224153
-Z23 8C:/Users/smoh/Desktop/26-1/Verilog/pr4/cur/pipelined/sqrt_csa_22bit_2stage.v
-Z24 FC:/Users/smoh/Desktop/26-1/Verilog/pr4/cur/pipelined/sqrt_csa_22bit_2stage.v
-!i122 20
-L0 152 6
-R6
-r1
-!s85 0
-31
-Z25 !s108 1780572388.000000
-Z26 !s107 C:/Users/smoh/Desktop/26-1/Verilog/pr4/cur/pipelined/sqrt_csa_22bit_2stage.v|
-Z27 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/smoh/Desktop/26-1/Verilog/pr4/cur/pipelined/sqrt_csa_22bit_2stage.v|
-!i113 1
-R9
-R10
-n@d@f@f_1bit
-vDFF_20bit
-Z28 !s110 1780572858
-!i10b 1
-!s100 XWh3LNXHK>H4;@kIY[fNH2
-R1
-I7oD<YodRliNgJ1mCfShI80
-R2
-R0
-R22
-R3
-R4
-!i122 24
-L0 78 10
-R6
-r1
-!s85 0
-31
-Z29 !s108 1780572858.000000
-R7
-R8
-!i113 1
-R9
-R10
-n@d@f@f_20bit
-vDFF_21bit
-R28
-!i10b 1
-!s100 g^FQKI3424oYl4KbkQ`8E1
-R1
-II[<6CmR9=fbc41D?8;zKR3
-R2
-R0
-R22
-R3
-R4
-!i122 24
-L0 89 10
-R6
-r1
-!s85 0
-31
-R29
-R7
-R8
-!i113 1
-R9
-R10
-n@d@f@f_21bit
-vDFF_22bit
-R21
-!i10b 1
-!s100 3Dn9]DRdK`dBC]EbT[mnJ2
-R1
-IGC^7:D[E_]l@YC<ACWHm72
-R2
-R0
-R22
-R23
-R24
-!i122 20
-L0 128 11
-R6
-r1
-!s85 0
-31
-R25
-R26
-R27
-!i113 1
-R9
-R10
-n@d@f@f_22bit
-vDFF_23bit
-R21
-!i10b 1
-!s100 813RIcTzKz7bnSiD3gYRz2
-R1
-IDZ5J0l=nc]dLFOH7^MA>70
-R2
-R0
-R22
-R23
-R24
-!i122 20
-L0 140 11
-R6
-r1
-!s85 0
-31
-R25
-R26
-R27
-!i113 1
-R9
-R10
-n@d@f@f_23bit
-vDFF_2bit
-R21
-!i10b 1
-!s100 XX^JS5b1SWC6PBRMjXg8^1
-R1
-I9oh<DFLEa>k79>D064AZV2
-R2
-R0
-R22
-R23
-R24
-!i122 20
-L0 159 6
-R6
-r1
-!s85 0
-31
-R25
-R26
-R27
-!i113 1
-R9
-R10
-n@d@f@f_2bit
-vDFF_3bit
-R21
-!i10b 1
-!s100 PoOQ5Y7Rg3of>^lEH0moa3
-R1
-IW>8c>QcY;ZgRz]<SoVWi30
-R2
-R0
-R22
-R23
-R24
-!i122 20
-L0 166 6
-R6
-r1
-!s85 0
-31
-R25
-R26
-R27
-!i113 1
-R9
-R10
-n@d@f@f_3bit
-vDFF_4bit
-R28
-!i10b 1
-!s100 cDmFEa1CPEVYk9=Bi>@CL3
-R1
-IVKMNX>_Z7i?`@NeMhSGjN1
-R2
-R0
-R22
-R3
-R4
-!i122 24
-L0 150 10
-R6
-r1
-!s85 0
-31
-R29
-R7
-R8
-!i113 1
-R9
-R10
-n@d@f@f_4bit
-vDFF_input
 R11
-!i10b 1
-!s100 ]NWeU9jb^C8hW<neOIQE]2
-R1
-I4o<gjD`LVOKRZLYGGZ;cj2
-R2
-R0
-Z30 w1780572851
-R23
-R24
-!i122 44
-L0 220 18
-R6
-r1
-!s85 0
-31
-R13
-R26
-R27
-!i113 1
-R9
-R10
-n@d@f@f_input
-vDFF_input_20b
-R11
-!i10b 1
-!s100 YLLg6=AUa?`gaBlIf?ahM3
-R1
-Ig<YbAG?oG6Sf@38b6>X4o1
-R2
-R0
 R12
-R3
-R4
-!i122 42
-L0 184 18
-R6
-r1
-!s85 0
-31
-R13
-R7
-R8
-!i113 1
-R9
-R10
-n@d@f@f_input_20b
-vFA_1bit
-R21
-!i10b 1
-!s100 ]TWJS=F8k?mZX9fKRRL8d1
-R1
-I@ch38m09@jDz9gS3]NE1I0
-R2
-R0
-R22
-R23
-R24
-!i122 20
-L0 181 3
-R6
-r1
-!s85 0
-31
-R25
-R26
-R27
-!i113 1
-R9
-R10
-n@f@a_1bit
-vFA_2bit
-R21
-!i10b 1
-!s100 P57ATUiD6D``dT<YNTL_z0
-R1
-I19<]e_GYN=^SHQWi8`9U32
-R2
-R0
-R22
-R23
-R24
-!i122 20
-L0 185 3
-R6
-r1
-!s85 0
-31
-R25
-R26
-R27
-!i113 1
-R9
-R10
-n@f@a_2bit
-vFA_3bit
-R21
-!i10b 1
-!s100 VQbZXD?fn:S>9BkIJ_>Lj2
-R1
-IT3n@8UdVL_5UaB>S;oZ0@2
-R2
-R0
-R22
-R23
-R24
-!i122 20
-L0 189 3
-R6
-r1
-!s85 0
-31
-R25
-R26
-R27
-!i113 1
-R9
-R10
-n@f@a_3bit
-vFA_4bit
-R21
-!i10b 1
-!s100 anQCf^NSWh@XWJDGbB^H`0
-R1
-Id=mmje@j@a:QGP;_6F]W40
-R2
-R0
-R22
-R23
-R24
-!i122 20
-L0 193 3
-R6
-r1
-!s85 0
-31
-R25
-R26
-R27
-!i113 1
-R9
-R10
-n@f@a_4bit
-vfull_adder
-R28
-!i10b 1
-!s100 QeEKcoB[f@[Q2iOOLB7OC1
-R1
-IL46n>B0bIXKPGcWnGSSTP3
-R2
-R0
-R22
-R3
-R4
-!i122 24
-L0 102 11
-R6
-r1
-!s85 0
-31
-R29
-R7
-R8
-!i113 1
-R9
-R10
-vfull_adder_4b
-R28
-!i10b 1
-!s100 b94hZiJG:CZo4?j;RUPRH3
-R1
-IH_3:KjSjk:6@^Uf@mPM5c1
-R2
-R0
-R22
-R3
-R4
-!i122 24
-L0 114 12
-R6
-r1
-!s85 0
-31
-R29
-R7
-R8
-!i113 1
-R9
-R10
-vfulladd_gate
-R11
-!i10b 1
-!s100 W1SH;Ne_;@C=a1Vgb;?^:3
-R1
-I:G=C@h=j1]f^WX87IiUZj3
-R2
-R0
-R30
-R23
-R24
-!i122 44
-L0 191 11
-R6
-r1
-!s85 0
-31
-R13
-R26
-R27
-!i113 1
-R9
-R10
-vmux2to1
-R11
-!i10b 1
-!s100 gSC1L=cF3`V2?eFoTJndO1
-R1
-IbA0FXF7Lb75^2=bk3;IOJ3
-R2
-R0
-R30
-R23
-R24
-!i122 44
-L0 206 10
-R6
-r1
-!s85 0
-31
-R13
-R26
-R27
-!i113 1
-R9
-R10
-vmux2to1_6bit
-R21
-!i10b 1
-!s100 ]JE5^@eNkN[]6f1P77jeI2
-R1
-IePoV[E;m0_fWNjo>@ZNk90
-R2
-R0
-R22
-R23
-R24
-!i122 20
-L0 198 3
-R6
-r1
-!s85 0
-31
-R25
-R26
-R27
-!i113 1
-R9
-R10
-vmux2to1_7bit
-R21
-!i10b 1
-!s100 COYc:`@Y]:6RiniC82i^K2
-R1
-IWAbjQ<HeP6WOXUXDIb1I<2
-R2
-R0
-R22
-R23
-R24
-!i122 20
-L0 202 3
-R6
-r1
-!s85 0
-31
-R25
-R26
-R27
-!i113 1
-R9
-R10
-vmux2to1_8bit
-R21
-!i10b 1
-!s100 W;E:9dk[l85oZ=J=i@==G0
-R1
-I`Cl5Oe8c:[D[6MNj7QDS`2
-R2
-R0
-R22
-R23
-R24
-!i122 20
-L0 206 3
-R6
-r1
-!s85 0
-31
-R25
-R26
-R27
-!i113 1
-R9
-R10
-vmux_2to1_1b
-R28
-!i10b 1
-!s100 0^AFR0BjE[enXk<eaKHKc2
-R1
-Im9VZZ2A^H7L7Y:f8TAWNZ0
-R2
-R0
-R22
-R3
-R4
-!i122 24
-L0 127 10
-R6
-r1
-!s85 0
-31
-R29
-R7
-R8
-!i113 1
-R9
-R10
-vmux_2to1_4b
-R28
-!i10b 1
-!s100 WHX6U7AfWlDdZa=N2kdX51
-R1
-ICHjoWm;>k21@FaIePTCMZ3
-R2
-R0
-R22
-R3
-R4
-!i122 24
-L0 138 10
-R6
-r1
-!s85 0
-31
-R29
-R7
-R8
-!i113 1
-R9
-R10
 vrflp16384x128mx16
-R14
+R1
 !i10b 1
 !s100 ;n5UXCozD3_Y1l`aUd_R43
-R1
-IdkEJYVK?LEA^lfHEO==<l3
 R2
+IdkEJYVK?LEA^lfHEO==<l3
+R3
 R0
-Z31 w1780996359
+Z13 w1780996359
 8C:/Users/smoh/Desktop/26-1/Verilog/proj2/cur/rflp16384x128mx16.v
 FC:/Users/smoh/Desktop/26-1/Verilog/proj2/cur/rflp16384x128mx16.v
-!i122 48
+!i122 225
 L0 2 667
-R6
+R7
 r1
 !s85 0
 31
-R18
+R8
 !s107 C:/Users/smoh/Desktop/26-1/Verilog/proj2/cur/rflp16384x128mx16.v|
 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/smoh/Desktop/26-1/Verilog/proj2/cur/rflp16384x128mx16.v|
 !i113 1
-R9
-R10
+R11
+R12
 vrflp16384x192mx16
-R14
+R1
 !i10b 1
 !s100 Reg`L;Ob:dgbc:FjGAO9O1
-R1
-IZ;ghY97jgc]3m[ORcYZhL0
 R2
+IZ;ghY97jgc]3m[ORcYZhL0
+R3
 R0
-R31
+R13
 8C:/Users/smoh/Desktop/26-1/Verilog/proj2/cur/rflp16384x192mx16.v
 FC:/Users/smoh/Desktop/26-1/Verilog/proj2/cur/rflp16384x192mx16.v
-!i122 49
+!i122 226
 L0 2 922
-R6
+R7
 r1
 !s85 0
 31
-R18
+R8
 !s107 C:/Users/smoh/Desktop/26-1/Verilog/proj2/cur/rflp16384x192mx16.v|
 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/smoh/Desktop/26-1/Verilog/proj2/cur/rflp16384x192mx16.v|
 !i113 1
-R9
-R10
-vripple_carry_adder_22bit_2stage
 R11
-!i10b 1
-!s100 EPEf@3feZV=8dU@:ih;4J2
-R1
-Ik5M?dU;:5jX9z068fk_[?2
-R2
-R0
-w1780572073
-8C:/Users/smoh/Desktop/26-1/Verilog/pr4/cur/pipelined/ripple_carry_adder_22b_2stage.v
-FC:/Users/smoh/Desktop/26-1/Verilog/pr4/cur/pipelined/ripple_carry_adder_22b_2stage.v
-!i122 43
-L0 1 98
-R6
-r1
-!s85 0
-31
-R13
-!s107 C:/Users/smoh/Desktop/26-1/Verilog/pr4/cur/pipelined/ripple_carry_adder_22b_2stage.v|
-!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/smoh/Desktop/26-1/Verilog/pr4/cur/pipelined/ripple_carry_adder_22b_2stage.v|
-!i113 1
-R9
-R10
-vsqrt_csa_22bit_2stage
-R11
-!i10b 1
-!s100 dW=7^kjN[LX<0U`kSeLJ92
-R1
-I2cU^T0;7QVXN4KOh0[;k@0
-R2
-R0
-R30
-R23
-R24
-!i122 44
-L0 1 186
-R6
-r1
-!s85 0
-31
-R13
-R26
-R27
-!i113 1
-R9
-R10
+R12
 vsti_project2
-R14
-!i10b 1
-!s100 Z9Wl[REZ]g^nogEHJN:b70
 R1
-IDjZ9eIFkX;O:61_QYd7<M3
+!i10b 1
+!s100 `GoUh]kah_c;C93NPE0T^0
 R2
+IX3z1:aO2B1ND_QbDO89]M3
+R3
 R0
-R31
+w1781256711
 8C:/Users/smoh/Desktop/26-1/Verilog/proj2/cur/sti_project2.v
 FC:/Users/smoh/Desktop/26-1/Verilog/proj2/cur/sti_project2.v
-!i122 50
-L0 2 42
-R6
+!i122 227
+L0 2 44
+R7
 r1
 !s85 0
 31
-R18
+R8
 !s107 C:/Users/smoh/Desktop/26-1/Verilog/proj2/cur/sti_project2.v|
 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/smoh/Desktop/26-1/Verilog/proj2/cur/sti_project2.v|
 !i113 1
-R9
-R10
-vstimulus_csa_20bit_2stage
 R11
-!i10b 1
-!s100 b_`OEV3XOkb>QU^j2n^BL3
-R1
-IVlmXM^e7I=EicT<T43jlY1
-R2
-R0
-w1780572648
-8C:/Users/smoh/Desktop/26-1/Verilog/pr4/ref/stimulus_csa_20bit_2stage.v
-FC:/Users/smoh/Desktop/26-1/Verilog/pr4/ref/stimulus_csa_20bit_2stage.v
-!i122 45
-Z32 L0 2 55
-R6
-r1
-!s85 0
-31
-R13
-!s107 C:/Users/smoh/Desktop/26-1/Verilog/pr4/ref/stimulus_csa_20bit_2stage.v|
-!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/smoh/Desktop/26-1/Verilog/pr4/ref/stimulus_csa_20bit_2stage.v|
-!i113 1
-R9
-R10
-vstimulus_rca_22bit_2stage
-R11
-!i10b 1
-!s100 M7NE4I5;i>FGTd2<m9]<c1
-R1
-I8jHQo2[_J1hz61X_YUJ4m3
-R2
-R0
-w1780572148
-8C:/Users/smoh/Desktop/26-1/Verilog/pr4/ref/stimulus_rca_22bit_2stage.v
-FC:/Users/smoh/Desktop/26-1/Verilog/pr4/ref/stimulus_rca_22bit_2stage.v
-!i122 46
-R32
-R6
-r1
-!s85 0
-31
-R13
-!s107 C:/Users/smoh/Desktop/26-1/Verilog/pr4/ref/stimulus_rca_22bit_2stage.v|
-!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/smoh/Desktop/26-1/Verilog/pr4/ref/stimulus_rca_22bit_2stage.v|
-!i113 1
-R9
-R10
-vstimulus_sqrt_csa_22bit_2stage
-!s110 1780573235
-!i10b 1
-!s100 Z0nSaiC[n4EFR<4>9bb?92
-R1
-Ii<a]LA;YA:f[[6TP2DB;13
-R2
-R0
-w1780572845
-8C:/Users/smoh/Desktop/26-1/Verilog/pr4/ref/stimulus_sqrt_csa_22bit_2stage.v
-FC:/Users/smoh/Desktop/26-1/Verilog/pr4/ref/stimulus_sqrt_csa_22bit_2stage.v
-!i122 47
-R32
-R6
-r1
-!s85 0
-31
-R13
-!s107 C:/Users/smoh/Desktop/26-1/Verilog/pr4/ref/stimulus_sqrt_csa_22bit_2stage.v|
-!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/smoh/Desktop/26-1/Verilog/pr4/ref/stimulus_sqrt_csa_22bit_2stage.v|
-!i113 1
-R9
-R10
+R12
 vTop
-R14
-!i10b 1
-!s100 OMF[i2UJ`R[@SEci=bg<A2
 R1
-IR_G>8iaL9IV8<l]@6nGLG2
+!i10b 1
+!s100 aZzI?i4>;_6BC>kGFXAh90
 R2
+IFloXJ8F0YONRU:5P:V8]01
+R3
 R0
-R15
-R16
-R17
-!i122 51
-L0 24 129
+R4
+R5
 R6
+!i122 228
+L0 24 171
+R7
 r1
 !s85 0
 31
-R18
-R19
-R20
-!i113 1
+R8
 R9
 R10
+!i113 1
+R11
+R12
 n@top
+vTop_opt
+!s110 1781231491
+!i10b 1
+!s100 j]`04m=YTK5EE`OG6=];b1
+R2
+I8Zf<hGb>l5;cUY7H57UYo0
+R3
+R0
+w1781228211
+8C:/Users/smoh/Desktop/26-1/Verilog/proj2/cur/Top_opt.v
+FC:/Users/smoh/Desktop/26-1/Verilog/proj2/cur/Top_opt.v
+!i122 118
+L0 24 129
+R7
+r1
+!s85 0
+31
+!s108 1781231491.000000
+!s107 C:/Users/smoh/Desktop/26-1/Verilog/proj2/cur/Top_opt.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/smoh/Desktop/26-1/Verilog/proj2/cur/Top_opt.v|
+!i113 1
+R11
+R12
+n@top_opt
 vTPmem_16x16
-R14
+!s110 1781256720
 !i10b 1
 !s100 >oJ8TiSOJfV>jGCG@k[]]3
-R1
-IOiSh;fjNLRCnmVb_M[>B:0
 R2
+IOiSh;fjNLRCnmVb_M[>B:0
+R3
 R0
-R31
+R13
 8C:/Users/smoh/Desktop/26-1/Verilog/proj2/cur/TPMEM_16x16.v
 FC:/Users/smoh/Desktop/26-1/Verilog/proj2/cur/TPMEM_16x16.v
-!i122 52
+!i122 229
 L0 1 97
-R6
+R7
 r1
 !s85 0
 31
-R18
+R8
 !s107 C:/Users/smoh/Desktop/26-1/Verilog/proj2/cur/TPMEM_16x16.v|
 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/smoh/Desktop/26-1/Verilog/proj2/cur/TPMEM_16x16.v|
 !i113 1
-R9
-R10
+R11
+R12
 n@t@pmem_16x16
