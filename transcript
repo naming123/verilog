@@ -1,0 +1,16 @@
+vsim -gui work.sti_project2
+# vsim -gui work.sti_project2 
+# Start time: 04:48:58 on Jun 14,2026
+# Loading work.sti_project2
+# Loading work.Top
+# Loading work.rflp16384x128mx16
+# Loading work.dct16
+# Loading work.TPmem_16x16
+# Loading work.rflp16384x192mx16
+run -all
+# INSUFFICIENT SETUP/HOLD TIME - POTENTIAL MEMORY DATA CORRUPTION
+# INSUFFICIENT SETUP/HOLD TIME - POTENTIAL MEMORY DATA CORRUPTION
+# ** Note: $finish    : C:/Users/smoh/Desktop/26-1/Verilog/proj2/cur/sti_project2.v(39)
+#    Time: 164400 ns  Iteration: 0  Instance: /sti_project2
+# 1
+# Break in Module sti_project2 at C:/Users/smoh/Desktop/26-1/Verilog/proj2/cur/sti_project2.v line 39

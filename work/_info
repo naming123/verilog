@@ -9,159 +9,182 @@ z2
 !i10f 100
 cModel Technology
 Z0 dC:/Users/smoh/Desktop/26-1/Verilog
+vdct16
+!s110 1781336531
+!i10b 1
+!s100 =;dVc7A6O9jkLF>[H;iWA0
+Z1 !s11b Dg1SIo80bB@j0V0VzS_@n1
+Idf9gfG7aj93>^CaKl[nR;3
+Z2 VDg1SIo80bB@j0V0VzS_@n1
+R0
+w1781335330
+Z3 8C:/Users/smoh/Desktop/26-1/Verilog/proj2/cur/Top.v
+Z4 FC:/Users/smoh/Desktop/26-1/Verilog/proj2/cur/Top.v
+!i122 296
+L0 129 37
+Z5 OV;L;2020.1;71
+r1
+!s85 0
+31
+!s108 1781336531.000000
+Z6 !s107 C:/Users/smoh/Desktop/26-1/Verilog/proj2/cur/Top.v|
+Z7 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/smoh/Desktop/26-1/Verilog/proj2/cur/Top.v|
+!i113 1
+Z8 o-work work
+Z9 tCvgOpt 0
 vdct16_stage1
-Z1 !s110 1781256719
+Z10 !s110 1781320048
 !i10b 1
 !s100 _<jAEd:>[Y^];HEfJDBmd0
-Z2 !s11b Dg1SIo80bB@j0V0VzS_@n1
-IZY2KcYo7896bA<NNZcW[m0
-Z3 VDg1SIo80bB@j0V0VzS_@n1
-R0
-Z4 w1781235353
-Z5 8C:/Users/smoh/Desktop/26-1/Verilog/proj2/cur/Top.v
-Z6 FC:/Users/smoh/Desktop/26-1/Verilog/proj2/cur/Top.v
-!i122 228
-L0 204 53
-Z7 OV;L;2020.1;71
-r1
-!s85 0
-31
-Z8 !s108 1781256719.000000
-Z9 !s107 C:/Users/smoh/Desktop/26-1/Verilog/proj2/cur/Top.v|
-Z10 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/smoh/Desktop/26-1/Verilog/proj2/cur/Top.v|
-!i113 1
-Z11 o-work work
-Z12 tCvgOpt 0
-vdct16_stage2
 R1
-!i10b 1
-!s100 FHbHS[Om[@OYX_11dJ85I0
+IZY2KcYo7896bA<NNZcW[m0
 R2
-I45^UGm:K_8gV;WVdn9mN:3
-R3
 R0
+Z11 w1781235353
+R3
 R4
+!i122 263
+L0 204 53
 R5
-R6
-!i122 228
-L0 264 50
-R7
 r1
 !s85 0
 31
+Z12 !s108 1781320048.000000
+R6
+R7
+!i113 1
 R8
 R9
+vdct16_stage2
 R10
-!i113 1
-R11
-R12
-vrflp16384x128mx16
-R1
 !i10b 1
-!s100 ;n5UXCozD3_Y1l`aUd_R43
+!s100 FHbHS[Om[@OYX_11dJ85I0
+R1
+I45^UGm:K_8gV;WVdn9mN:3
 R2
-IdkEJYVK?LEA^lfHEO==<l3
-R3
 R0
-Z13 w1780996359
-8C:/Users/smoh/Desktop/26-1/Verilog/proj2/cur/rflp16384x128mx16.v
-FC:/Users/smoh/Desktop/26-1/Verilog/proj2/cur/rflp16384x128mx16.v
-!i122 225
-L0 2 667
-R7
+R11
+R3
+R4
+!i122 263
+L0 264 50
+R5
 r1
 !s85 0
 31
+R12
+R6
+R7
+!i113 1
 R8
+R9
+vrflp16384x128mx16
+Z13 !s110 1781380044
+!i10b 1
+!s100 ;n5UXCozD3_Y1l`aUd_R43
+R1
+IdkEJYVK?LEA^lfHEO==<l3
+R2
+R0
+Z14 w1780996359
+8C:/Users/smoh/Desktop/26-1/Verilog/proj2/cur/rflp16384x128mx16.v
+FC:/Users/smoh/Desktop/26-1/Verilog/proj2/cur/rflp16384x128mx16.v
+!i122 591
+L0 2 667
+R5
+r1
+!s85 0
+31
+Z15 !s108 1781380044.000000
 !s107 C:/Users/smoh/Desktop/26-1/Verilog/proj2/cur/rflp16384x128mx16.v|
 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/smoh/Desktop/26-1/Verilog/proj2/cur/rflp16384x128mx16.v|
 !i113 1
-R11
-R12
+R8
+R9
 vrflp16384x192mx16
-R1
+R13
 !i10b 1
 !s100 Reg`L;Ob:dgbc:FjGAO9O1
-R2
+R1
 IZ;ghY97jgc]3m[ORcYZhL0
-R3
+R2
 R0
-R13
+R14
 8C:/Users/smoh/Desktop/26-1/Verilog/proj2/cur/rflp16384x192mx16.v
 FC:/Users/smoh/Desktop/26-1/Verilog/proj2/cur/rflp16384x192mx16.v
-!i122 226
+!i122 592
 L0 2 922
-R7
+R5
 r1
 !s85 0
 31
-R8
+R15
 !s107 C:/Users/smoh/Desktop/26-1/Verilog/proj2/cur/rflp16384x192mx16.v|
 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/smoh/Desktop/26-1/Verilog/proj2/cur/rflp16384x192mx16.v|
 !i113 1
-R11
-R12
+R8
+R9
 vsti_project2
-R1
+R13
 !i10b 1
-!s100 `GoUh]kah_c;C93NPE0T^0
+!s100 g^I2W<78lPG3RT4moVcL72
+R1
+ISTfLX_PVAhWnYQS^?O3<Q2
 R2
-IX3z1:aO2B1ND_QbDO89]M3
-R3
 R0
-w1781256711
+w1781380038
 8C:/Users/smoh/Desktop/26-1/Verilog/proj2/cur/sti_project2.v
 FC:/Users/smoh/Desktop/26-1/Verilog/proj2/cur/sti_project2.v
-!i122 227
-L0 2 44
-R7
+!i122 593
+L0 2 41
+R5
 r1
 !s85 0
 31
-R8
+R15
 !s107 C:/Users/smoh/Desktop/26-1/Verilog/proj2/cur/sti_project2.v|
 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/smoh/Desktop/26-1/Verilog/proj2/cur/sti_project2.v|
 !i113 1
-R11
-R12
+R8
+R9
 vTop
-R1
+R13
 !i10b 1
-!s100 aZzI?i4>;_6BC>kGFXAh90
+!s100 H2f260ALV@8<=h_O9_bj52
+R1
+Im^QgULZ?NZ2H7ATV^D4Kk3
 R2
-IFloXJ8F0YONRU:5P:V8]01
-R3
 R0
+w1781376065
+R3
 R4
+!i122 594
+L0 19 177
 R5
-R6
-!i122 228
-L0 24 171
-R7
 r1
 !s85 0
 31
+R15
+R6
+R7
+!i113 1
 R8
 R9
-R10
-!i113 1
-R11
-R12
 n@top
 vTop_opt
 !s110 1781231491
 !i10b 1
 !s100 j]`04m=YTK5EE`OG6=];b1
-R2
+R1
 I8Zf<hGb>l5;cUY7H57UYo0
-R3
+R2
 R0
 w1781228211
 8C:/Users/smoh/Desktop/26-1/Verilog/proj2/cur/Top_opt.v
 FC:/Users/smoh/Desktop/26-1/Verilog/proj2/cur/Top_opt.v
 !i122 118
 L0 24 129
-R7
+R5
 r1
 !s85 0
 31
@@ -169,30 +192,30 @@ r1
 !s107 C:/Users/smoh/Desktop/26-1/Verilog/proj2/cur/Top_opt.v|
 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/smoh/Desktop/26-1/Verilog/proj2/cur/Top_opt.v|
 !i113 1
-R11
-R12
+R8
+R9
 n@top_opt
 vTPmem_16x16
-!s110 1781256720
+R13
 !i10b 1
 !s100 >oJ8TiSOJfV>jGCG@k[]]3
-R2
+R1
 IOiSh;fjNLRCnmVb_M[>B:0
-R3
+R2
 R0
-R13
+R14
 8C:/Users/smoh/Desktop/26-1/Verilog/proj2/cur/TPMEM_16x16.v
 FC:/Users/smoh/Desktop/26-1/Verilog/proj2/cur/TPMEM_16x16.v
-!i122 229
+!i122 595
 L0 1 97
-R7
+R5
 r1
 !s85 0
 31
-R8
+R15
 !s107 C:/Users/smoh/Desktop/26-1/Verilog/proj2/cur/TPMEM_16x16.v|
 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/smoh/Desktop/26-1/Verilog/proj2/cur/TPMEM_16x16.v|
 !i113 1
-R11
-R12
+R8
+R9
 n@t@pmem_16x16

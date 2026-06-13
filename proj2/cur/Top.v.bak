@@ -1,0 +1,206 @@
+`timescale 1ns / 10ps
+//============================================================================
+//  16x16 2D-DCT for 512x512 JPEG compression  (bit-exact to MATLAB golden)
+//
+//  Golden reference  : DCT_image_%d.txt  (made by JPEG_CODEC_FULL_DCT_generate.m)
+//  Input stimulus    : image_in_%d.txt   (raw 8-bit pixels, 1 block-row / word)
+//
+//  EXACT MATLAB EQUIVALENCE (verified by python simulation, 0 mismatch):
+//   coeff  : func_DCT_Coefficient_quant(10) -> Ti = round(Tquant*512)   (9 frac bits)
+//   stage1 : S1 = Ti * pixel              ; R1 = S1 >>> 9   (== func_DCTquant(.,12,12) = floor)
+//   stage2 : S2 = Ti * R1
+//   store  : DC(0,0) = S2 >>> 10                                  (= floor(D2/2))
+//            AC      = sat( S2 >>> 8 , +1023 , -1024 )            (= floor(D2*2), sat)
+//
+//  Each stored value is the 12-bit two's-complement word that must match the
+//  corresponding line of DCT_image_%d.txt.
+//
+//  Pipeline  : 1 block-row / clk  ->  16 clk / block.  TP + OUT ping-pong.
+//============================================================================
+module Top (
+    input clk,
+    input rstn
+);
+    //------------------------------------------------------------------
+    // shared 16x16 integer coefficient matrix (x512, 9 frac bits)
+    //   COEF[k] = row k of the DCT matrix.  Tune here if re-quantizing.
+    //------------------------------------------------------------------
+    localparam signed [11:0] COEF [0:15][0:15] = '{
+        '{ 128,  128,  128,  128,  128,  128,  128,  128,  128,  128,  128,  128,  128,  128,  128,  128},
+        '{ 180,  173,  160,  140,  115,   85,   53,   18,  -18,  -53,  -85, -115, -140, -160, -173, -180},
+        '{ 178,  151,  101,   35,  -35, -101, -151, -178, -178, -151, -101,  -35,   35,  101,  151,  178},
+        '{ 173,  115,   18,  -85, -160, -180, -140,  -53,   53,  140,  180,  160,   85,  -18, -115, -173},
+        '{ 167,   69,  -69, -167, -167,  -69,   69,  167,  167,   69,  -69, -167, -167,  -69,   69,  167},
+        '{ 160,   18, -140, -173,  -53,  115,  180,   85,  -85, -180, -115,   53,  173,  140,  -18, -160},
+        '{ 151,  -35, -178, -101,  101,  178,   35, -151, -151,   35,  178,  101, -101, -178,  -35,  151},
+        '{ 140,  -85, -173,   18,  180,   53, -160, -115,  115,  160,  -53, -180,  -18,  173,   85, -140},
+        '{ 128, -128, -128,  128,  128, -128, -128,  128,  128, -128, -128,  128,  128, -128, -128,  128},
+        '{ 115, -160,  -53,  180,  -18, -173,   85,  140, -140,  -85,  173,   18, -180,   53,  160, -115},
+        '{ 101, -178,   35,  151, -151,  -35,  178, -101, -101,  178,  -35, -151,  151,   35, -178,  101},
+        '{  85, -180,  115,   53, -173,  140,   18, -160,  160,  -18, -140,  173,  -53, -115,  180,  -85},
+        '{  69, -167,  167,  -69,  -69,  167, -167,   69,   69, -167,  167,  -69,  -69,  167, -167,   69},
+        '{  53, -140,  180, -160,   85,   18, -115,  173, -173,  115,  -18,  -85,  160, -180,  140,  -53},
+        '{  35, -101,  151, -178,  178, -151,  101,  -35,  -35,  101, -151,  178, -178,  151, -101,   35},
+        '{  18,  -53,   85, -115,  140, -160,  173, -180,  180, -173,  160, -140,  115,  -85,   53,  -18}
+    };
+
+    //------------------------------------------------------------------
+    // 1) INPUT : stream-read all 16384 words (1 word = 1 block-row, 16 x 8b)
+    //------------------------------------------------------------------
+    reg  [14:0]  in_cnt;
+    wire         in_run  = ~in_cnt[14];
+    wire [13:0]  addr_in = in_cnt[13:0];
+    wire [127:0] mem_in_do;
+
+    always @(posedge clk) begin
+        if (!rstn)       in_cnt <= 15'd0;
+        else if (in_run) in_cnt <= in_cnt + 15'd1;
+    end
+
+    rflp16384x128mx16 MEM_IN (
+        .DO(mem_in_do), .DIN(128'd0),
+        .RA(addr_in[13:4]), .CA(addr_in[3:0]),
+        .NWRT(1'b1), .NCE(~in_run), .CLK(clk) );
+
+    // valid pipeline : addr(t) -> DO(t+1) -> dct1_r(t+2)
+    reg v_do, v_tp;
+    always @(posedge clk) begin
+        if (!rstn) begin v_do<=1'b0; v_tp<=1'b0; end
+        else       begin v_do<=in_run; v_tp<=v_do; end
+    end
+
+    //------------------------------------------------------------------
+    // 2) stage1 (Row DCT) : R1 = (Ti * pixel) >>> 9   -> 13b signed integer
+    //------------------------------------------------------------------
+    wire [16*13-1:0] dct1_w;
+    reg  [16*13-1:0] dct1_r;
+
+    dct16 #(.INW(8), .INSIGNED(0), .SH(9), .OUTW(13)) U_DCT1 (
+        .COEF(COEF), .i_x(mem_in_do), .o_z(dct1_w) );
+
+    always @(posedge clk) dct1_r <= dct1_w;
+
+    //------------------------------------------------------------------
+    // 3) Ping-pong transpose (write 16 clk -> read 16 clk)
+    //------------------------------------------------------------------
+    reg [4:0] tp_phase;
+    always @(posedge clk) begin
+        if (!rstn)     tp_phase <= 5'd0;
+        else if (v_tp) tp_phase <= tp_phase + 5'd1;
+    end
+    wire sel2 = tp_phase[4];
+
+    wire [16*13-1:0] tp1_o, tp2_o;
+    wire             tp1_oen, tp2_oen;
+
+    TPmem_16x16 #(.BW(13)) TP1 (
+        .i_data(dct1_r), .i_enable(v_tp & ~sel2),
+        .i_clk(clk), .i_Reset(rstn), .o_data(tp1_o), .o_en(tp1_oen) );
+    TPmem_16x16 #(.BW(13)) TP2 (
+        .i_data(dct1_r), .i_enable(v_tp &  sel2),
+        .i_clk(clk), .i_Reset(rstn), .o_data(tp2_o), .o_en(tp2_oen) );
+
+    wire             tp_oen  = tp1_oen | tp2_oen;
+    wire [16*13-1:0] tp_odat = tp1_oen ? tp1_o : tp2_o;
+
+    //------------------------------------------------------------------
+    // 4) stage2 (Col DCT) : S2 = Ti * R1   -> keep full 24b signed
+    //------------------------------------------------------------------
+    wire [16*24-1:0] dct2_w;
+    reg  [16*24-1:0] dct2_r;
+    reg              v_w;
+
+    dct16 #(.INW(13), .INSIGNED(1), .SH(0), .OUTW(24)) U_DCT2 (
+        .COEF(COEF), .i_x(tp_odat), .o_z(dct2_w) );
+
+    always @(posedge clk) begin
+        if (!rstn) v_w <= 1'b0;
+        else       v_w <= tp_oen;
+        dct2_r <= dct2_w;
+    end
+
+    //------------------------------------------------------------------
+    // 5) final quantize -> 12b store word  (bit-exact to DCT_image txt)
+    //    DC(0,0) : S2 >>> 10
+    //    AC      : sat( S2 >>> 8 , +1023, -1024 )
+    //------------------------------------------------------------------
+    reg [13:0] addr_out;
+    always @(posedge clk) begin
+        if (!rstn)    addr_out <= 14'd0;
+        else if (v_w) addr_out <= addr_out + 14'd1;
+    end
+    wire first_word = (addr_out[3:0] == 4'd0);   // v=0 row of a block
+
+    wire [191:0] out_word;
+    genvar gk;
+    generate
+        for (gk = 0; gk < 16; gk = gk + 1) begin : TRUNC
+            wire signed [23:0] s2 = dct2_r[16*24-1-24*gk -: 24];
+            wire signed [13:0] dc = s2 >>> 10;            // floor(D2/2) , no saturation
+            wire signed [15:0] ac = s2 >>> 8;             // floor(D2*2) = stored word
+            wire [11:0] dc12 = dc[11:0];
+            // AC saturation : MATLAB clamps 'pixel'(=word/2) to [-1024,1023]
+            //                 => stored word clamps to [-2048, +2046]
+            wire [11:0] ac12 = (ac >  16'sd2046) ? 12'h7FE :   // +2046
+                               (ac < -16'sd2048) ? 12'h800 :   // -2048
+                               ac[11:0];
+            // DC only at element0 of the first (v=0) word; element0 of other words is AC
+            assign out_word[191-12*gk -: 12] = (first_word && gk==0) ? dc12 : ac12;
+        end
+    endgenerate
+
+    rflp16384x192mx16 MEM_OUT (
+        .DO(), .DIN(out_word),
+        .RA(addr_out[13:4]), .CA(addr_out[3:0]),
+        .NWRT(~v_w), .NCE(~v_w), .CLK(clk) );
+
+endmodule
+
+
+//============================================================================
+//  Generic 16-point 1D-DCT (parameterized)
+//   INW      : input element width
+//   INSIGNED : 0 = unsigned input (pixels), 1 = signed input (stage2)
+//   SH       : right-shift applied to each output (>>> SH, arithmetic floor)
+//   OUTW     : output element width after shift
+//   COEF     : 16x16 integer coefficient matrix (x512)
+//
+//   o_z[k] = ( sum_n COEF[k][n] * x[n] ) >>> SH
+//============================================================================
+module dct16 #(
+    parameter INW      = 8,
+    parameter INSIGNED = 0,
+    parameter SH       = 9,
+    parameter OUTW     = 13
+)(
+    input  signed [11:0]      COEF [0:15][0:15],
+    input  [16*INW-1:0]       i_x,
+    output [16*OUTW-1:0]      o_z
+);
+    // unpack inputs to signed (sign-extend if signed, zero-extend if not)
+    wire signed [INW:0] x [0:15];
+    genvar n;
+    generate
+        for (n = 0; n < 16; n = n + 1) begin : UNPACK
+            if (INSIGNED)
+                assign x[n] = $signed(i_x[16*INW-1-INW*n -: INW]);
+            else
+                assign x[n] = $signed({1'b0, i_x[16*INW-1-INW*n -: INW]});
+        end
+    endgenerate
+
+    // full-precision MAC per output row, then arithmetic shift
+    genvar k, m;
+    generate
+        for (k = 0; k < 16; k = k + 1) begin : ROW
+            // accumulator wide enough for 16 * 12b coeff * (INW+1)b input
+            wire signed [31:0] acc =
+                  COEF[k][ 0]*x[ 0] + COEF[k][ 1]*x[ 1] + COEF[k][ 2]*x[ 2] + COEF[k][ 3]*x[ 3]
+                + COEF[k][ 4]*x[ 4] + COEF[k][ 5]*x[ 5] + COEF[k][ 6]*x[ 6] + COEF[k][ 7]*x[ 7]
+                + COEF[k][ 8]*x[ 8] + COEF[k][ 9]*x[ 9] + COEF[k][10]*x[10] + COEF[k][11]*x[11]
+                + COEF[k][12]*x[12] + COEF[k][13]*x[13] + COEF[k][14]*x[14] + COEF[k][15]*x[15];
+            wire signed [31:0] sh = acc >>> SH;     // arithmetic floor
+            assign o_z[16*OUTW-1-OUTW*k -: OUTW] = sh[OUTW-1:0];
+        end
+    endgenerate
+endmodule

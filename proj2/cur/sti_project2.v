@@ -4,9 +4,7 @@ module sti_project2;
 reg clk;
 reg rstn;
 
-
-Top top(clk, rstn); // define input & output ports of your top module by youself 
-
+Top top(clk, rstn);
 
 always #5 clk <= ~clk;
 
@@ -16,30 +14,29 @@ initial begin
 	rstn = 1;
 end
 
-initial	$readmemh("./proj2/cur/input/image_in_1.txt", top.MEM_IN.array); //input image, check the path of memory rocation (module instance)
+initial	$readmemh("./proj2/cur/input/image_in_8.txt", top.MEM_IN.array);
 
-
-
-
-integer i;
+integer i, j;
 integer fp;
 
 initial begin
-	fp = $fopen("./proj2/cur/aa/DCT_image_1_.txt","w"); //output image, this is the output file that finished 2D-DCT operations.
+	fp = $fopen("./proj2/cur/aa/DCT_image_8.txt","w");
 
-	#164210; //change if you need
+	// 마지막 word write @ 164210ns(16421 cycle). 동기 메모리 반영 + 여유로 #164300.
+	#164300;
 
-	for (i = 0; i<16384; i=i+1)	begin
-		$display("DATA %b", top.MEM_OUT.array[i]); //check the path of memory rocation (module instance)
-		$fwrite(fp,"%b\n", top.MEM_OUT.array[i]); //check the path of memory rocation (module instance)
+	// ★ 포맷: generate.m / Verilog_IO.m 과 동일하게 '12bit 1계수 = 1줄'.
+	//   한 word(192bit=16계수)를 ch0..ch15 순서로 12bit씩 16줄로 분해.
+	//   MEM_OUT.array[i] 는 {ch0(MSB)..ch15} = [191:180],[179:168],...,[11:0]
+	for (i = 0; i < 16384; i = i + 1) begin
+		for (j = 0; j < 16; j = j + 1) begin
+			$fwrite(fp, "%b\n", top.MEM_OUT.array[i][191 - 12*j -: 12]);
+		end
 	end
-   
+
 	#100
-	$fclose(fp);  
-
-
-$finish;
+	$fclose(fp);
+	$finish;
 end
-
 
 endmodule
